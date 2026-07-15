@@ -1,0 +1,25 @@
+const ITEMS = [
+  { value: "45 anos", label: "de história e experiência farmacêutica" },
+  { value: "100%", label: "fórmulas personalizadas para cada pessoa" },
+  { value: "Gutfiber®", label: "linha própria de produtos exclusivos" },
+  { value: "4 áreas", label: "magistral, dermocosmética, nutrição e unhas" },
+];
+
+export function TrustBar() {
+  return (
+    <section className="border-y border-df-line bg-df-surface">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-df-line px-5 md:px-8 lg:grid-cols-4 lg:divide-y-0">
+        {ITEMS.map((item) => (
+          <div key={item.value} className="px-4 py-8 text-center lg:px-6">
+            <p className="font-display text-2xl font-extrabold text-df-primary-700 md:text-3xl">
+              {item.value}
+            </p>
+            <p className="mt-1.5 text-sm leading-snug text-df-ink-700">
+              {item.label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

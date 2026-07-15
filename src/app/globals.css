@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Primária — verde-menta, extraída do logo real do Instagram */
+  --df-primary-50: #f3faf3;
+  --df-primary-100: #e8f5e9;
+  --df-primary-200: #d3ead5;
+  --df-primary-300: #b9deba;
+  --df-primary-500: #6fa876;
+  --df-primary-600: #588f5f;
+  --df-primary-700: #43714a;
+  --df-primary-900: #1f3623;
+
+  /* Secundária — sage-teal, extraída das capas de destaque do Instagram */
+  --df-secondary-300: #c1d2d0;
+  --df-secondary-500: #8fa8a6;
+  --df-secondary-700: #5f7674;
+
+  /* Neutros quentes — extraídos da fotografia de produto do feed */
+  --df-warm-100: #faf5ee;
+  --df-warm-300: #f3e7dc;
+  --df-warm-500: #e4d3c0;
+
+  /* Base */
+  --df-bg: #fbfaf7;
+  --df-surface: #ffffff;
+  --df-ink-900: #1c1e1c;
+  --df-ink-700: #3a3d3a;
+  --df-ink-400: #6f746e;
+  --df-line: #e6e2d9;
+
+  --df-radius-sm: 8px;
+  --df-radius-md: 16px;
+  --df-radius-lg: 28px;
+  --df-radius-full: 999px;
+
+  --df-shadow-sm: 0 1px 2px rgba(28, 30, 28, 0.05), 0 1px 3px rgba(28, 30, 28, 0.04);
+  --df-shadow-md: 0 8px 24px rgba(31, 54, 35, 0.08);
+  --df-shadow-lg: 0 20px 48px rgba(31, 54, 35, 0.12);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-df-primary-50: var(--df-primary-50);
+  --color-df-primary-100: var(--df-primary-100);
+  --color-df-primary-200: var(--df-primary-200);
+  --color-df-primary-300: var(--df-primary-300);
+  --color-df-primary-500: var(--df-primary-500);
+  --color-df-primary-600: var(--df-primary-600);
+  --color-df-primary-700: var(--df-primary-700);
+  --color-df-primary-900: var(--df-primary-900);
+
+  --color-df-secondary-300: var(--df-secondary-300);
+  --color-df-secondary-500: var(--df-secondary-500);
+  --color-df-secondary-700: var(--df-secondary-700);
+
+  --color-df-warm-100: var(--df-warm-100);
+  --color-df-warm-300: var(--df-warm-300);
+  --color-df-warm-500: var(--df-warm-500);
+
+  --color-df-bg: var(--df-bg);
+  --color-df-surface: var(--df-surface);
+  --color-df-ink-900: var(--df-ink-900);
+  --color-df-ink-700: var(--df-ink-700);
+  --color-df-ink-400: var(--df-ink-400);
+  --color-df-line: var(--df-line);
+
+  --radius-df-sm: var(--df-radius-sm);
+  --radius-df-md: var(--df-radius-md);
+  --radius-df-lg: var(--df-radius-lg);
+  --radius-df-full: var(--df-radius-full);
+
+  --shadow-df-sm: var(--df-shadow-sm);
+  --shadow-df-md: var(--df-shadow-md);
+  --shadow-df-lg: var(--df-shadow-lg);
+
+  --font-display: var(--font-manrope);
+  --font-body: var(--font-work-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--df-bg);
+  color: var(--df-ink-900);
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
