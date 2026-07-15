@@ -30,8 +30,12 @@ const TESTIMONIALS = [
 
 export function Testimonials() {
   return (
-    <section id="depoimentos" className="py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
+    <section id="depoimentos" className="relative overflow-hidden py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="ambient-glow -left-20 bottom-0 h-72 w-72 bg-df-primary-300/40"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <Reveal className="max-w-2xl">
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
             Quem confia em nós, conta como foi.
@@ -45,8 +49,8 @@ export function Testimonials() {
               delay={i * 0.1}
               className={
                 t.highlight
-                  ? "flex flex-col justify-between rounded-df-lg bg-df-primary-700 p-7 text-white"
-                  : "flex flex-col justify-between rounded-df-lg bg-df-warm-100 p-7"
+                  ? "flex flex-col justify-between rounded-df-lg bg-gradient-to-br from-df-primary-600 to-df-primary-900 p-7 text-white shadow-df-lg"
+                  : "glass flex flex-col justify-between rounded-df-lg p-7"
               }
             >
               <Quotes

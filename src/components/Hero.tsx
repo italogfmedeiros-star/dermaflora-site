@@ -52,7 +52,7 @@ export function Hero() {
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <a
               href="#servicos"
-              className="inline-flex items-center rounded-df-full border border-df-ink-900/20 bg-white/40 px-6 py-3.5 text-base font-semibold text-df-ink-900 backdrop-blur-sm transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
+              className="glass inline-flex items-center rounded-df-full px-6 py-3.5 text-base font-semibold text-df-ink-900 transition-all duration-200 hover:-translate-y-0.5 hover:text-df-primary-700"
             >
               Conhecer os serviços
             </a>

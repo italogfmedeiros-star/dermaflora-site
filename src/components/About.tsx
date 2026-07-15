@@ -21,8 +21,12 @@ const MILESTONES = [
 
 export function About() {
   return (
-    <section id="sobre" className="py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
+    <section id="sobre" className="relative overflow-hidden py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="ambient-glow -right-24 top-10 h-64 w-64 bg-df-secondary-300/35"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <Reveal className="max-w-2xl">
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
             45 anos de história, escritos fórmula a fórmula.

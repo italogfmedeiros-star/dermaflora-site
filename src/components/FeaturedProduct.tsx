@@ -50,14 +50,16 @@ export function FeaturedProduct() {
         </Reveal>
 
         <Reveal delay={0.15} className="order-1 lg:order-2">
-          <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-df-lg shadow-df-lg lg:ml-auto">
-            <Image
-              src="https://picsum.photos/seed/dermaflora-gutfiber-product/800/1000"
-              alt="Gutfiber, produto próprio de fibras da Dermaflora"
-              fill
-              sizes="(min-width: 1024px) 28rem, 90vw"
-              className="object-cover"
-            />
+          <div className="glass-strong w-full max-w-md rounded-df-lg p-3 lg:ml-auto">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[calc(var(--df-radius-lg)-12px)]">
+              <Image
+                src="https://picsum.photos/seed/dermaflora-gutfiber-product/800/1000"
+                alt="Gutfiber, produto próprio de fibras da Dermaflora"
+                fill
+                sizes="(min-width: 1024px) 28rem, 90vw"
+                className="object-cover"
+              />
+            </div>
           </div>
         </Reveal>
       </div>

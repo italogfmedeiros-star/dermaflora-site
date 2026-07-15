@@ -37,6 +37,21 @@
   --df-shadow-sm: 0 1px 2px rgba(28, 30, 28, 0.05), 0 1px 3px rgba(28, 30, 28, 0.04);
   --df-shadow-md: 0 8px 24px rgba(31, 54, 35, 0.08);
   --df-shadow-lg: 0 20px 48px rgba(31, 54, 35, 0.12);
+
+  /* Glass — vidro claro para superfícies sobre fundo warm/mint */
+  --df-glass-bg: rgba(255, 255, 255, 0.55);
+  --df-glass-bg-strong: rgba(255, 255, 255, 0.72);
+  --df-glass-border: rgba(255, 255, 255, 0.65);
+  --df-glass-shadow: 0 8px 32px rgba(31, 54, 35, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+  /* Glass — vidro escuro para superfícies sobre fundo primary-900/ink-900 */
+  --df-glass-dark-bg: rgba(255, 255, 255, 0.09);
+  --df-glass-dark-border: rgba(255, 255, 255, 0.16);
+  --df-glass-dark-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  --df-blur-sm: 12px;
+  --df-blur-md: 20px;
+  --df-blur-lg: 28px;
 }
 
 @theme inline {
@@ -94,6 +109,42 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Glass — superfície clara translúcida (header, cards, dropdowns) */
+.glass {
+  background: var(--df-glass-bg);
+  backdrop-filter: blur(var(--df-blur-md));
+  -webkit-backdrop-filter: blur(var(--df-blur-md));
+  border: 1px solid var(--df-glass-border);
+  box-shadow: var(--df-glass-shadow);
+}
+
+/* Glass mais opaco — modais, painéis de destaque */
+.glass-strong {
+  background: var(--df-glass-bg-strong);
+  backdrop-filter: blur(var(--df-blur-lg));
+  -webkit-backdrop-filter: blur(var(--df-blur-lg));
+  border: 1px solid var(--df-glass-border);
+  box-shadow: var(--df-glass-shadow);
+}
+
+/* Glass — superfície escura translúcida (seções sobre fundo escuro) */
+.glass-dark {
+  background: var(--df-glass-dark-bg);
+  backdrop-filter: blur(var(--df-blur-md));
+  -webkit-backdrop-filter: blur(var(--df-blur-md));
+  border: 1px solid var(--df-glass-dark-border);
+  box-shadow: var(--df-glass-dark-shadow);
+}
+
+/* Brilho ambiente suave atrás de painéis de vidro, para dar profundidade a fundos planos */
+.ambient-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 @keyframes hero-slide {

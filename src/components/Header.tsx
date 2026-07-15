@@ -15,7 +15,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-df-line bg-df-bg/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-df-line bg-df-bg">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20 md:px-8">
         <a href="#topo" aria-label="Dermaflora, início">
           <LogoMark />
@@ -45,7 +45,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-df-sm text-df-ink-900 lg:hidden"
+          className="grid h-10 w-10 place-items-center rounded-df-sm text-df-ink-900 transition-colors hover:bg-white/40 lg:hidden"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
         >

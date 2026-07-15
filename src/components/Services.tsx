@@ -4,8 +4,16 @@ import { Reveal } from "./Reveal";
 
 export function Services() {
   return (
-    <section id="servicos" className="bg-df-surface py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
+    <section id="servicos" className="relative overflow-hidden bg-df-surface py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="ambient-glow -left-24 top-1/3 h-72 w-72 bg-df-primary-300/40"
+      />
+      <div
+        aria-hidden="true"
+        className="ambient-glow -right-16 bottom-0 h-64 w-64 bg-df-warm-500/40"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <Reveal className="max-w-2xl">
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
             Quatro frentes de cuidado, uma só filosofia.
@@ -63,7 +71,7 @@ export function Services() {
 
           <Reveal
             delay={0.15}
-            className="flex flex-col justify-between rounded-df-lg bg-df-primary-100 p-6 lg:col-span-1 lg:row-span-1"
+            className="glass flex flex-col justify-between rounded-df-lg p-6 transition-transform duration-200 hover:-translate-y-1 lg:col-span-1 lg:row-span-1"
           >
             <Leaf size={24} weight="regular" className="text-df-primary-700" />
             <div>
@@ -79,7 +87,7 @@ export function Services() {
 
           <Reveal
             delay={0.2}
-            className="flex flex-col justify-between rounded-df-lg bg-df-warm-300 p-6 lg:col-span-1 lg:row-span-1"
+            className="glass flex flex-col justify-between rounded-df-lg p-6 transition-transform duration-200 hover:-translate-y-1 lg:col-span-1 lg:row-span-1"
           >
             <PaintBrush size={24} weight="regular" className="text-df-primary-700" />
             <div>

@@ -31,8 +31,12 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section className="bg-df-surface py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
+    <section className="relative overflow-hidden bg-df-surface py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="ambient-glow -right-24 top-0 h-72 w-72 bg-df-secondary-300/40"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <Reveal className="max-w-2xl">
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
             Como funciona o seu atendimento.
@@ -46,7 +50,7 @@ export function HowItWorks() {
           />
           {STEPS.map((step, i) => (
             <Reveal key={step.title} delay={i * 0.08} className="relative">
-              <div className="relative z-10 grid h-14 w-14 place-items-center rounded-full border-2 border-df-primary-700 bg-df-surface text-df-primary-700">
+              <div className="glass relative z-10 grid h-14 w-14 place-items-center rounded-full text-df-primary-700">
                 <step.icon size={24} weight="regular" />
               </div>
               <h3 className="mt-4 font-display text-lg font-bold text-df-ink-900">
