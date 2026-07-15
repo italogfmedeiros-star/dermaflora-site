@@ -15,9 +15,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <div className="[&_span]:text-white">
-              <LogoMark />
-            </div>
+            <LogoMark variant="white" />
             <p className="mt-3 max-w-xs text-sm leading-relaxed">
               Fórmulas magistrais feitas sob medida para você, há 45 anos
               cuidando de saúde, beleza e bem-estar.

@@ -1,61 +1,61 @@
 import Image from "next/image";
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "./Reveal";
 
 export function Hero() {
   return (
-    <section id="topo" className="relative overflow-hidden pt-12 md:pt-20">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
-        <Reveal>
-          <div className="mb-5 inline-flex items-center rounded-df-full bg-df-primary-100 px-4 py-1.5 text-sm font-semibold text-df-primary-700">
-            45 anos cuidando de quem confia em nós
-          </div>
+    <section id="topo" className="relative h-[640px]">
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src="/images/hero-banner.png"
+          alt="Mulher aplicando um creme hidratante Dermaflora no rosto, em ambiente claro e natural"
+          fill
+          priority
+          sizes="100vw"
+          className="hero-slide object-cover object-[68%_center] md:object-[75%_center]"
+        />
+        <Image
+          src="/images/hero-banner-2.png"
+          alt="Sérum Dermaflora em composição entre flores de cerejeira"
+          fill
+          sizes="100vw"
+          className="hero-slide object-cover object-[39%_center] md:object-[8%_center]"
+        />
+        <Image
+          src="/images/hero-banner-3.png"
+          alt="Nécessaire Dermaflora com fórmulas manipuladas sendo organizada"
+          fill
+          sizes="100vw"
+          className="hero-slide object-cover object-[70%_center] md:object-[78%_center]"
+        />
+        <Image
+          src="/images/hero-banner-4.png"
+          alt="Cápsulas manipuladas Dermaflora derramando de um frasco branco"
+          fill
+          sizes="100vw"
+          className="hero-slide object-cover object-[65%_center] md:object-[72%_center]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-df-warm-100 via-df-warm-100/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-df-warm-100/70 via-transparent to-transparent md:from-transparent" />
+      </div>
 
-          <h1 className="max-w-xl font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-df-ink-900 md:text-5xl lg:text-[3.25rem]">
+      <div className="relative mx-auto flex h-full max-w-7xl items-center px-5 py-10 md:px-8">
+        <Reveal className="max-w-xl">
+          <h1 className="font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-df-ink-900 md:text-5xl lg:text-[3.25rem]">
             Cuidado de verdade começa por uma fórmula feita só para você.
           </h1>
 
-          <p className="mt-5 max-w-md text-lg leading-relaxed text-df-ink-700">
+          <p className="mt-4 max-w-md text-lg leading-relaxed text-df-ink-700">
             Há 45 anos cuidando de saúde, beleza e bem-estar com fórmulas
             personalizadas para o seu caso.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#contato"
-              className="inline-flex items-center gap-2 rounded-df-full bg-df-primary-700 px-6 py-3.5 text-base font-semibold text-white shadow-df-md transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
-            >
-              Falar com um especialista
-              <ArrowRight size={18} weight="bold" />
-            </a>
+          <div className="mt-6 flex flex-wrap items-center gap-4">
             <a
               href="#servicos"
-              className="inline-flex items-center rounded-df-full border border-df-ink-900/15 px-6 py-3.5 text-base font-semibold text-df-ink-900 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
+              className="inline-flex items-center rounded-df-full border border-df-ink-900/20 bg-white/40 px-6 py-3.5 text-base font-semibold text-df-ink-900 backdrop-blur-sm transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
             >
               Conhecer os serviços
             </a>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.15} className="relative">
-          <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-df-lg shadow-df-lg lg:ml-auto">
-            <Image
-              src="https://picsum.photos/seed/dermaflora-formulas-still-life/900/1125"
-              alt="Fórmulas manipuladas da Dermaflora dispostas em composição still life"
-              fill
-              priority
-              sizes="(min-width: 1024px) 28rem, 90vw"
-              className="object-cover"
-            />
-          </div>
-
-          <div className="absolute -bottom-6 left-0 w-56 rounded-df-md border border-df-line bg-df-surface p-4 shadow-df-md sm:-left-6">
-            <p className="font-display text-2xl font-extrabold text-df-primary-700">
-              45 anos
-            </p>
-            <p className="mt-0.5 text-sm text-df-ink-700">
-              de história e novas gerações de cuidado
-            </p>
           </div>
         </Reveal>
       </div>
