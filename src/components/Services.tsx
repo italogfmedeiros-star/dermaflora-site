@@ -47,22 +47,14 @@ export function Services() {
 
           <Reveal
             delay={0.1}
-            className="group relative overflow-hidden rounded-df-lg sm:col-span-2 lg:col-span-2 lg:row-span-1"
+            className="glass flex flex-col justify-end rounded-df-lg p-6 transition-transform duration-200 hover:-translate-y-1 sm:col-span-2 lg:col-span-2 lg:row-span-1"
           >
-            <Image
-              src="https://picsum.photos/seed/dermaflora-dermocosmetica/900/500"
-              alt="Linha de dermocosmética personalizada da Dermaflora"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-df-ink-900/85 via-df-ink-900/10 to-transparent" />
-            <div className="relative flex h-full min-h-[10.5rem] flex-col justify-end p-6">
-              <Drop size={24} weight="regular" className="text-white" />
-              <h3 className="mt-2 font-display text-lg font-bold text-white">
+            <div className="flex h-full min-h-[10.5rem] flex-col justify-end">
+              <Drop size={24} weight="regular" className="text-df-primary-700" />
+              <h3 className="mt-2 font-display text-lg font-bold text-df-ink-900">
                 Dermocosmética
               </h3>
-              <p className="mt-1 max-w-xs text-sm leading-relaxed text-white/85">
+              <p className="mt-1 max-w-xs text-sm leading-relaxed text-df-ink-700">
                 Cuidados de pele personalizados, do hidratante ao protocolo
                 completo.
               </p>
