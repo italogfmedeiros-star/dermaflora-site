@@ -1,6 +1,6 @@
 import {
-  ChatCircleText,
-  MagicWand,
+  WhatsappLogo,
+  Headset,
   Flask,
   Package,
 } from "@phosphor-icons/react/dist/ssr";
@@ -8,14 +8,14 @@ import { Reveal } from "./Reveal";
 
 const STEPS = [
   {
-    icon: ChatCircleText,
+    icon: WhatsappLogo,
     title: "Conversar",
-    text: "Você conta sua necessidade para um de nossos especialistas.",
+    text: "Envie sua receita por um de nossos canais de atendimento.",
   },
   {
-    icon: MagicWand,
-    title: "Personalizar",
-    text: "Desenvolvemos a fórmula ideal para o seu caso específico.",
+    icon: Headset,
+    title: "Orçamento",
+    text: "Atendimento rápido e humanizado para entender sua necessidade.",
   },
   {
     icon: Flask,
