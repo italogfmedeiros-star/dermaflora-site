@@ -26,7 +26,7 @@ export function Services() {
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 lg:gap-4">
           <Reveal className="group relative overflow-hidden rounded-df-lg sm:col-span-2 lg:col-span-2 lg:row-span-2">
             <Image
-              src="/images/instagram-post-2.jpg"
+              src="/images/formulas-magistrais.png"
               alt="Fórmulas magistrais manipuladas pela Dermaflora"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
