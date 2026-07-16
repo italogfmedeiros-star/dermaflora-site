@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { List, X } from "@phosphor-icons/react";
+import { InstagramLogo, List, X } from "@phosphor-icons/react";
 import { LogoMark } from "./Logo";
 
 const NAV_LINKS = [
@@ -33,12 +33,21 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 lg:flex">
           <a
             href="#contato"
             className="inline-flex items-center rounded-df-full bg-df-primary-700 px-5 py-2.5 text-sm font-semibold text-white shadow-df-sm transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
           >
             Falar com um especialista
+          </a>
+          <a
+            href="https://www.instagram.com/dermaflora"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram da Dermaflora"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-df-line text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
+          >
+            <InstagramLogo size={18} weight="regular" />
           </a>
         </div>
 
@@ -66,13 +75,24 @@ export function Header() {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contato"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-df-full bg-df-primary-700 px-5 py-3 text-base font-semibold text-white"
-            >
-              Falar com um especialista
-            </a>
+            <div className="mt-2 flex items-center gap-3">
+              <a
+                href="#contato"
+                onClick={() => setOpen(false)}
+                className="inline-flex flex-1 items-center justify-center rounded-df-full bg-df-primary-700 px-5 py-3 text-base font-semibold text-white"
+              >
+                Falar com um especialista
+              </a>
+              <a
+                href="https://www.instagram.com/dermaflora"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram da Dermaflora"
+                className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-df-line text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
+              >
+                <InstagramLogo size={20} weight="regular" />
+              </a>
+            </div>
           </nav>
         </div>
       )}
