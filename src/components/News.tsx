@@ -1,20 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { CaretLeft, CaretRight, Newspaper } from "@phosphor-icons/react";
+import Image from "next/image";
+import { CaretLeft, CaretRight, InstagramLogo } from "@phosphor-icons/react";
 import { Reveal } from "./Reveal";
+import { INSTAGRAM_POSTS } from "@/data/instagram-posts";
 
-/**
- * Posts placeholder, a substituir por conteúdo real do blog posteriormente.
- */
-const POSTS = Array.from({ length: 8 }, (_, i) => ({
-  id: i + 1,
-  category: "Categoria",
-  date: "Em breve",
-  title: "Título da notícia",
-  excerpt:
-    "Resumo da publicação aparecerá aqui assim que o conteúdo for adicionado.",
-}));
+const DATE_FORMATTER = new Intl.DateTimeFormat("pt-BR", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC",
+});
 
 export function News() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -53,7 +50,16 @@ export function News() {
               Últimas notícias
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-df-ink-700">
-              Novidades, dicas e conteúdos sobre saúde, beleza e bem-estar.
+              Novidades, dicas e conteúdos direto do nosso Instagram,{" "}
+              <a
+                href="https://www.instagram.com/dermaflora"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-df-primary-700 transition-colors hover:text-df-primary-500"
+              >
+                @dermaflora
+              </a>
+              .
             </p>
           </div>
 
@@ -85,32 +91,43 @@ export function News() {
             onScroll={updateArrows}
             className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            {POSTS.map((post) => (
-              <article
-                key={post.id}
-                className="glass flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-df-lg transition-transform duration-200 hover:-translate-y-1 sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-3.75rem)/4)]"
+            {INSTAGRAM_POSTS.map((post) => (
+              <a
+                key={post.shortcode}
+                href={post.permalink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass group flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-df-lg transition-transform duration-200 hover:-translate-y-1 sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-3.75rem)/4)]"
               >
-                <div className="grid aspect-[16/10] place-items-center bg-gradient-to-br from-df-primary-100 to-df-secondary-300/50">
-                  <Newspaper size={32} weight="regular" className="text-df-primary-500" />
+                <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-df-primary-100 to-df-secondary-300/50">
+                  <Image
+                    src={post.image}
+                    alt={post.excerpt}
+                    width={640}
+                    height={640}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  />
+                  <span className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-df-full bg-white/80 text-df-ink-900 backdrop-blur">
+                    <InstagramLogo size={16} weight="regular" />
+                  </span>
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <div className="flex items-center gap-2 text-xs font-semibold">
                     <span className="rounded-df-full bg-df-primary-100 px-2.5 py-1 text-df-primary-700">
                       {post.category}
                     </span>
-                    <span className="text-df-ink-400">{post.date}</span>
+                    <span className="text-df-ink-400">
+                      {DATE_FORMATTER.format(new Date(post.date))}
+                    </span>
                   </div>
-                  <h3 className="mt-3 font-display text-base font-bold text-df-ink-900">
-                    {post.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-df-ink-700">
+                  <p className="mt-3 text-sm leading-relaxed text-df-ink-700 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] overflow-hidden">
                     {post.excerpt}
                   </p>
                   <span className="mt-auto pt-4 text-sm font-semibold text-df-primary-700">
-                    Ler mais →
+                    Ver no Instagram →
                   </span>
                 </div>
-              </article>
+              </a>
             ))}
           </div>
         </Reveal>
