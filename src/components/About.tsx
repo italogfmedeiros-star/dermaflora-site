@@ -10,7 +10,7 @@ const MILESTONES = [
   {
     icon: Sparkle,
     title: "Nova direção, há 14 anos",
-    text: "Uma nova geração assumiu a condução da Dermaflora, trazendo inovação e ampliando a atuação para dermocosmética, nutrição e unhas.",
+    text: "Uma nova geração assumiu a condução da Dermaflora, trazendo inovação e ampliando a atuação para dermocosmética, nutrição e cabelos.",
   },
   {
     icon: HeartStraight,

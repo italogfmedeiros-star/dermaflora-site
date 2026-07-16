@@ -2,7 +2,7 @@ const ITEMS = [
   { value: "45 anos", label: "de história e experiência farmacêutica" },
   { value: "100%", label: "fórmulas personalizadas para cada pessoa" },
   { value: "Gutfiber®", label: "linha própria de produtos exclusivos" },
-  { value: "4 áreas", label: "magistral, dermocosmética, nutrição e unhas" },
+  { value: "4 áreas", label: "magistral, dermocosmética, nutrição e cabelos" },
 ];
 
 export function TrustBar() {
