@@ -1,7 +1,8 @@
 "use client";
 
-import { useActionState, useState } from "react";
-import { savePost, deletePost } from "@/lib/actions/posts";
+import { useActionState, useRef, useState } from "react";
+import { UploadSimple } from "@phosphor-icons/react";
+import { savePost, deletePost, uploadPostImage } from "@/lib/actions/posts";
 import { Editor } from "./Editor";
 import { BLOG_CATEGORIES } from "@/lib/categories";
 import { slugify } from "@/lib/slugify";
@@ -16,10 +17,35 @@ export function PostForm({ post }: { post?: Post }) {
   const [coverImageUrl, setCoverImageUrl] = useState(
     post?.cover_image_url ?? ""
   );
+  const [uploadingCover, setUploadingCover] = useState(false);
+  const [coverUploadError, setCoverUploadError] = useState("");
+  const coverInputRef = useRef<HTMLInputElement>(null);
 
   function handleTitleChange(value: string) {
     setTitle(value);
     if (!slugTouched) setSlug(slugify(value));
+  }
+
+  async function handleCoverFileSelected(
+    e: React.ChangeEvent<HTMLInputElement>
+  ) {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+
+    setUploadingCover(true);
+    setCoverUploadError("");
+
+    const formData = new FormData();
+    formData.append("file", file);
+    const result = await uploadPostImage(formData);
+
+    setUploadingCover(false);
+    if (result.url) {
+      setCoverImageUrl(result.url);
+    } else {
+      setCoverUploadError(result.error ?? "Falha no upload.");
+    }
   }
 
   return (
@@ -80,21 +106,48 @@ export function PostForm({ post }: { post?: Post }) {
           htmlFor="coverImageUrl"
           className="text-sm font-medium text-df-ink-700"
         >
-          Imagem de capa (URL)
+          Imagem de capa
         </label>
-        <input
-          id="coverImageUrl"
-          name="coverImageUrl"
-          type="url"
-          placeholder="https://..."
-          value={coverImageUrl}
-          onChange={(e) => setCoverImageUrl(e.target.value)}
-          className="mt-1.5 w-full rounded-df-sm border border-df-line bg-white px-4 py-2.5 text-sm outline-none focus:border-df-primary-700"
-        />
-        <p className="mt-1.5 text-xs text-df-ink-400">
-          Dica: insira a imagem no corpo do texto abaixo (botão de imagem na
-          barra de ferramentas) e copie o link gerado pra cá.
-        </p>
+        <div className="mt-1.5 flex items-center gap-2">
+          <input
+            id="coverImageUrl"
+            name="coverImageUrl"
+            type="url"
+            placeholder="https://... ou envie um arquivo"
+            value={coverImageUrl}
+            onChange={(e) => setCoverImageUrl(e.target.value)}
+            className="w-full rounded-df-sm border border-df-line bg-white px-4 py-2.5 text-sm outline-none focus:border-df-primary-700"
+          />
+          <button
+            type="button"
+            disabled={uploadingCover}
+            onClick={() => coverInputRef.current?.click()}
+            className="inline-flex shrink-0 items-center gap-2 rounded-df-sm border border-df-line bg-white px-4 py-2.5 text-sm font-medium text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700 disabled:opacity-60"
+          >
+            <UploadSimple size={16} />
+            {uploadingCover ? "Enviando..." : "Enviar arquivo"}
+          </button>
+          <input
+            ref={coverInputRef}
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={handleCoverFileSelected}
+          />
+        </div>
+        {coverUploadError && (
+          <p className="mt-1.5 text-xs font-medium text-df-error">
+            {coverUploadError}
+          </p>
+        )}
+        {coverImageUrl && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={coverImageUrl}
+            alt="Pré-visualização da capa"
+            className="mt-3 h-32 w-full rounded-df-sm object-cover"
+          />
+        )}
       </div>
 
       <div>
