@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Manrope, Work_Sans } from "next/font/google";
 import "./globals.css";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { organizationJsonLd, websiteJsonLd, pharmacyJsonLd, SITE_URL } from "@/lib/seo";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -15,6 +17,7 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Dermaflora Farmácia de Manipulação | Fórmulas sob medida há 45 anos",
   description:
     "Fórmulas magistrais, dermocosmética e nutrição personalizadas para você. Há 45 anos cuidando de saúde, beleza e bem-estar com ciência e atenção em cada detalhe.",
@@ -31,6 +34,7 @@ export default function RootLayout({
       className={`${manrope.variable} ${workSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-df-bg text-df-ink-900">
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd(), ...pharmacyJsonLd()]} />
         {children}
       </body>
     </html>

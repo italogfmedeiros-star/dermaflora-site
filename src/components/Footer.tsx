@@ -1,12 +1,14 @@
+import Link from "next/link";
 import { InstagramLogo } from "@phosphor-icons/react/dist/ssr";
 import { LogoMark } from "./Logo";
 
 const LINKS = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#servicos", label: "Serviços" },
-  { href: "#depoimentos", label: "Depoimentos" },
-  { href: "#faq", label: "Perguntas" },
-  { href: "#contato", label: "Contato" },
+  { href: "/#sobre", label: "Sobre" },
+  { href: "/#servicos", label: "Serviços" },
+  { href: "/#depoimentos", label: "Depoimentos" },
+  { href: "/blog", label: "Blog" },
+  { href: "/#faq", label: "Perguntas" },
+  { href: "/#contato", label: "Contato" },
 ];
 
 export function Footer() {
@@ -18,13 +20,13 @@ export function Footer() {
 
           <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium transition-colors hover:text-white"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <a
               href="https://www.instagram.com/dermaflora"
