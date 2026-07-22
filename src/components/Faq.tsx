@@ -27,8 +27,12 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="bg-df-surface py-20 md:py-28">
-      <div className="mx-auto max-w-3xl px-5 md:px-8">
+    <section id="faq" className="relative overflow-hidden bg-df-warm-100 py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
+      />
+      <div className="relative mx-auto max-w-3xl px-5 md:px-8">
         <Reveal>
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
             Perguntas frequentes

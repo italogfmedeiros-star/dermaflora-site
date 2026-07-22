@@ -7,6 +7,10 @@ export function FinalCta() {
     <section id="contato" className="relative overflow-hidden bg-df-primary-900 py-20 md:py-28">
       <div
         aria-hidden="true"
+        className="bg-grain pointer-events-none absolute inset-0 opacity-[0.08] mix-blend-overlay"
+      />
+      <div
+        aria-hidden="true"
         className="ambient-glow left-1/2 top-0 h-80 w-80 -translate-x-1/2 bg-df-primary-300/20"
       />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">

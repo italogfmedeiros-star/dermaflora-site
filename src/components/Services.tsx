@@ -4,7 +4,11 @@ import { Reveal } from "./Reveal";
 
 export function Services() {
   return (
-    <section id="servicos" className="relative overflow-hidden bg-df-surface py-20 md:py-28">
+    <section id="servicos" className="relative overflow-hidden bg-df-primary-50 py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
+      />
       <div
         aria-hidden="true"
         className="ambient-glow -left-24 top-1/3 h-72 w-72 bg-df-primary-300/40"

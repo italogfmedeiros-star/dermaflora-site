@@ -21,7 +21,11 @@ const MILESTONES = [
 
 export function About() {
   return (
-    <section id="sobre" className="relative overflow-hidden py-20 md:py-28">
+    <section id="sobre" className="relative overflow-hidden bg-df-warm-100 py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
+      />
       <div
         aria-hidden="true"
         className="ambient-glow -right-24 top-10 h-64 w-64 bg-df-secondary-300/35"

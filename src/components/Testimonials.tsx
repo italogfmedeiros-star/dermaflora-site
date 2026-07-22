@@ -30,7 +30,11 @@ const TESTIMONIALS = [
 
 export function Testimonials() {
   return (
-    <section id="depoimentos" className="relative overflow-hidden py-20 md:py-28">
+    <section id="depoimentos" className="relative overflow-hidden bg-df-surface py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
+      />
       <div
         aria-hidden="true"
         className="ambient-glow -left-20 bottom-0 h-72 w-72 bg-df-primary-300/40"

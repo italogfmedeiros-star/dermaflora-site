@@ -38,7 +38,11 @@ export function News() {
   }
 
   return (
-    <section id="noticias" className="relative overflow-hidden py-20 md:py-28">
+    <section id="noticias" className="relative overflow-hidden bg-df-primary-50 py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
+      />
       <div
         aria-hidden="true"
         className="ambient-glow -right-20 top-16 h-64 w-64 bg-df-warm-500/35"

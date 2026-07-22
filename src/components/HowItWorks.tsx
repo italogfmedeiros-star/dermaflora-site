@@ -31,7 +31,11 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <section className="relative overflow-hidden bg-df-surface py-20 md:py-28">
+    <section className="relative overflow-hidden bg-df-secondary-300/10 py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
+      />
       <div
         aria-hidden="true"
         className="ambient-glow -right-24 top-0 h-72 w-72 bg-df-secondary-300/40"

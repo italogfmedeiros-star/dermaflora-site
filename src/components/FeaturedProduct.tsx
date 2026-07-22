@@ -10,8 +10,16 @@ const BENEFITS = [
 
 export function FeaturedProduct() {
   return (
-    <section className="py-20 md:py-28">
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-2 lg:gap-16">
+    <section className="relative overflow-hidden bg-df-warm-100 py-20 md:py-28">
+      <div
+        aria-hidden="true"
+        className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
+      />
+      <div
+        aria-hidden="true"
+        className="ambient-glow -left-16 bottom-0 h-72 w-72 bg-df-primary-300/35"
+      />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-2 lg:gap-16">
         <Reveal className="order-2 lg:order-1">
           <span className="inline-flex items-center rounded-df-full bg-df-warm-300 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide text-df-ink-700">
             Produto próprio

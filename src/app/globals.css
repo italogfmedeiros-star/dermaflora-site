@@ -23,7 +23,8 @@
 
   /* Base */
   --df-bg: #fbfaf7;
-  --df-surface: #ffffff;
+  /* Lilás padrão da marca (extraído do logo #8D63A9 e da nécessaire #D4B5DB), suavizado como tom de superfície */
+  --df-surface: #f5edf8;
   --df-ink-900: #1c1e1c;
   --df-ink-700: #3a3d3a;
   --df-ink-400: #6f746e;
@@ -152,6 +153,12 @@ body {
   filter: blur(70px);
   pointer-events: none;
   z-index: 0;
+}
+
+/* Grão sutil sobre fundos sólidos entre seções, pra tirar o efeito "flat" das cores planas */
+.bg-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
 }
 
 @keyframes hero-slide {
