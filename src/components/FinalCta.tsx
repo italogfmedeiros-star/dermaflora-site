@@ -19,8 +19,7 @@ export function FinalCta() {
             Vamos cuidar da sua saúde, beleza e bem-estar juntos?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-white/80">
-            Fale agora com nossos especialistas e monte a fórmula pensada
-            para o seu caso.
+            Escolha um de nossos canais de atendimento e envie sua receita.
           </p>
         </Reveal>
 
