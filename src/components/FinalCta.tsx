@@ -59,15 +59,6 @@ export function FinalCta() {
                   <p className="mt-0.5 text-sm text-white/70">
                     Segunda a sexta, das 8h às 18h
                   </p>
-                  <a
-                    href="https://wa.me/5511988296867"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-df-primary-300"
-                  >
-                    <WhatsappLogo size={18} weight="fill" />
-                    (11) 98829-6867
-                  </a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -80,6 +71,15 @@ export function FinalCta() {
                       className="text-lg font-bold tracking-tight text-white transition-colors hover:text-df-primary-300"
                     >
                       (11) 5051-1220
+                    </a>
+                    <a
+                      href="https://wa.me/5511988296867"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-lg font-bold tracking-tight text-white transition-colors hover:text-df-primary-300"
+                    >
+                      <WhatsappLogo size={18} weight="fill" className="shrink-0 text-df-primary-300" />
+                      (11) 98829-6867
                     </a>
                     <a
                       href="https://wa.me/5511965731266"
