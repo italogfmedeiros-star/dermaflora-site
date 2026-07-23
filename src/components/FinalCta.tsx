@@ -1,4 +1,4 @@
-import { WhatsappLogo, MapPin, Clock } from "@phosphor-icons/react/dist/ssr";
+import { WhatsappLogo, MapPin, Clock, Phone, EnvelopeSimple } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "./Reveal";
 import { ContactForm } from "./ContactForm";
 
@@ -67,6 +67,41 @@ export function FinalCta() {
                   >
                     <WhatsappLogo size={18} weight="fill" />
                     (11) 98829-6867
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Phone size={20} weight="regular" className="mt-0.5 shrink-0 text-white/70" />
+                <div>
+                  <p className="text-sm font-semibold text-white">Telefones</p>
+                  <div className="mt-1.5 flex flex-col gap-1.5">
+                    <a
+                      href="tel:+551150511220"
+                      className="text-lg font-bold tracking-tight text-white transition-colors hover:text-df-primary-300"
+                    >
+                      (11) 5051-1220
+                    </a>
+                    <a
+                      href="https://wa.me/5511965731266"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-lg font-bold tracking-tight text-white transition-colors hover:text-df-primary-300"
+                    >
+                      <WhatsappLogo size={18} weight="fill" className="shrink-0 text-df-primary-300" />
+                      (11) 96573-1266
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <EnvelopeSimple size={20} weight="regular" className="mt-0.5 shrink-0 text-white/70" />
+                <div>
+                  <p className="text-sm font-semibold text-white">Email</p>
+                  <a
+                    href="mailto:contato@dermaflora.com.br"
+                    className="mt-0.5 inline-block text-sm text-white/70 transition-colors hover:text-df-primary-300"
+                  >
+                    contato@dermaflora.com.br
                   </a>
                 </div>
               </div>
