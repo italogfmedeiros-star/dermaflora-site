@@ -5,7 +5,7 @@ const MILESTONES = [
   {
     icon: Buildings,
     title: "Uma farmácia nascida para cuidar",
-    text: "Começamos como uma farmácia de manipulação dedicada a transformar receitas em cuidado sob medida, formula a formula.",
+    text: "Começamos como uma farmácia de manipulação dedicada a transformar receitas em cuidado sob medida, fórmula a fórmula.",
   },
   {
     icon: Sparkle,

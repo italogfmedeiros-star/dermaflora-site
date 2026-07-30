@@ -1,6 +1,27 @@
-import Image from "next/image";
 import { Flask, Drop, Leaf, HairDryer } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "./Reveal";
+import { ImageCrossfade, type CrossfadeSlide } from "./ImageCrossfade";
+
+const FORMULAS_CARD_SLIDES: CrossfadeSlide[] = [
+  {
+    src: "/images/formulas-magistrais.png",
+    alt: "Fórmulas magistrais manipuladas pela Dermaflora",
+    imageClassName:
+      "object-cover object-[center_25%] transition-transform duration-500 group-hover:scale-105",
+  },
+  {
+    src: "/images/dermaflora-recepcao-loja-moema.webp",
+    alt: "Recepção da nova loja da Dermaflora em Moema, com balcão de atendimento",
+  },
+  {
+    src: "/images/dermaflora-farmacia-manipulacao-estoque-materia-prima-01.jpg",
+    alt: "Sala de armazenamento de matérias-primas farmacêuticas da Dermaflora, com prateleiras organizadas",
+  },
+  {
+    src: "/images/dermaflora-farmacia-manipulacao-estoque-materia-prima-02.jpg",
+    alt: "Prateleiras de estoque de insumos manipulados na farmácia Dermaflora",
+  },
+];
 
 export function Services() {
   return (
@@ -29,13 +50,7 @@ export function Services() {
 
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 lg:gap-4">
           <Reveal className="group relative overflow-hidden rounded-df-lg sm:col-span-2 lg:col-span-2 lg:row-span-2">
-            <Image
-              src="/images/formulas-magistrais.png"
-              alt="Fórmulas magistrais manipuladas pela Dermaflora"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover object-[center_25%] transition-transform duration-500 group-hover:scale-105"
-            />
+            <ImageCrossfade slides={FORMULAS_CARD_SLIDES} priority />
             <div className="absolute inset-0 bg-gradient-to-t from-df-ink-900/85 via-df-ink-900/20 to-transparent" />
             <div className="relative flex h-full min-h-[22rem] flex-col justify-end p-7">
               <Flask size={26} weight="regular" className="text-white" />
