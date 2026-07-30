@@ -16,6 +16,19 @@ export type Post = {
   updated_at: string;
 };
 
+export type CursoEvento = {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  cover_image_url: string | null;
+  event_date: string | null;
+  status: PostStatus;
+  created_at: string;
+  updated_at: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -24,6 +37,13 @@ export type Database = {
         Insert: Partial<Post> &
           Pick<Post, "title" | "slug" | "excerpt" | "content">;
         Update: Partial<Post>;
+        Relationships: [];
+      };
+      cursos_eventos: {
+        Row: CursoEvento;
+        Insert: Partial<CursoEvento> &
+          Pick<CursoEvento, "title" | "slug" | "excerpt" | "content">;
+        Update: Partial<CursoEvento>;
         Relationships: [];
       };
     };
