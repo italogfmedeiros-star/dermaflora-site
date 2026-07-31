@@ -3,27 +3,10 @@
 import { useState } from "react";
 import { CaretDown } from "@phosphor-icons/react";
 import { Reveal } from "./Reveal";
-
-const FAQS = [
-  {
-    q: "Preciso de receita médica para manipular uma fórmula?",
-    a: "Depende do produto. Algumas fórmulas exigem prescrição, outras não. Nossa equipe orienta você em cada caso durante o atendimento.",
-  },
-  {
-    q: "Uma fórmula manipulada é mais cara que um produto de prateleira?",
-    a: "Nem sempre. Como é feita sob medida, você paga pelo que realmente precisa, sem excesso de componentes que não usaria.",
-  },
-  {
-    q: "Quanto tempo leva para minha fórmula ficar pronta?",
-    a: "O prazo varia conforme o tipo de fórmula. Buscamos sempre o menor tempo possível sem abrir mão da qualidade e da segurança.",
-  },
-  {
-    q: "Vocês entregam em casa?",
-    a: "Sim. Além da retirada na farmácia, oferecemos entrega para a sua comodidade, dentro da área de atendimento.",
-  },
-];
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function Faq() {
+  const { dict } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -35,12 +18,12 @@ export function Faq() {
       <div className="relative mx-auto max-w-3xl px-5 md:px-8">
         <Reveal>
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
-            Perguntas frequentes
+            {dict.faq.title}
           </h2>
         </Reveal>
 
         <div className="mt-10 divide-y divide-df-line border-t border-df-line">
-          {FAQS.map((item, i) => {
+          {dict.faq.items.map((item, i) => {
             const isOpen = openIndex === i;
             return (
               <div key={item.q}>

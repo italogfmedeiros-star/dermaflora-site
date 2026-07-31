@@ -6,6 +6,7 @@ import { PostCard } from "@/components/blog/PostCard";
 import { createClient } from "@/lib/supabase/server";
 import { getPublishedPosts } from "@/lib/posts-data";
 import { BLOG_CATEGORIES, slugifyCategory } from "@/lib/categories";
+import { T } from "@/lib/i18n/T";
 
 export const metadata: Metadata = {
   title: "Blog | Dermaflora Farmácia de Manipulação",
@@ -31,13 +32,16 @@ export default async function BlogPage({
       <main>
         <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
           <div className="max-w-2xl">
-            <h1 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
-              Blog Dermaflora
-            </h1>
-            <p className="mt-4 text-lg leading-relaxed text-df-ink-700">
-              Dicas e conteúdo técnico sobre pele, proteção solar e
-              suplementação, escritos pela equipe da farmácia.
-            </p>
+            <T
+              path="blog.pageTitle"
+              as="h1"
+              className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl"
+            />
+            <T
+              path="blog.pageSubtitle"
+              as="p"
+              className="mt-4 text-lg leading-relaxed text-df-ink-700"
+            />
           </div>
 
           <div className="mt-8 flex flex-wrap gap-2">
@@ -53,9 +57,7 @@ export default async function BlogPage({
           </div>
 
           {posts.length === 0 ? (
-            <p className="mt-16 text-df-ink-400">
-              Ainda não há posts publicados.
-            </p>
+            <T path="blog.emptyState" as="p" className="mt-16 text-df-ink-400" />
           ) : (
             <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (

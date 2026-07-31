@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { CursoCard } from "@/components/cursos/CursoCard";
 import { createClient } from "@/lib/supabase/server";
 import { getPublishedCursos, groupCursosByYear } from "@/lib/cursos-data";
+import { T } from "@/lib/i18n/T";
 
 export const metadata: Metadata = {
   title: "Cursos e Eventos | Dermaflora Farmácia de Manipulação",
@@ -23,19 +24,20 @@ export default async function CursosEEventosPage() {
       <main>
         <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
           <div className="max-w-2xl">
-            <h1 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
-              Cursos e Eventos
-            </h1>
-            <p className="mt-4 text-lg leading-relaxed text-df-ink-700">
-              Confira os cursos, palestras e eventos que a Dermaflora já
-              promoveu para profissionais de saúde e pacientes.
-            </p>
+            <T
+              path="cursos.pageTitle"
+              as="h1"
+              className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl"
+            />
+            <T
+              path="cursos.pageSubtitle"
+              as="p"
+              className="mt-4 text-lg leading-relaxed text-df-ink-700"
+            />
           </div>
 
           {groups.length === 0 ? (
-            <p className="mt-16 text-df-ink-400">
-              Ainda não há cursos ou eventos publicados.
-            </p>
+            <T path="cursos.emptyState" as="p" className="mt-16 text-df-ink-400" />
           ) : (
             <div className="mt-12 flex flex-col gap-16">
               {groups.map(([year, items]) => (

@@ -3,6 +3,7 @@ import { Manrope, Work_Sans } from "next/font/google";
 import "./globals.css";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationJsonLd, websiteJsonLd, pharmacyJsonLd, SITE_URL } from "@/lib/seo";
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -35,7 +36,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-df-bg text-df-ink-900">
         <JsonLd data={[organizationJsonLd(), websiteJsonLd(), ...pharmacyJsonLd()]} />
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

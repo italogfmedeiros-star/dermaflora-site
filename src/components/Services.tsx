@@ -1,6 +1,9 @@
-import { Flask, Drop, Leaf, HairDryer } from "@phosphor-icons/react/dist/ssr";
+"use client";
+
+import { Flask, Drop, Leaf, HairDryer } from "@phosphor-icons/react";
 import { Reveal } from "./Reveal";
 import { ImageCrossfade, type CrossfadeSlide } from "./ImageCrossfade";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const FORMULAS_CARD_SLIDES: CrossfadeSlide[] = [
   {
@@ -24,6 +27,9 @@ const FORMULAS_CARD_SLIDES: CrossfadeSlide[] = [
 ];
 
 export function Services() {
+  const { dict } = useLanguage();
+  const [card0, card1, card2, card3] = dict.services.cards;
+
   return (
     <section id="servicos" className="relative overflow-hidden bg-df-primary-50 py-20 md:py-28">
       <div
@@ -41,11 +47,9 @@ export function Services() {
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <Reveal className="max-w-2xl">
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
-            Quatro frentes de cuidado, uma só filosofia.
+            {dict.services.title}
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-df-ink-700">
-            Personalização em tudo o que fazemos, da manipulação à estética.
-          </p>
+          <p className="mt-4 text-lg leading-relaxed text-df-ink-700">{dict.services.subtitle}</p>
         </Reveal>
 
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 lg:gap-4">
@@ -54,13 +58,8 @@ export function Services() {
             <div className="absolute inset-0 bg-gradient-to-t from-df-ink-900/85 via-df-ink-900/20 to-transparent" />
             <div className="relative flex h-full min-h-[22rem] flex-col justify-end p-7">
               <Flask size={26} weight="regular" className="text-white" />
-              <h3 className="mt-3 font-display text-xl font-bold text-white">
-                Fórmulas Magistrais
-              </h3>
-              <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/85">
-                Cada receita manipulada com precisão, na dose e forma ideais
-                para o seu tratamento.
-              </p>
+              <h3 className="mt-3 font-display text-xl font-bold text-white">{card0.title}</h3>
+              <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/85">{card0.text}</p>
             </div>
           </Reveal>
 
@@ -71,11 +70,10 @@ export function Services() {
             <div className="flex h-full min-h-[10.5rem] flex-col justify-end">
               <Drop size={24} weight="regular" className="text-df-primary-700" />
               <h3 className="mt-2 font-display text-lg font-bold text-df-ink-900">
-                Dermocosmética
+                {card1.title}
               </h3>
               <p className="mt-1 max-w-xs text-sm leading-relaxed text-df-ink-700">
-                Cuidados de pele personalizados, do hidratante ao protocolo
-                completo.
+                {card1.text}
               </p>
             </div>
           </Reveal>
@@ -87,12 +85,9 @@ export function Services() {
             <Leaf size={24} weight="regular" className="text-df-primary-700" />
             <div>
               <h3 className="mt-2 font-display text-base font-bold text-df-ink-900">
-                Nutrição
+                {card2.title}
               </h3>
-              <p className="mt-1 text-sm leading-relaxed text-df-ink-700">
-                Suplementos como o Gutfiber®, para o bem-estar de dentro para
-                fora.
-              </p>
+              <p className="mt-1 text-sm leading-relaxed text-df-ink-700">{card2.text}</p>
             </div>
           </Reveal>
 
@@ -103,11 +98,9 @@ export function Services() {
             <HairDryer size={24} weight="regular" className="text-df-primary-700" />
             <div>
               <h3 className="mt-2 font-display text-base font-bold text-df-ink-900">
-                Linha de Cabelos
+                {card3.title}
               </h3>
-              <p className="mt-1 text-sm leading-relaxed text-df-ink-700">
-                Produtos dedicados à saúde e estética dos seus cabelos.
-              </p>
+              <p className="mt-1 text-sm leading-relaxed text-df-ink-700">{card3.text}</p>
             </div>
           </Reveal>
         </div>

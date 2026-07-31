@@ -1,15 +1,24 @@
+"use client";
+
+import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { CursoEvento } from "@/lib/supabase/types";
-
-const DATE_FORMATTER = new Intl.DateTimeFormat("pt-BR", {
-  day: "numeric",
-  month: "short",
-  year: "numeric",
-  timeZone: "UTC",
-});
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function CursoCard({ curso }: { curso: CursoEvento }) {
+  const { dict, lang } = useLanguage();
+  const dateFormatter = useMemo(
+    () =>
+      new Intl.DateTimeFormat(lang === "pt" ? "pt-BR" : "en-US", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        timeZone: "UTC",
+      }),
+    [lang]
+  );
+
   return (
     <Link
       href={`/cursos-e-eventos/${curso.slug}`}
@@ -28,11 +37,11 @@ export function CursoCard({ curso }: { curso: CursoEvento }) {
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
           <span className="rounded-df-full bg-df-primary-100 px-2.5 py-1 text-df-primary-700">
-            Cursos
+            {dict.cursos.categoryLabel}
           </span>
           {curso.event_date && (
             <span className="text-df-ink-400">
-              {DATE_FORMATTER.format(new Date(curso.event_date))}
+              {dateFormatter.format(new Date(curso.event_date))}
             </span>
           )}
         </div>
@@ -43,7 +52,7 @@ export function CursoCard({ curso }: { curso: CursoEvento }) {
           {curso.excerpt}
         </p>
         <span className="mt-auto pt-4 text-sm font-semibold text-df-primary-700">
-          Detalhes →
+          {dict.cursos.detailsLink}
         </span>
       </div>
     </Link>

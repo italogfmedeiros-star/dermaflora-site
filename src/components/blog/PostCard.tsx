@@ -1,15 +1,24 @@
+"use client";
+
+import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Post } from "@/lib/supabase/types";
-
-const DATE_FORMATTER = new Intl.DateTimeFormat("pt-BR", {
-  day: "numeric",
-  month: "short",
-  year: "numeric",
-  timeZone: "UTC",
-});
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function PostCard({ post }: { post: Post }) {
+  const { dict, lang } = useLanguage();
+  const dateFormatter = useMemo(
+    () =>
+      new Intl.DateTimeFormat(lang === "pt" ? "pt-BR" : "en-US", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        timeZone: "UTC",
+      }),
+    [lang]
+  );
+
   return (
     <Link
       href={`/blog/${post.slug}`}
@@ -37,7 +46,7 @@ export function PostCard({ post }: { post: Post }) {
           ))}
           {post.published_at && (
             <span className="text-df-ink-400">
-              {DATE_FORMATTER.format(new Date(post.published_at))}
+              {dateFormatter.format(new Date(post.published_at))}
             </span>
           )}
         </div>
@@ -48,7 +57,7 @@ export function PostCard({ post }: { post: Post }) {
           {post.excerpt}
         </p>
         <span className="mt-auto pt-4 text-sm font-semibold text-df-primary-700">
-          Ler mais →
+          {dict.blog.readMore}
         </span>
       </div>
     </Link>

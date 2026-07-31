@@ -1,19 +1,24 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { CaretLeft, CaretRight, InstagramLogo } from "@phosphor-icons/react";
 import { Reveal } from "./Reveal";
 import { INSTAGRAM_POSTS } from "@/data/instagram-posts";
-
-const DATE_FORMATTER = new Intl.DateTimeFormat("pt-BR", {
-  day: "numeric",
-  month: "short",
-  year: "numeric",
-  timeZone: "UTC",
-});
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function News() {
+  const { dict, lang } = useLanguage();
+  const dateFormatter = useMemo(
+    () =>
+      new Intl.DateTimeFormat(lang === "pt" ? "pt-BR" : "en-US", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        timeZone: "UTC",
+      }),
+    [lang]
+  );
   const trackRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(true);
@@ -51,10 +56,10 @@ export function News() {
         <Reveal className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
             <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
-              Últimas notícias
+              {dict.news.title}
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-df-ink-700">
-              Novidades, dicas e conteúdos direto do nosso Instagram,{" "}
+              {dict.news.subtitlePrefix}
               <a
                 href="https://www.instagram.com/dermaflora"
                 target="_blank"
@@ -63,7 +68,7 @@ export function News() {
               >
                 @dermaflora
               </a>
-              .
+              {dict.news.subtitleSuffix}
             </p>
           </div>
 
@@ -72,7 +77,7 @@ export function News() {
               type="button"
               onClick={() => scrollByPage(-1)}
               disabled={!canPrev}
-              aria-label="Notícias anteriores"
+              aria-label={dict.news.prevAria}
               className="glass grid h-11 w-11 place-items-center rounded-df-full text-df-ink-900 transition-all duration-200 hover:-translate-y-0.5 hover:text-df-primary-700 disabled:pointer-events-none disabled:opacity-40"
             >
               <CaretLeft size={18} weight="bold" />
@@ -81,7 +86,7 @@ export function News() {
               type="button"
               onClick={() => scrollByPage(1)}
               disabled={!canNext}
-              aria-label="Próximas notícias"
+              aria-label={dict.news.nextAria}
               className="glass grid h-11 w-11 place-items-center rounded-df-full text-df-ink-900 transition-all duration-200 hover:-translate-y-0.5 hover:text-df-primary-700 disabled:pointer-events-none disabled:opacity-40"
             >
               <CaretRight size={18} weight="bold" />
@@ -121,14 +126,14 @@ export function News() {
                       {post.category}
                     </span>
                     <span className="text-df-ink-400">
-                      {DATE_FORMATTER.format(new Date(post.date))}
+                      {dateFormatter.format(new Date(post.date))}
                     </span>
                   </div>
                   <p className="mt-3 text-sm leading-relaxed text-df-ink-700 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:4] overflow-hidden">
                     {post.excerpt}
                   </p>
                   <span className="mt-auto pt-4 text-sm font-semibold text-df-primary-700">
-                    Ver no Instagram →
+                    {dict.news.viewOnInstagram}
                   </span>
                 </div>
               </a>

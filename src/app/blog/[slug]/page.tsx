@@ -6,19 +6,14 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PostCard } from "@/components/blog/PostCard";
 import { WhatsAppCta } from "@/components/blog/WhatsAppCta";
+import { PostMeta } from "@/components/blog/PostMeta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { createClient } from "@/lib/supabase/server";
 import { getPostBySlug, getRelatedPosts, estimateReadingMinutes } from "@/lib/posts-data";
 import { articleJsonLd, breadcrumbJsonLd, SITE_URL } from "@/lib/seo";
 import { splitContentInHalf } from "@/lib/split-content";
 import { slugifyCategory } from "@/lib/categories";
-
-const DATE_FORMATTER = new Intl.DateTimeFormat("pt-BR", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-  timeZone: "UTC",
-});
+import { T } from "@/lib/i18n/T";
 
 export async function generateMetadata({
   params,
@@ -85,7 +80,7 @@ export default async function BlogPostPage({
         <article className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24">
           <p className="text-sm font-semibold text-df-primary-700">
             <Link href="/blog" className="hover:underline">
-              Blog
+              <T path="nav.blog" />
             </Link>
             {post.categories[0] && (
               <>
@@ -104,15 +99,11 @@ export default async function BlogPostPage({
             {post.title}
           </h1>
 
-          <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-df-ink-400">
-            {post.published_at && (
-              <span>{DATE_FORMATTER.format(new Date(post.published_at))}</span>
-            )}
-            <span aria-hidden="true">·</span>
-            <span>{readingMinutes} min de leitura</span>
-            <span aria-hidden="true">·</span>
-            <span>Por {post.author_name}</span>
-          </div>
+          <PostMeta
+            publishedAt={post.published_at}
+            readingMinutes={readingMinutes}
+            authorName={post.author_name}
+          />
 
           {post.cover_image_url && (
             <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-df-lg">
@@ -144,19 +135,18 @@ export default async function BlogPostPage({
           )}
 
           <div className="mt-12">
-            <WhatsAppCta
-              title="Quer uma indicação personalizada?"
-              subtitle="Nossa equipe farmacêutica pode te ajudar a encontrar a fórmula certa pra você."
-            />
+            <WhatsAppCta variant="blog" />
           </div>
         </article>
 
         {related.length > 0 && (
           <section className="border-t border-df-line bg-df-warm-100/40 py-16 md:py-20">
             <div className="mx-auto max-w-7xl px-5 md:px-8">
-              <h2 className="font-display text-2xl font-bold text-df-ink-900">
-                Posts relacionados
-              </h2>
+              <T
+                path="blog.relatedPosts"
+                as="h2"
+                className="font-display text-2xl font-bold text-df-ink-900"
+              />
               <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {related.map((relatedPost) => (
                   <PostCard key={relatedPost.id} post={relatedPost} />

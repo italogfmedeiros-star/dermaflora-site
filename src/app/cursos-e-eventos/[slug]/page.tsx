@@ -5,17 +5,12 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppCta } from "@/components/blog/WhatsAppCta";
+import { CursoDate } from "@/components/cursos/CursoDate";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { createClient } from "@/lib/supabase/server";
 import { getCursoBySlug } from "@/lib/cursos-data";
 import { SITE_URL, breadcrumbJsonLd } from "@/lib/seo";
-
-const DATE_FORMATTER = new Intl.DateTimeFormat("pt-BR", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-  timeZone: "UTC",
-});
+import { T } from "@/lib/i18n/T";
 
 export async function generateMetadata({
   params,
@@ -90,7 +85,7 @@ export default async function CursoEventoPage({
         <article className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24">
           <p className="text-sm font-semibold text-df-primary-700">
             <Link href="/cursos-e-eventos" className="hover:underline">
-              Cursos e Eventos
+              <T path="nav.cursosEEventos" />
             </Link>
           </p>
 
@@ -98,11 +93,7 @@ export default async function CursoEventoPage({
             {curso.title}
           </h1>
 
-          {curso.event_date && (
-            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-df-ink-400">
-              <span>{DATE_FORMATTER.format(new Date(curso.event_date))}</span>
-            </div>
-          )}
+          {curso.event_date && <CursoDate eventDate={curso.event_date} />}
 
           {curso.cover_image_url && (
             <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-df-lg">
@@ -122,10 +113,7 @@ export default async function CursoEventoPage({
           />
 
           <div className="mt-12">
-            <WhatsAppCta
-              title="Quer saber sobre os próximos cursos e eventos?"
-              subtitle="Fale com nossa equipe pelo WhatsApp e fique por dentro das próximas datas."
-            />
+            <WhatsAppCta variant="cursos" />
           </div>
         </article>
       </main>

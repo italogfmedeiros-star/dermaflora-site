@@ -1,8 +1,13 @@
-import { WhatsappLogo, MapPin, Clock, Phone, EnvelopeSimple } from "@phosphor-icons/react/dist/ssr";
+"use client";
+
+import { WhatsappLogo, MapPin, Clock, Phone, EnvelopeSimple } from "@phosphor-icons/react";
 import { Reveal } from "./Reveal";
 import { ContactForm } from "./ContactForm";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 export function FinalCta() {
+  const { dict } = useLanguage();
+
   return (
     <section id="contato" className="relative overflow-hidden bg-df-primary-900 py-20 md:py-28">
       <div
@@ -16,10 +21,10 @@ export function FinalCta() {
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-            Vamos cuidar da sua saúde, beleza e bem-estar juntos?
+            {dict.finalCta.title}
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-lg leading-relaxed text-white/80">
-            Escolha um de nossos canais de atendimento e envie sua receita.
+            {dict.finalCta.subtitle}
           </p>
         </Reveal>
 
@@ -44,7 +49,9 @@ export function FinalCta() {
               <div className="flex items-start gap-3">
                 <MapPin size={20} weight="regular" className="mt-0.5 shrink-0 text-white/70" />
                 <div>
-                  <p className="text-sm font-semibold text-white">Endereço</p>
+                  <p className="text-sm font-semibold text-white">
+                    {dict.finalCta.addressLabel}
+                  </p>
                   <p className="mt-0.5 text-sm text-white/70">
                     Rua Américo Brasiliense, 1290, Chácara Santo Antônio, São
                     Paulo, CEP: 04715-002
@@ -54,16 +61,16 @@ export function FinalCta() {
               <div className="flex items-start gap-3">
                 <Clock size={20} weight="regular" className="mt-0.5 shrink-0 text-white/70" />
                 <div>
-                  <p className="text-sm font-semibold text-white">Horário</p>
-                  <p className="mt-0.5 text-sm text-white/70">
-                    Segunda a sexta, das 8h às 18h
-                  </p>
+                  <p className="text-sm font-semibold text-white">{dict.finalCta.hoursLabel}</p>
+                  <p className="mt-0.5 text-sm text-white/70">{dict.finalCta.hoursValue}</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Phone size={20} weight="regular" className="mt-0.5 shrink-0 text-white/70" />
                 <div>
-                  <p className="text-sm font-semibold text-white">Telefones</p>
+                  <p className="text-sm font-semibold text-white">
+                    {dict.finalCta.phonesLabel}
+                  </p>
                   <div className="mt-1.5 flex flex-col gap-1.5">
                     <a
                       href="tel:+551150511220"
@@ -95,7 +102,7 @@ export function FinalCta() {
               <div className="flex items-start gap-3">
                 <EnvelopeSimple size={20} weight="regular" className="mt-0.5 shrink-0 text-white/70" />
                 <div>
-                  <p className="text-sm font-semibold text-white">Email</p>
+                  <p className="text-sm font-semibold text-white">{dict.finalCta.emailLabel}</p>
                   <a
                     href="mailto:contato@dermaflora.com.br"
                     className="mt-0.5 inline-block text-sm text-white/70 transition-colors hover:text-df-primary-300"

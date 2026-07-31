@@ -10,6 +10,7 @@ import {
   WarningCircle,
 } from "@phosphor-icons/react";
 import { sendContactMessage, type ContactFormState } from "@/lib/actions/contact";
+import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const inputClasses =
   "w-full rounded-df-md border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none transition-shadow focus:border-df-primary-300/60 focus:shadow-[0_0_0_3px_rgba(185,222,186,0.2)]";
@@ -26,6 +27,7 @@ function formatFileSize(bytes: number) {
 }
 
 export function ContactForm() {
+  const { dict } = useLanguage();
   const formRef = useRef<HTMLFormElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [state, formAction, isPending] = useActionState(
@@ -50,11 +52,11 @@ export function ContactForm() {
     if (!candidate) return;
 
     if (!ACCEPTED_FILE_TYPES.includes(candidate.type)) {
-      setFileError("Envie a receita em JPG, PNG, WEBP ou PDF.");
+      setFileError(dict.contactForm.fileTypeError);
       return;
     }
     if (candidate.size > MAX_FILE_SIZE) {
-      setFileError("O arquivo deve ter até 5MB.");
+      setFileError(dict.contactForm.fileSizeError);
       return;
     }
 
@@ -108,7 +110,7 @@ export function ContactForm() {
     >
       <div>
         <label htmlFor="contact-name" className="mb-1.5 block text-sm font-semibold text-white">
-          Nome
+          {dict.contactForm.nameLabel}
         </label>
         <input
           id="contact-name"
@@ -116,14 +118,14 @@ export function ContactForm() {
           type="text"
           required
           autoComplete="name"
-          placeholder="Como podemos te chamar?"
+          placeholder={dict.contactForm.namePlaceholder}
           className={inputClasses}
         />
       </div>
 
       <div>
         <label htmlFor="contact-email" className="mb-1.5 block text-sm font-semibold text-white">
-          Email de contato
+          {dict.contactForm.emailLabel}
         </label>
         <input
           id="contact-email"
@@ -131,28 +133,29 @@ export function ContactForm() {
           type="email"
           required
           autoComplete="email"
-          placeholder="seu@email.com"
+          placeholder={dict.contactForm.emailPlaceholder}
           className={inputClasses}
         />
       </div>
 
       <div>
         <label htmlFor="contact-message" className="mb-1.5 block text-sm font-semibold text-white">
-          Mensagem
+          {dict.contactForm.messageLabel}
         </label>
         <textarea
           id="contact-message"
           name="message"
           required
           rows={4}
-          placeholder="Conte o que você precisa: fórmula, produto ou dúvida."
+          placeholder={dict.contactForm.messagePlaceholder}
           className={`${inputClasses} resize-none`}
         />
       </div>
 
       <div>
         <label className="mb-1.5 block text-sm font-semibold text-white">
-          Envie sua receita <span className="font-normal text-white/50">(opcional)</span>
+          {dict.contactForm.fileLabel}{" "}
+          <span className="font-normal text-white/50">{dict.contactForm.fileOptional}</span>
         </label>
         <div
           role="button"
@@ -175,7 +178,7 @@ export function ContactForm() {
               <button
                 type="button"
                 onClick={removeFile}
-                aria-label="Remover arquivo"
+                aria-label={dict.contactForm.fileRemoveAria}
                 className="shrink-0 rounded-full p-1.5 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
               >
                 <X size={16} />
@@ -185,18 +188,16 @@ export function ContactForm() {
             <div className="flex flex-col items-center gap-2 text-center">
               <Paperclip size={20} className="text-white/50" />
               <p className="text-sm text-white/70">
-                Arraste, cole ou{" "}
+                {dict.contactForm.dropzoneDragText}
                 <button
                   type="button"
                   onClick={() => fileInputRef.current?.click()}
                   className="font-semibold text-df-primary-300 underline-offset-2 hover:underline"
                 >
-                  selecione o arquivo
+                  {dict.contactForm.dropzoneSelectText}
                 </button>
               </p>
-              <p className="text-xs text-white/40">
-                Cole com Ctrl+V · JPG, PNG, WEBP ou PDF até 5MB
-              </p>
+              <p className="text-xs text-white/40">{dict.contactForm.dropzoneHint}</p>
             </div>
           )}
         </div>
@@ -217,7 +218,7 @@ export function ContactForm() {
         className="mt-1 inline-flex items-center justify-center gap-2.5 rounded-df-full bg-white px-7 py-3.5 text-base font-semibold text-df-primary-900 shadow-df-lg transition-transform hover:-translate-y-0.5 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
       >
         <PaperPlaneTilt size={20} weight="fill" />
-        {isPending ? "Enviando..." : "Enviar mensagem"}
+        {isPending ? dict.contactForm.submitPending : dict.contactForm.submitIdle}
       </button>
 
       {state.status !== "idle" && state.message && (
@@ -236,9 +237,7 @@ export function ContactForm() {
         </p>
       )}
 
-      <p className="text-xs text-white/50">
-        Retornaremos o contato pelo WhatsApp da farmácia.
-      </p>
+      <p className="text-xs text-white/50">{dict.contactForm.footerNote}</p>
     </form>
   );
 }
