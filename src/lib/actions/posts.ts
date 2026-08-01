@@ -13,6 +13,9 @@ const PostInputSchema = z.object({
   coverImageUrl: z.string().url().optional().or(z.literal("")),
   categories: z.array(z.string()).default([]),
   status: z.enum(["draft", "published"]),
+  // Enviado já em ISO/UTC pelo formulário. A conversão acontece no cliente
+  // porque só lá se conhece o fuso do autor — o servidor roda em UTC.
+  publishedAt: z.iso.datetime().optional().or(z.literal("")),
 });
 
 export type PostFormState = { error?: string } | undefined;
@@ -45,22 +48,25 @@ export async function savePost(
     coverImageUrl: formData.get("coverImageUrl") || "",
     categories: formData.getAll("categories"),
     status: formData.get("status"),
+    publishedAt: formData.get("publishedAt") || "",
   });
 
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Dados inválidos." };
   }
 
-  const { id, coverImageUrl, ...rest } = parsed.data;
+  const { id, coverImageUrl, publishedAt: publishedAtInput, ...rest } = parsed.data;
 
   const isNew = !id;
   const { data: existing } = id
     ? await supabase.from("posts").select("published_at").eq("id", id).maybeSingle()
     : { data: null };
 
+  // Data informada manda (permite agendar); sem ela, mantém a que já existia e,
+  // na primeira publicação, assume agora.
   const publishedAt =
     rest.status === "published"
-      ? existing?.published_at ?? new Date().toISOString()
+      ? publishedAtInput || existing?.published_at || new Date().toISOString()
       : existing?.published_at ?? null;
 
   const payload = {

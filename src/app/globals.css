@@ -253,3 +253,39 @@ body {
   color: var(--df-ink-900);
   font-weight: 700;
 }
+
+.post-content blockquote {
+  border-left: 3px solid var(--df-primary-300);
+  padding-left: 1.1em;
+  color: var(--df-ink-900);
+  font-size: 1.0625rem;
+  font-style: italic;
+}
+
+.post-content hr {
+  border: 0;
+  border-top: 1px solid var(--df-line);
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+/* Marcador só do editor: mostra onde o CTA do WhatsApp será injetado no
+   artigo publicado. Não existe na página pública. */
+.cta-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  border: 1px dashed var(--df-primary-300);
+  border-radius: var(--df-radius-md);
+  background: var(--df-primary-50);
+  padding: 0.6rem 1rem;
+  color: var(--df-primary-700);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  user-select: none;
+}

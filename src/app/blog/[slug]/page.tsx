@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,9 +8,15 @@ import { Footer } from "@/components/Footer";
 import { PostCard } from "@/components/blog/PostCard";
 import { WhatsAppCta } from "@/components/blog/WhatsAppCta";
 import { PostMeta } from "@/components/blog/PostMeta";
+import { PreviewBanner } from "@/components/blog/PreviewBanner";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { createClient } from "@/lib/supabase/server";
-import { getPostBySlug, getRelatedPosts, estimateReadingMinutes } from "@/lib/posts-data";
+import {
+  getPostBySlug,
+  getRelatedPosts,
+  estimateReadingMinutes,
+  isPostLive,
+} from "@/lib/posts-data";
 import { articleJsonLd, breadcrumbJsonLd, SITE_URL } from "@/lib/seo";
 import { splitContentInHalf } from "@/lib/split-content";
 import { slugifyCategory } from "@/lib/categories";
@@ -21,11 +28,20 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const { isEnabled: isPreview } = await draftMode();
   const supabase = await createClient();
-  const post = await getPostBySlug(supabase, slug);
+  const post = await getPostBySlug(supabase, slug, { includeUnpublished: isPreview });
   if (!post) return {};
 
   const url = `${SITE_URL}/blog/${post.slug}`;
+
+  // Rascunho ou agendado aberto no preview nunca pode ser indexado.
+  if (!isPostLive(post)) {
+    return {
+      title: `[${post.status === "draft" ? "Rascunho" : "Agendado"}] ${post.title} | Blog Dermaflora`,
+      robots: { index: false, follow: false },
+    };
+  }
 
   return {
     title: `${post.title} | Blog Dermaflora`,
@@ -55,8 +71,9 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const { isEnabled: isPreview } = await draftMode();
   const supabase = await createClient();
-  const post = await getPostBySlug(supabase, slug);
+  const post = await getPostBySlug(supabase, slug, { includeUnpublished: isPreview });
   if (!post) notFound();
 
   const related = await getRelatedPosts(supabase, post);
@@ -65,16 +82,27 @@ export default async function BlogPostPage({
 
   return (
     <>
-      <JsonLd
-        data={[
-          articleJsonLd(post),
-          breadcrumbJsonLd([
-            { name: "Início", url: SITE_URL },
-            { name: "Blog", url: `${SITE_URL}/blog` },
-            { name: post.title, url: `${SITE_URL}/blog/${post.slug}` },
-          ]),
-        ]}
-      />
+      {/* Só conteúdo já no ar gera dados estruturados: eles descrevem o que é
+          público. Rascunho e agendado ficam de fora. */}
+      {isPostLive(post) && (
+        <JsonLd
+          data={[
+            articleJsonLd(post),
+            breadcrumbJsonLd([
+              { name: "Início", url: SITE_URL },
+              { name: "Blog", url: `${SITE_URL}/blog` },
+              { name: post.title, url: `${SITE_URL}/blog/${post.slug}` },
+            ]),
+          ]}
+        />
+      )}
+      {isPreview && (
+        <PreviewBanner
+          postId={post.id}
+          status={post.status}
+          publishedAt={post.published_at}
+        />
+      )}
       <Header />
       <main>
         <article className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24">

@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { BLOG_CATEGORIES, slugifyCategory } from "@/lib/categories";
 import { SITE_URL } from "@/lib/seo";
+import { liveFilter } from "@/lib/posts-data";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = await createClient();
@@ -9,6 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .from("posts")
     .select("slug, updated_at")
     .eq("status", "published")
+    .or(liveFilter())
     .returns<{ slug: string; updated_at: string }[]>();
 
   const staticRoutes: MetadataRoute.Sitemap = [
