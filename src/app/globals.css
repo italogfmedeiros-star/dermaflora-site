@@ -161,6 +161,16 @@ body {
   background-repeat: repeat;
 }
 
+/* Malha de laboratório — linhas finas na diagonal com nós nos cruzamentos, como
+   papel milimetrado/estrutura molecular. Vive numa camada própria dentro da
+   seção, sempre com opacidade baixa e um blur mínimo pra não virar grade dura.
+   As diagonais a 45° casam nas bordas do ladrilho quadrado, sem emenda. */
+.bg-lab {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' fill='none' stroke='%231f3623' stroke-width='1'%3E%3Cpath d='M0 60L60 0M0 120L120 0M60 120L120 60M60 0L120 60M0 0L120 120M0 60L60 120'/%3E%3Ccircle cx='0' cy='0' r='5'/%3E%3Ccircle cx='120' cy='0' r='5'/%3E%3Ccircle cx='0' cy='120' r='5'/%3E%3Ccircle cx='120' cy='120' r='5'/%3E%3Ccircle cx='60' cy='60' r='5'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  filter: blur(0.5px);
+}
+
 @keyframes hero-slide {
   0% { opacity: 0; }
   2.2% { opacity: 1; }

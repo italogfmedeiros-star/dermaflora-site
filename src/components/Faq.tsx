@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CaretDown } from "@phosphor-icons/react";
+import { LabTexture } from "./LabTexture";
 import { Reveal } from "./Reveal";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
@@ -15,6 +16,7 @@ export function Faq() {
         aria-hidden="true"
         className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
       />
+      <LabTexture />
       <div className="relative mx-auto max-w-3xl px-5 md:px-8">
         <Reveal>
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">

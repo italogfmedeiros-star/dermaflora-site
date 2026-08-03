@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { CaretLeft, CaretRight, InstagramLogo } from "@phosphor-icons/react";
+import { LabTexture } from "./LabTexture";
 import { Reveal } from "./Reveal";
 import { INSTAGRAM_POSTS } from "@/data/instagram-posts";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -48,6 +49,7 @@ export function News() {
         aria-hidden="true"
         className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
       />
+      <LabTexture />
       <div
         aria-hidden="true"
         className="ambient-glow -right-20 top-16 h-64 w-64 bg-df-warm-500/35"

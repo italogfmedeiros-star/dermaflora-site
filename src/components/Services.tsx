@@ -1,6 +1,7 @@
 "use client";
 
 import { Flask, Drop, Leaf, HairDryer } from "@phosphor-icons/react";
+import { LabTexture } from "./LabTexture";
 import { Reveal } from "./Reveal";
 import { ImageCrossfade, type CrossfadeSlide } from "./ImageCrossfade";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
@@ -36,6 +37,7 @@ export function Services() {
         aria-hidden="true"
         className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
       />
+      <LabTexture />
       <div
         aria-hidden="true"
         className="ambient-glow -left-24 top-1/3 h-72 w-72 bg-df-primary-300/40"
