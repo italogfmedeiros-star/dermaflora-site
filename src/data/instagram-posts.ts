@@ -23,6 +23,15 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "DbauwEhxYqN",
+    permalink: "https://www.instagram.com/dermaflora/reel/DbauwEhxYqN/",
+    image: "/instagram/DbauwEhxYqN.jpg",
+    date: "2026-07-30",
+    category: "Produtos",
+    excerpt:
+      "Pept Exo reúne peptídeos com exossomas nanoestruturados, uma tecnologia que estimula o rejuvenescimento celular e potencializa os mecanismos naturais de reparo da pele.",
+  },
+  {
     shortcode: "Dad6qsNJiS6",
     permalink: "https://www.instagram.com/dermaflora/reel/Dad6qsNJiS6/",
     image: "/instagram/Dad6qsNJiS6.jpg",
