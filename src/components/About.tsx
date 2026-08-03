@@ -12,7 +12,7 @@ export function About() {
   return (
     <section
       id="sobre"
-      className="relative overflow-hidden bg-df-warm-100 pb-20 pt-10 md:pb-28 md:pt-14"
+      className="relative overflow-hidden bg-df-warm-100 pb-20 pt-10 md:pb-28 md:pt-14 lg:pt-28"
     >
       <div
         aria-hidden="true"
