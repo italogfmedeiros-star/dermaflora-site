@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LabTexture } from "@/components/LabTexture";
 import { LogoMark } from "@/components/Logo";
 import { logout } from "@/lib/actions/auth";
 
@@ -13,7 +14,8 @@ export default function AdminDashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-df-bg">
+    <div className="relative isolate min-h-screen overflow-hidden bg-df-bg">
+      <LabTexture className="-z-10" />
       <header className="border-b border-df-line bg-white">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5">
           <Link href="/admin" className="flex items-center gap-3">
