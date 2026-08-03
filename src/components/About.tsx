@@ -10,7 +10,10 @@ export function About() {
   const { dict } = useLanguage();
 
   return (
-    <section id="sobre" className="relative overflow-hidden bg-df-warm-100 py-20 md:py-28">
+    <section
+      id="sobre"
+      className="relative overflow-hidden bg-df-warm-100 pb-20 pt-10 md:pb-28 md:pt-14"
+    >
       <div
         aria-hidden="true"
         className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
