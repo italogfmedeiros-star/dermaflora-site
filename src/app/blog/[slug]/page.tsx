@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { LabTexture } from "@/components/LabTexture";
 import { PostCard } from "@/components/blog/PostCard";
 import { WhatsAppCta } from "@/components/blog/WhatsAppCta";
 import { PostMeta } from "@/components/blog/PostMeta";
@@ -104,7 +105,8 @@ export default async function BlogPostPage({
         />
       )}
       <Header />
-      <main>
+      <main className="relative isolate overflow-hidden">
+        <LabTexture className="-z-10" />
         <article className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-24">
           <p className="text-sm font-semibold text-df-primary-700">
             <Link href="/blog" className="hover:underline">

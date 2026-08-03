@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { LabTexture } from "@/components/LabTexture";
 import { PostCard } from "@/components/blog/PostCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { createClient } from "@/lib/supabase/server";
@@ -66,7 +67,8 @@ export default async function CategoryPage({
         ])}
       />
       <Header />
-      <main>
+      <main className="relative isolate overflow-hidden">
+        <LabTexture className="-z-10" />
         <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
           <p className="text-sm font-semibold text-df-primary-700">
             <Link href="/blog" className="hover:underline">

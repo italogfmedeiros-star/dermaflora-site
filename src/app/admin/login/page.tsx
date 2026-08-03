@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LogoMark } from "@/components/Logo";
+import { LabTexture } from "@/components/LabTexture";
 import { LoginForm } from "@/components/admin/LoginForm";
 
 export const metadata: Metadata = {
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
 
 export default function AdminLoginPage() {
   return (
-    <main className="grid min-h-screen place-items-center bg-df-bg px-5">
+    <main className="relative isolate grid min-h-screen place-items-center overflow-hidden bg-df-bg px-5">
+      <LabTexture className="-z-10" />
       <div className="w-full max-w-sm rounded-df-lg border border-df-line bg-white p-8 shadow-df-md">
         <div className="mb-6 flex justify-center">
           <LogoMark />

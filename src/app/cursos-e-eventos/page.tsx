@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { LabTexture } from "@/components/LabTexture";
 import { CursoCard } from "@/components/cursos/CursoCard";
 import { createClient } from "@/lib/supabase/server";
 import { getPublishedCursos, groupCursosByYear } from "@/lib/cursos-data";
@@ -21,7 +22,8 @@ export default async function CursosEEventosPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="relative isolate overflow-hidden">
+        <LabTexture className="-z-10" />
         <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
           <div className="max-w-2xl">
             <T

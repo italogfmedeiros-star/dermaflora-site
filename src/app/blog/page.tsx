@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { LabTexture } from "@/components/LabTexture";
 import { PostCard } from "@/components/blog/PostCard";
 import { createClient } from "@/lib/supabase/server";
 import { getPublishedPosts } from "@/lib/posts-data";
@@ -29,7 +30,8 @@ export default async function BlogPage({
   return (
     <>
       <Header />
-      <main>
+      <main className="relative isolate overflow-hidden">
+        <LabTexture className="-z-10" />
         <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-24">
           <div className="max-w-2xl">
             <T
