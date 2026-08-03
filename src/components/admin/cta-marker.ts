@@ -2,13 +2,14 @@ import { Extension } from "@tiptap/core";
 import { Plugin, PluginKey } from "@tiptap/pm/state";
 import { Decoration, DecorationSet } from "@tiptap/pm/view";
 import type { Node as ProseMirrorNode } from "@tiptap/pm/model";
+import { MIN_BLOCKS_FOR_SPLIT } from "@/lib/split-content";
 
 // Espelha a regra de `src/lib/split-content.ts`, que fatia o HTML publicado
 // para encaixar o CTA do WhatsApp no meio do artigo. Lá a conta é feita sobre
 // as tags <p|h2|h3|ul|ol|blockquote>; aqui, sobre os nós equivalentes do
-// editor. Se as duas regras divergirem, o marcador aponta o lugar errado.
+// editor. Se as duas regras divergirem, o marcador aponta o lugar errado — por
+// isso o mínimo vem importado de lá, em vez de repetido aqui.
 const BLOCK_NODES = new Set(["paragraph", "bulletList", "orderedList", "blockquote"]);
-const MIN_BLOCKS = 4;
 
 function countsForSplit(node: ProseMirrorNode) {
   if (node.type.name === "heading") {
@@ -25,7 +26,7 @@ function buildDecorations(doc: ProseMirrorNode) {
   });
 
   // Abaixo do mínimo o split não acontece e nenhum CTA é injetado no meio.
-  if (positions.length < MIN_BLOCKS) return DecorationSet.empty;
+  if (positions.length < MIN_BLOCKS_FOR_SPLIT) return DecorationSet.empty;
 
   const target = positions[Math.ceil(positions.length / 2)];
   if (target === undefined) return DecorationSet.empty;
