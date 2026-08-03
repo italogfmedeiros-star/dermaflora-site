@@ -10,7 +10,7 @@ export function Footer() {
 
   const links = [
     { href: "/#sobre", label: dict.nav.sobre },
-    { href: "/#servicos", label: dict.nav.servicos },
+    { href: "/#atendimento", label: dict.nav.servicos },
     { href: "/#depoimentos", label: dict.nav.depoimentos },
     { href: "/cursos-e-eventos", label: dict.nav.cursosEEventos },
     { href: "/blog", label: dict.nav.blog },

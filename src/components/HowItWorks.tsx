@@ -10,7 +10,10 @@ export function HowItWorks() {
   const { dict } = useLanguage();
 
   return (
-    <section className="relative overflow-hidden bg-df-secondary-300/10 py-20 md:py-28">
+    <section
+      id="atendimento"
+      className="relative overflow-hidden bg-df-secondary-300/10 py-20 md:py-28"
+    >
       <div
         aria-hidden="true"
         className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"

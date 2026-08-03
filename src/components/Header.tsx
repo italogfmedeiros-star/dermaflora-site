@@ -26,7 +26,7 @@ export function Header() {
 
   const navLinks: NavLink[] = [
     { id: "sobre", href: "/#sobre", label: dict.nav.sobre },
-    { id: "servicos", href: "/#servicos", label: dict.nav.servicos },
+    { id: "servicos", href: "/#atendimento", label: dict.nav.servicos },
     { id: "depoimentos", href: "/#depoimentos", label: dict.nav.depoimentos },
     { id: "perguntas", href: "/#faq", label: dict.nav.perguntas },
     {
