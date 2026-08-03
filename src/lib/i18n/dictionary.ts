@@ -95,14 +95,30 @@ export const pt = {
       },
     ],
   },
-  featuredProduct: {
-    badge: "Produto próprio",
-    title: "Gutfiber®, fibras que cuidam do seu equilíbrio por dentro.",
-    text: "Desenvolvido pela Dermaflora para apoiar sua digestão e trazer mais leveza para o dia a dia.",
-    benefits: [
-      "Blend 100% natural de fibras solúveis e insolúveis",
-      "Enriquecido com antioxidantes",
-      "Ajuda a equilibrar a flora intestinal",
+  purpose: {
+    badge: "Institucional",
+    title: "Propósito, missão e visão.",
+    pillars: [
+      {
+        label: "Propósito",
+        text: "Oferecer soluções personalizadas de saúde e bem-estar, com qualidade e empatia no atendimento a clientes e prescritores.",
+      },
+      {
+        label: "Missão",
+        text: "Manipular produtos personalizados, seguros e eficazes, com atendimento humanizado e suporte especializado a clientes e prescritores.",
+      },
+      {
+        label: "Visão",
+        text: "Ser referência em saúde e bem-estar, reconhecida pela excelência, inovação e atendimento personalizado.",
+      },
+    ],
+    valuesTitle: "Valores",
+    values: [
+      { label: "Cuidado", text: "Nas relações com clientes e colaboradores." },
+      { label: "Excelência", text: "Qualidade superior no atendimento e nos produtos." },
+      { label: "Transparência", text: "Clareza e honestidade em cada etapa." },
+      { label: "Compromisso", text: "Responsabilidade, ética e segurança." },
+      { label: "Inovação", text: "Busca constante por novas soluções." },
     ],
     cta: "Falar com um especialista",
   },
@@ -336,14 +352,30 @@ export const en: typeof pt = {
       },
     ],
   },
-  featuredProduct: {
-    badge: "Our own product",
-    title: "Gutfiber®, fiber that cares for your balance from within.",
-    text: "Developed by Dermaflora to support your digestion and bring more lightness to your day-to-day.",
-    benefits: [
-      "100% natural blend of soluble and insoluble fibers",
-      "Enriched with antioxidants",
-      "Helps balance gut flora",
+  purpose: {
+    badge: "About us",
+    title: "Purpose, mission and vision.",
+    pillars: [
+      {
+        label: "Purpose",
+        text: "To offer personalized health and well-being solutions, with quality and empathy in the care we give to clients and prescribers.",
+      },
+      {
+        label: "Mission",
+        text: "To compound personalized products that are safe and effective, with humanized care and specialized support for clients and prescribers.",
+      },
+      {
+        label: "Vision",
+        text: "To be a benchmark in health and well-being, recognized for excellence, innovation and personalized care.",
+      },
+    ],
+    valuesTitle: "Values",
+    values: [
+      { label: "Care", text: "In every relationship with clients and staff." },
+      { label: "Excellence", text: "Superior quality in our service and products." },
+      { label: "Transparency", text: "Clarity and honesty at every step." },
+      { label: "Commitment", text: "Responsibility, ethics and safety." },
+      { label: "Innovation", text: "A constant search for new solutions." },
     ],
     cta: "Talk to a specialist",
   },
