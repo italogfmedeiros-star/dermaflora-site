@@ -11,6 +11,7 @@ import {
   X,
 } from "@phosphor-icons/react";
 import { LogoMark } from "./Logo";
+import { WHATSAPP_URL } from "@/lib/seo";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LanguageToggle } from "@/lib/i18n/LanguageToggle";
 
@@ -89,13 +90,13 @@ export function Header() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a
-            href="https://wa.me/55119988296867"
+            href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-df-full bg-df-primary-700 px-5 py-2.5 text-sm font-semibold text-white shadow-df-sm transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
           >
             <WhatsappLogo size={18} weight="fill" />
-            (11) 998829-6867
+            {dict.header.whatsAppCta}
           </a>
           <a
             href="https://www.instagram.com/dermaflora"
@@ -176,14 +177,14 @@ export function Header() {
             )}
             <div className="mt-2 flex items-center gap-3">
               <a
-                href="https://wa.me/55119988296867"
+                href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setOpen(false)}
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-df-full bg-df-primary-700 px-5 py-3 text-base font-semibold text-white"
               >
                 <WhatsappLogo size={20} weight="fill" />
-                (11) 998829-6867
+                {dict.header.whatsAppCta}
               </a>
               <a
                 href="https://www.instagram.com/dermaflora"

@@ -16,6 +16,7 @@ export const pt = {
     openMenuAria: "Abrir menu",
     closeMenuAria: "Fechar menu",
     langToggleAria: "Mudar idioma para inglês",
+    whatsAppCta: "Envie sua receita",
   },
   hero: {
     slides: [
@@ -256,6 +257,7 @@ export const en: typeof pt = {
     openMenuAria: "Open menu",
     closeMenuAria: "Close menu",
     langToggleAria: "Switch language to Portuguese",
+    whatsAppCta: "Send your prescription",
   },
   hero: {
     slides: [
