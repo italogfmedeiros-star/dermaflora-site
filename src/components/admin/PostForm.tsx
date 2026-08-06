@@ -380,7 +380,7 @@ export function PostForm({ post }: { post?: Post }) {
           {BLOG_CATEGORIES.map((category) => (
             <label
               key={category}
-              className="flex cursor-pointer items-center gap-2 rounded-df-full border border-df-line bg-white px-3 py-1.5 text-xs font-medium text-df-ink-700 has-[:checked]:border-df-primary-700 has-[:checked]:bg-df-primary-100 has-[:checked]:text-df-primary-700"
+              className="flex cursor-pointer items-center gap-2 rounded-df-full border border-df-line bg-white px-3 py-1.5 text-xs font-medium text-df-ink-700 has-[:checked]:border-df-primary-700 has-[:checked]:bg-df-primary-100 has-[:checked]:text-df-primary-900"
             >
               <input
                 type="checkbox"

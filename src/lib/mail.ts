@@ -69,18 +69,18 @@ function contactEmailHtml({
         <td align="center">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px; background-color:#ffffff; border-radius:16px; overflow:hidden; border:1px solid #e6e2d9;">
             <tr>
-              <td style="background-color:#1f3623; padding:28px 32px;">
+              <td style="background-color:#313f32; padding:28px 32px;">
                 <p style="margin:0; font-size:20px; font-weight:800; letter-spacing:0.2px; color:#ffffff;">
                   Dermaflora
                 </p>
-                <p style="margin:4px 0 0; font-size:13px; color:#b9deba;">
+                <p style="margin:4px 0 0; font-size:13px; color:#a7bbab;">
                   Farmácia de Manipulação
                 </p>
               </td>
             </tr>
             <tr>
               <td style="padding:32px;">
-                <p style="margin:0 0 4px; font-size:12px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:#6fa876;">
+                <p style="margin:0 0 4px; font-size:12px; font-weight:700; letter-spacing:0.5px; text-transform:uppercase; color:#687a6a;">
                   Nova mensagem pelo site
                 </p>
                 <h1 style="margin:0 0 24px; font-size:20px; color:#1c1e1c;">
@@ -95,13 +95,13 @@ function contactEmailHtml({
                   <tr>
                     <td style="padding:4px 0; font-size:13px; color:#6f746e;">Email</td>
                     <td style="padding:4px 0; font-size:14px;">
-                      <a href="mailto:${safeEmail}" style="color:#43714a; text-decoration:underline;">${safeEmail}</a>
+                      <a href="mailto:${safeEmail}" style="color:#687a6a; text-decoration:underline;">${safeEmail}</a>
                     </td>
                   </tr>
                 </table>
 
-                <div style="background-color:#f3faf3; border:1px solid #d3ead5; border-radius:12px; padding:16px 20px; margin-bottom:20px;">
-                  <p style="margin:0 0 8px; font-size:13px; font-weight:700; color:#43714a;">Mensagem</p>
+                <div style="background-color:#f2f7f4; border:1px solid #c4d6c7; border-radius:12px; padding:16px 20px; margin-bottom:20px;">
+                  <p style="margin:0 0 8px; font-size:13px; font-weight:700; color:#687a6a;">Mensagem</p>
                   <p style="margin:0; font-size:14px; line-height:1.6; color:#3a3d3a;">${safeMessage}</p>
                 </div>
 

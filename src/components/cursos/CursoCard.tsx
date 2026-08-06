@@ -36,7 +36,7 @@ export function CursoCard({ curso }: { curso: CursoEvento }) {
       </div>
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
-          <span className="rounded-df-full bg-df-primary-100 px-2.5 py-1 text-df-primary-700">
+          <span className="rounded-df-full bg-df-primary-100 px-2.5 py-1 text-df-primary-900">
             {dict.cursos.categoryLabel}
           </span>
           {curso.event_date && (

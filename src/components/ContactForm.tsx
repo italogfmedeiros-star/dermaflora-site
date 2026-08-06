@@ -13,7 +13,7 @@ import { sendContactMessage, type ContactFormState } from "@/lib/actions/contact
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const inputClasses =
-  "w-full rounded-df-md border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none transition-shadow focus:border-df-primary-300/60 focus:shadow-[0_0_0_3px_rgba(185,222,186,0.2)]";
+  "w-full rounded-df-md border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none transition-shadow focus:border-df-primary-300/60 focus:shadow-[0_0_0_3px_rgba(167,187,171,0.2)]";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ACCEPTED_FILE_TYPES = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
@@ -164,7 +164,7 @@ export function ContactForm() {
           onDrop={handleDrop}
           onDragOver={(e) => e.preventDefault()}
           onKeyDown={handleDropzoneKeyDown}
-          className="rounded-df-md border border-dashed border-white/25 bg-white/5 px-4 py-4 outline-none transition-colors focus-visible:border-df-primary-300/60 focus-visible:shadow-[0_0_0_3px_rgba(185,222,186,0.2)]"
+          className="rounded-df-md border border-dashed border-white/25 bg-white/5 px-4 py-4 outline-none transition-colors focus-visible:border-df-primary-300/60 focus-visible:shadow-[0_0_0_3px_rgba(167,187,171,0.2)]"
         >
           {file ? (
             <div className="flex items-center justify-between gap-3">

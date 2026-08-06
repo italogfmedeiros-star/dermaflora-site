@@ -1,20 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  /* Primária — verde-menta, extraída do logo real do Instagram */
-  --df-primary-50: #f3faf3;
-  --df-primary-100: #e8f5e9;
-  --df-primary-200: #d3ead5;
-  --df-primary-300: #b9deba;
-  --df-primary-500: #6fa876;
-  --df-primary-600: #588f5f;
-  --df-primary-700: #43714a;
-  --df-primary-900: #1f3623;
+  /* Primária — verde-sálvia, identidade aprovada pela direção (ago/2026).
+     100/200/300/500/700 são os 5 tons exatos aprovados; 50/600/900 foram
+     gerados por interpolação/extrapolação em HSL a partir desses tons,
+     mantendo o mesmo matiz (~126-140°), para completar a escada. */
+  --df-primary-50: #f2f7f4;
+  --df-primary-100: #deeae2;
+  --df-primary-200: #c4d6c7;
+  --df-primary-300: #a7bbab;
+  --df-primary-500: #8b9f8f;
+  --df-primary-600: #788e7c;
+  --df-primary-700: #687a6a;
+  --df-primary-900: #313f32;
 
-  /* Secundária — sage-teal, extraída das capas de destaque do Instagram */
-  --df-secondary-300: #c1d2d0;
-  --df-secondary-500: #8fa8a6;
-  --df-secondary-700: #5f7674;
+  /* Secundária — unificada com a escada sálvia aprovada (antes era um
+     teal-sage à parte; hoje reaproveita os mesmos tons aprovados pra não
+     introduzir um matiz fora da identidade). Usada só em detalhes
+     decorativos de baixa opacidade (ambient glow, gradientes de imagem). */
+  --df-secondary-300: #a7bbab;
+  --df-secondary-500: #8b9f8f;
+  --df-secondary-700: #687a6a;
 
   /* Neutros quentes — extraídos da fotografia de produto do feed */
   --df-warm-100: #faf5ee;
@@ -36,14 +42,14 @@
   --df-radius-full: 999px;
 
   --df-shadow-sm: 0 1px 2px rgba(28, 30, 28, 0.05), 0 1px 3px rgba(28, 30, 28, 0.04);
-  --df-shadow-md: 0 8px 24px rgba(31, 54, 35, 0.08);
-  --df-shadow-lg: 0 20px 48px rgba(31, 54, 35, 0.12);
+  --df-shadow-md: 0 8px 24px rgba(49, 63, 50, 0.08);
+  --df-shadow-lg: 0 20px 48px rgba(49, 63, 50, 0.12);
 
   /* Glass — vidro claro para superfícies sobre fundo warm/mint */
   --df-glass-bg: rgba(255, 255, 255, 0.55);
   --df-glass-bg-strong: rgba(255, 255, 255, 0.72);
   --df-glass-border: rgba(255, 255, 255, 0.65);
-  --df-glass-shadow: 0 8px 32px rgba(31, 54, 35, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  --df-glass-shadow: 0 8px 32px rgba(49, 63, 50, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.45);
 
   /* Glass — vidro escuro para superfícies sobre fundo primary-900/ink-900 */
   --df-glass-dark-bg: rgba(255, 255, 255, 0.09);
@@ -56,7 +62,7 @@
 
   /* Semânticos — usados no painel administrativo */
   --df-error: #b84a3e;
-  --df-success: #43714a;
+  --df-success: #687a6a;
 }
 
 @theme inline {
@@ -166,7 +172,7 @@ body {
    seção, sempre com opacidade baixa e um blur mínimo pra não virar grade dura.
    As diagonais a 45° casam nas bordas do ladrilho quadrado, sem emenda. */
 .bg-lab {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' fill='none' stroke='%231f3623' stroke-width='1'%3E%3Cpath d='M0 60L60 0M0 120L120 0M60 120L120 60M60 0L120 60M0 0L120 120M0 60L60 120'/%3E%3Ccircle cx='0' cy='0' r='5'/%3E%3Ccircle cx='120' cy='0' r='5'/%3E%3Ccircle cx='0' cy='120' r='5'/%3E%3Ccircle cx='120' cy='120' r='5'/%3E%3Ccircle cx='60' cy='60' r='5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' fill='none' stroke='%23313f32' stroke-width='1'%3E%3Cpath d='M0 60L60 0M0 120L120 0M60 120L120 60M60 0L120 60M0 0L120 120M0 60L60 120'/%3E%3Ccircle cx='0' cy='0' r='5'/%3E%3Ccircle cx='120' cy='0' r='5'/%3E%3Ccircle cx='0' cy='120' r='5'/%3E%3Ccircle cx='120' cy='120' r='5'/%3E%3Ccircle cx='60' cy='60' r='5'/%3E%3C/svg%3E");
   background-repeat: repeat;
   filter: blur(0.5px);
 }
@@ -292,7 +298,7 @@ body {
   border-radius: var(--df-radius-md);
   background: var(--df-primary-50);
   padding: 0.6rem 1rem;
-  color: var(--df-primary-700);
+  color: var(--df-primary-900);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;

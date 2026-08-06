@@ -39,7 +39,7 @@ export function PostCard({ post }: { post: Post }) {
           {post.categories.slice(0, 2).map((category) => (
             <span
               key={category}
-              className="rounded-df-full bg-df-primary-100 px-2.5 py-1 text-df-primary-700"
+              className="rounded-df-full bg-df-primary-100 px-2.5 py-1 text-df-primary-900"
             >
               {category}
             </span>
