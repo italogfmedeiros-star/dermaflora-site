@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-const LOGO_WIDTH = 1913;
-const LOGO_HEIGHT = 391;
+const LOGO_WIDTH = 1548;
+const LOGO_HEIGHT = 316;
 
 export function LogoMark({
   variant = "color",
