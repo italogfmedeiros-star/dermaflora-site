@@ -8,23 +8,31 @@ export function HeroVideo({
   label,
   active,
   className,
+  onEnded,
 }: {
   src: string;
   poster: string;
   label: string;
   active: boolean;
   className?: string;
+  onEnded?: () => void;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
 
   // O vídeo não usa loop: toca uma vez e congela no último frame. Sempre que
   // o slide volta a ficar ativo (avanço automático ou clique nas setas),
-  // rebobina e toca de novo.
+  // rebobina e toca de novo. Ao ficar inativo, pausa explicitamente pra não
+  // continuar rodando escondido atrás do slide seguinte (o que disparia um
+  // "ended" fora de hora).
   useEffect(() => {
     const video = ref.current;
-    if (!video || !active) return;
-    video.currentTime = 0;
-    video.play().catch(() => {});
+    if (!video) return;
+    if (active) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
   }, [active]);
 
   return (
@@ -36,6 +44,7 @@ export function HeroVideo({
       playsInline
       aria-label={label}
       className={className}
+      onEnded={onEnded}
     />
   );
 }

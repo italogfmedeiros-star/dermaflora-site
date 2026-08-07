@@ -7,8 +7,10 @@ import { HeroVideo } from "./HeroVideo";
 import { Reveal } from "./Reveal";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
-// Tempo que cada slide fica em cena antes do avanço automático.
-const AUTOPLAY_MS = 7000;
+// Rede de segurança: se por algum motivo o vídeo ativo não disparar "ended"
+// (ex.: autoplay bloqueado), avança mesmo assim depois desse tempo. Maior que
+// a duração de qualquer vídeo do carrossel.
+const FALLBACK_MS = 12000;
 
 const SLIDE_VIDEOS = [
   {
@@ -27,7 +29,7 @@ const SLIDE_VIDEOS = [
   {
     src: "/videos/hero-video-3.mp4",
     poster: "/images/hero-banner-3.png",
-    label: "Mão retirando um produto Dermaflora de dentro de uma nécessaire lilás",
+    label: "Mão retirando um produto Dermaflora de dentro de uma nécessaire verde-menta",
     objectClassName: "object-[70%_center] md:object-[78%_center]",
   },
   {
@@ -63,13 +65,20 @@ export function Hero() {
     setCurrent((c) => (c - 1 + SLIDE_COUNT) % SLIDE_COUNT);
   }, []);
 
-  // Avanço automático contínuo. Reinicia a contagem sempre que o slide muda
-  // (seja pelo próprio timer ou por clique nas setas), pra dar o tempo cheio
-  // de exibição após uma navegação manual.
+  // Avanço automático sincronizado com o fim do vídeo ativo: o próprio
+  // <video> chama isso no evento "ended", então a troca de slide acontece
+  // exatamente quando o vídeo termina, sem pausa nem corte antecipado.
+  const handleVideoEnded = useCallback(() => {
+    if (reduceMotion) return;
+    goNext();
+  }, [reduceMotion, goNext]);
+
+  // Rede de segurança independente do vídeo, reiniciada a cada troca de
+  // slide (automática ou manual), caso o "ended" nunca chegue a disparar.
   useEffect(() => {
     if (reduceMotion) return;
-    const id = window.setInterval(goNext, AUTOPLAY_MS);
-    return () => window.clearInterval(id);
+    const id = window.setTimeout(goNext, FALLBACK_MS);
+    return () => window.clearTimeout(id);
   }, [current, reduceMotion, goNext]);
 
   return (
@@ -82,6 +91,7 @@ export function Hero() {
             poster={video.poster}
             label={video.label}
             active={i === current}
+            onEnded={handleVideoEnded}
             className={`hero-slide absolute inset-0 h-full w-full object-cover ${video.objectClassName} ${
               i === current ? "is-active" : ""
             }`}
