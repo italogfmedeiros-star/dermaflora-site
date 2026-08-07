@@ -183,24 +183,25 @@ body {
   filter: blur(0.5px);
 }
 
-@keyframes hero-slide {
-  0% { opacity: 0; }
-  2.2% { opacity: 1; }
-  22.8% { opacity: 1; }
-  25% { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-/* Carrossel pausado no primeiro slide: sem rotação, só o slide 1 fica
-   visível. Pra voltar a girar, restaure a animation acima com os
-   animation-delay de cada nth-child (0s/8s/16s/24s). */
+/* Carrossel da hero controlado via React (índice do slide atual), não mais
+   por @keyframes: permite avançar/retroceder manualmente e ainda assim ter
+   o avanço automático rodando contínuo. pointer-events desligado nos slides
+   inativos evita que um link invisível "roube" cliques do slide visível. */
 .hero-slide {
-  animation: none;
   opacity: 0;
+  pointer-events: none;
+  transition: opacity 800ms ease-in-out;
 }
 
-.hero-slide:nth-child(1) {
+.hero-slide.is-active {
   opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none;
+  }
 }
 
 /* Conteúdo de post (blog): usado tanto no editor Tiptap quanto na

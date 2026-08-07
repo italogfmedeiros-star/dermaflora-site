@@ -45,6 +45,8 @@ export const pt = {
         cta: "Conhecer os serviços",
       },
     ],
+    prevAria: "Slide anterior",
+    nextAria: "Próximo slide",
   },
   trustBar: {
     items: [
@@ -346,6 +348,8 @@ export const en: typeof pt = {
         cta: "Explore our services",
       },
     ],
+    prevAria: "Previous slide",
+    nextAria: "Next slide",
   },
   trustBar: {
     items: [
