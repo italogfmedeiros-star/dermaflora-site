@@ -33,7 +33,7 @@ export function WhatsAppCta({
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex shrink-0 items-center justify-center rounded-df-full bg-df-primary-700 px-5 py-2.5 text-sm font-semibold text-white shadow-df-sm transition-transform hover:-translate-y-0.5"
+        className="inline-flex shrink-0 items-center justify-center rounded-df-full bg-df-whatsapp px-5 py-2.5 text-sm font-semibold text-white shadow-df-sm transition-[transform,filter] hover:-translate-y-0.5 hover:brightness-95"
       >
         {dict.whatsAppCta.cta}
       </a>

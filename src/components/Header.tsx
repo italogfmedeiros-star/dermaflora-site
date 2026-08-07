@@ -93,7 +93,7 @@ export function Header() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-df-full bg-df-primary-700 px-5 py-2.5 text-sm font-semibold text-white shadow-df-sm transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+            className="inline-flex items-center gap-2 rounded-df-full bg-df-whatsapp px-5 py-2.5 text-sm font-semibold text-white shadow-df-sm transition-[transform,filter] hover:-translate-y-0.5 hover:brightness-95 active:scale-[0.98]"
           >
             <WhatsappLogo size={18} weight="fill" />
             {dict.header.whatsAppCta}
@@ -181,7 +181,7 @@ export function Header() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setOpen(false)}
-                className="inline-flex flex-1 items-center justify-center gap-2 rounded-df-full bg-df-primary-700 px-5 py-3 text-base font-semibold text-white"
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-df-full bg-df-whatsapp px-5 py-3 text-base font-semibold text-white active:brightness-95"
               >
                 <WhatsappLogo size={20} weight="fill" />
                 {dict.header.whatsAppCta}

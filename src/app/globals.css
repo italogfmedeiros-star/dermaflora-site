@@ -63,6 +63,11 @@
   /* Semânticos — usados no painel administrativo */
   --df-error: #b84a3e;
   --df-success: #687a6a;
+
+  /* Verde oficial do WhatsApp — só para os CTAs que abrem uma conversa no
+     WhatsApp (a cor da marca sálvia continua em todo o resto, incluindo o
+     botão "Conhecer os serviços"). */
+  --df-whatsapp: #25d366;
 }
 
 @theme inline {
@@ -101,6 +106,7 @@
 
   --color-df-error: var(--df-error);
   --color-df-success: var(--df-success);
+  --color-df-whatsapp: var(--df-whatsapp);
 
   --font-display: var(--font-manrope);
   --font-body: var(--font-work-sans);

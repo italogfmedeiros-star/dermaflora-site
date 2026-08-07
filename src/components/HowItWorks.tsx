@@ -13,7 +13,7 @@ export function HowItWorks() {
   return (
     <section
       id="atendimento"
-      className="relative overflow-hidden bg-df-secondary-300/10 py-20 md:py-28"
+      className="relative overflow-hidden bg-df-primary-50 py-20 md:py-28"
     >
       <div
         aria-hidden="true"

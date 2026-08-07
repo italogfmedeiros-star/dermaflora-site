@@ -9,7 +9,7 @@ export function Purpose() {
   const { dict } = useLanguage();
 
   return (
-    <section className="relative overflow-hidden bg-df-warm-100 py-16 md:py-20">
+    <section className="relative overflow-hidden bg-df-primary-100 py-16 md:py-20">
       <div
         aria-hidden="true"
         className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
@@ -69,7 +69,7 @@ export function Purpose() {
         <Reveal delay={0.2}>
           <a
             href="#contato"
-            className="mt-10 inline-flex items-center rounded-df-full bg-df-primary-700 px-6 py-3.5 text-base font-semibold text-white shadow-df-sm transition-transform hover:-translate-y-0.5 active:scale-[0.98]"
+            className="mt-10 inline-flex items-center rounded-df-full bg-df-whatsapp px-6 py-3.5 text-base font-semibold text-white shadow-df-sm transition-[transform,filter] hover:-translate-y-0.5 hover:brightness-95 active:scale-[0.98]"
           >
             {dict.purpose.cta}
           </a>

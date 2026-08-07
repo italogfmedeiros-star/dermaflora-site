@@ -11,7 +11,7 @@ export function Testimonials() {
   const { dict } = useLanguage();
 
   return (
-    <section id="depoimentos" className="relative overflow-hidden bg-df-surface py-20 md:py-28">
+    <section id="depoimentos" className="relative overflow-hidden bg-df-primary-200 py-20 md:py-28">
       <div
         aria-hidden="true"
         className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"

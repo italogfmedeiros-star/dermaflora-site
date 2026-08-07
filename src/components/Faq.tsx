@@ -11,7 +11,7 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-df-warm-100 py-20 md:py-28">
+    <section id="faq" className="relative overflow-hidden bg-df-primary-100 py-20 md:py-28">
       <div
         aria-hidden="true"
         className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"

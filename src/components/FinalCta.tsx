@@ -82,18 +82,18 @@ export function FinalCta() {
                       href="https://wa.me/5511988296867"
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-lg font-bold tracking-tight text-white transition-colors hover:text-df-primary-300"
+                      className="inline-flex items-center gap-1.5 text-lg font-bold tracking-tight text-white transition-colors hover:text-df-whatsapp"
                     >
-                      <WhatsappLogo size={18} weight="fill" className="shrink-0 text-df-primary-300" />
+                      <WhatsappLogo size={18} weight="fill" className="shrink-0 text-df-whatsapp" />
                       (11) 98829-6867
                     </a>
                     <a
                       href="https://wa.me/5511965731266"
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-lg font-bold tracking-tight text-white transition-colors hover:text-df-primary-300"
+                      className="inline-flex items-center gap-1.5 text-lg font-bold tracking-tight text-white transition-colors hover:text-df-whatsapp"
                     >
-                      <WhatsappLogo size={18} weight="fill" className="shrink-0 text-df-primary-300" />
+                      <WhatsappLogo size={18} weight="fill" className="shrink-0 text-df-whatsapp" />
                       (11) 96573-1266
                     </a>
                   </div>
