@@ -21,9 +21,9 @@ export const pt = {
   hero: {
     slides: [
       {
-        title: "O cuidado ideal começa com uma fórmula feita para você.",
+        title: "O cuidado ideal começa com uma fórmula feita só para você.",
         subtitle:
-          "Há 45 anos cuidando de saúde, beleza e bem-estar com fórmulas personalizadas para a sua necessidade.",
+          "Promovemos saúde, beleza e bem-estar com fórmulas personalizadas para a sua necessidade.",
         cta: "Conhecer os serviços",
       },
       {
@@ -45,7 +45,7 @@ export const pt = {
         cta: "Conhecer os serviços",
       },
       {
-        title: "A ciência da regeneração chegou a um novo nível.",
+        title: "Na Dermaflora a ciência da regeneração chegou a um novo nível.",
         subtitle:
           "Uma tecnologia inovadora que estimula o rejuvenescimento celular e potencializa o reparo da pele.",
         cta: "Conhecer os serviços",
@@ -63,7 +63,7 @@ export const pt = {
     ],
   },
   about: {
-    title: "45 anos de história, escritos fórmula a fórmula.",
+    title: "São anos de história, escritos fórmula a fórmula.",
     subtitle:
       "Da fundação até hoje, o que nunca mudou foi o compromisso de olhar para cada pessoa como um caso único.",
     milestones: [
