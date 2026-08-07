@@ -21,9 +21,9 @@ export const pt = {
   hero: {
     slides: [
       {
-        title: "Cuidado de verdade começa por uma fórmula feita só para você.",
+        title: "O cuidado ideal começa com uma fórmula feita para você.",
         subtitle:
-          "Há 45 anos cuidando de saúde, beleza e bem-estar com fórmulas personalizadas para o seu caso.",
+          "Há 45 anos cuidando de saúde, beleza e bem-estar com fórmulas personalizadas para a sua necessidade.",
         cta: "Conhecer os serviços",
       },
       {
@@ -35,13 +35,13 @@ export const pt = {
       {
         title: "Seu tratamento, sempre com você.",
         subtitle:
-          "Produtos manipulados sob medida para acompanhar sua rotina, onde quer que ela te leve.",
+          "Cuidado personalizado que acompanha seu ritmo, onde quer que você esteja.",
         cta: "Conhecer os serviços",
       },
       {
         title: "Ciência e cuidado em cada cápsula.",
         subtitle:
-          "Suplementação personalizada, feita a partir do seu caso — não de uma fórmula genérica de prateleira.",
+          "Suplementação personalizada, feita a partir da sua necessidade.",
         cta: "Conhecer os serviços",
       },
     ],
@@ -101,24 +101,24 @@ export const pt = {
     pillars: [
       {
         label: "Propósito",
-        text: "Oferecer soluções personalizadas de saúde e bem-estar, com qualidade e empatia no atendimento a clientes e prescritores.",
+        text: "Oferecer soluções personalizadas para saúde e bem-estar, com qualidade e atendimento humanizado para clientes e prescritores.",
       },
       {
         label: "Missão",
-        text: "Manipular produtos personalizados, seguros e eficazes, com atendimento humanizado e suporte especializado a clientes e prescritores.",
+        text: "Manipular e oferecer produtos personalizados, seguros e eficazes, com suporte especializado a clientes e prescritores.",
       },
       {
         label: "Visão",
-        text: "Ser referência em saúde e bem-estar, reconhecida pela excelência, inovação e atendimento personalizado.",
+        text: "Ser a farmácia de manipulação reconhecida pela excelência, inovação e atendimento personalizado, aopiado em colaboradores comprometidos com nossos valores.",
       },
     ],
     valuesTitle: "Valores",
     values: [
-      { label: "Cuidado", text: "Nas relações com clientes e colaboradores." },
-      { label: "Excelência", text: "Qualidade superior no atendimento e nos produtos." },
-      { label: "Transparência", text: "Clareza e honestidade em cada etapa." },
-      { label: "Compromisso", text: "Responsabilidade, ética e segurança." },
-      { label: "Inovação", text: "Busca constante por novas soluções." },
+      { label: "Cuidado", text: "Nas relações com nossos clientes, colaboradores, atendimento e em nossos produtos." },
+      { label: "Inovação", text: "Busca constante por novas soluções para melhor atender." },
+      { label: "Compromisso", text: "Responsabilidade, ética e segurança em tudo que fazemos." },
+      { label: "Transparência", text: "Clareza e honestidade em cada etapa do processo." },
+      { label: "Excelência", text: "Qualidade superior em atendimento e em nossos produtos." },
     ],
     cta: "Falar com um especialista",
   },
@@ -210,6 +210,10 @@ export const pt = {
   faq: {
     title: "Perguntas frequentes",
     items: [
+      {
+        q: "Como vocês garantem a integridade da fórmula na entrega?",
+        a: "Nossas embalagens são pensadas em preservar todas as características da sua formulação evitando perda de eficiência, alteração de cor ou cheiro. Enviamos em embalagem térmica que garante até 6 horas de temperatura ambiente.",
+      },
       {
         q: "Preciso de receita médica para manipular uma fórmula?",
         a: "Depende do produto. Algumas fórmulas exigem prescrição, outras não. Nossa equipe orienta você em cada caso durante o atendimento.",
@@ -507,6 +511,10 @@ export const en: typeof pt = {
   faq: {
     title: "Frequently asked questions",
     items: [
+      {
+        q: "How do you ensure the formula stays intact during delivery?",
+        a: "Our packaging is designed to preserve every characteristic of your formulation, avoiding loss of effectiveness or changes in color or scent. We ship in thermal packaging that keeps room temperature for up to 6 hours.",
+      },
       {
         q: "Do I need a prescription to compound a formula?",
         a: "It depends on the product. Some formulas require a prescription, others don't. Our team will guide you through each case during your visit.",
