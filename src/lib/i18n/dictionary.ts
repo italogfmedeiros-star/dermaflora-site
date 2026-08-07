@@ -139,23 +139,62 @@ export const pt = {
   },
   testimonials: {
     title: "Quem confia em nós, conta como foi.",
+    ratingPrefix: "com base em",
+    ratingSuffix: "avaliações no Google",
+    reviewsLinkLabel: "Ver todas as avaliações",
+    prevAria: "Avaliações anteriores",
+    nextAria: "Próximas avaliações",
     items: [
       {
         quote:
-          "Depois de anos trocando de produto, finalmente encontrei uma fórmula que entende a minha pele.",
-        name: "Marina Albuquerque",
-        context: "cliente de dermocosmética",
+          "Atendimento impecável! Já sou cliente há vários anos e sempre me atendem muito bem. Eu indico.",
+        name: "Milena B.",
+        context: "Avaliação no Google",
       },
       {
         quote:
-          "O atendimento é diferente. Sinto que conversam comigo, não apenas vendem um produto.",
-        name: "Carlos Eduardo Santos",
-        context: "cliente há 6 anos",
+          "Do atendimento à entrega, tudo foi perfeito. A Nívea me atendeu de forma clara, objetiva e com muita atenção, esclarecendo todas as minhas dúvidas e atendendo a todas as minhas necessidades. Recomendo muito!",
+        name: "Leandro Sousa",
+        context: "Avaliação no Google",
       },
       {
-        quote: "O Gutfiber mudou minha rotina. Simples assim.",
-        name: "Beatriz Lima Ferreira",
-        context: "cliente de nutrição",
+        quote:
+          "Thais Camila foi muito atenciosa me atendendo no final do dia, quando eu achava que minha solicitação seria vista somente no dia seguinte. A Dermaflora tem bons descontos e opera para o melhor do cliente. Alexandra é super atenciosa.",
+        name: "Giovanna Landucci",
+        context: "Google Local Guide",
+      },
+      {
+        quote:
+          "Boa loja, eficiente na manipulação de medicamentos. Bom serviço de orçamento e entrega dos produtos.",
+        name: "Cláudio Andraos",
+        context: "Google Local Guide",
+      },
+      {
+        quote:
+          "Atendimento rápido e eficiente. Processo de orçamento e fechamento de pedido super simples. Entrega bem rápida tbm! Recomendo!",
+        name: "Aline Oliveira",
+        context: "Avaliação no Google",
+      },
+      {
+        quote:
+          "Compro há anos na Dermaflora e o atendimento sempre é rápido e elas usam insumos de primeira qualidade, o atendimento pelo whats é super eficiente.",
+        name: "Mariana Muniz",
+        context: "Google Local Guide",
+      },
+      {
+        quote: "Atendimento rápido e eficiente. Produtos de qualidade!",
+        name: "Laura Hissatomi",
+        context: "Avaliação no Google",
+      },
+      {
+        quote: "Atendida hoje por Eliane. Atendimento ágil e eficiente.",
+        name: "Sílvia Hippert",
+        context: "Avaliação no Google",
+      },
+      {
+        quote: "Tudo foi muito fácil e Tais foi muito eficiente!",
+        name: "Nanae Iida",
+        context: "Google Local Guide",
       },
     ],
   },
@@ -396,23 +435,62 @@ export const en: typeof pt = {
   },
   testimonials: {
     title: "Hear it from those who trust us.",
+    ratingPrefix: "based on",
+    ratingSuffix: "reviews on Google",
+    reviewsLinkLabel: "See all reviews",
+    prevAria: "Previous reviews",
+    nextAria: "Next reviews",
     items: [
       {
         quote:
-          "After years of switching products, I finally found a formula that understands my skin.",
-        name: "Marina Albuquerque",
-        context: "dermocosmetics client",
+          "Impeccable service! I've been a customer for several years and they always treat me really well. I recommend it.",
+        name: "Milena B.",
+        context: "Google review",
       },
       {
         quote:
-          "The service is different. I feel like they actually talk with me, not just sell me a product.",
-        name: "Carlos Eduardo Santos",
-        context: "customer for 6 years",
+          "From service to delivery, everything was perfect. Nívea helped me clearly and attentively, answering all my questions and meeting every need. Highly recommend!",
+        name: "Leandro Sousa",
+        context: "Google review",
       },
       {
-        quote: "Gutfiber changed my routine. It's that simple.",
-        name: "Beatriz Lima Ferreira",
-        context: "nutrition client",
+        quote:
+          "Thais Camila was incredibly attentive, helping me at the end of the day when I thought my request would only be handled the next day. Dermaflora offers great discounts and always puts the customer first. Alexandra is super attentive.",
+        name: "Giovanna Landucci",
+        context: "Google Local Guide",
+      },
+      {
+        quote:
+          "Good store, efficient at compounding medications. Great quoting and delivery service.",
+        name: "Cláudio Andraos",
+        context: "Google Local Guide",
+      },
+      {
+        quote:
+          "Fast, efficient service. The quoting and checkout process was super simple. Delivery was quick too! Recommend it.",
+        name: "Aline Oliveira",
+        context: "Google review",
+      },
+      {
+        quote:
+          "I've been buying from Dermaflora for years — service is always fast, they use top-quality ingredients, and their WhatsApp support is super efficient.",
+        name: "Mariana Muniz",
+        context: "Google Local Guide",
+      },
+      {
+        quote: "Fast, efficient service. Quality products!",
+        name: "Laura Hissatomi",
+        context: "Google review",
+      },
+      {
+        quote: "Helped today by Eliane. Quick, efficient service.",
+        name: "Sílvia Hippert",
+        context: "Google review",
+      },
+      {
+        quote: "Everything was so easy, and Tais was very efficient!",
+        name: "Nanae Iida",
+        context: "Google Local Guide",
       },
     ],
   },

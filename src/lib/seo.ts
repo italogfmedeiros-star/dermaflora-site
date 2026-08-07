@@ -5,6 +5,14 @@ export const SITE_URL =
 export const SITE_NAME = "Dermaflora Farmácia de Manipulação";
 export const WHATSAPP_URL = "https://wa.me/5511988296867";
 
+// Avaliações do Google (unidade Chácara Santo Antônio). Conferido manualmente
+// em ago/2026 — atualizar esses três valores de tempos em tempos, não há
+// integração automática com a API do Google.
+export const GOOGLE_REVIEWS_URL =
+  "https://www.google.com/maps/search/Dermaflora+Farm%C3%A1cia+de+Manipula%C3%A7%C3%A3o+Ch%C3%A1cara+Santo+Ant%C3%B4nio";
+export const GOOGLE_RATING_VALUE = "4.9";
+export const GOOGLE_REVIEWS_COUNT = 970;
+
 export const LOCATIONS = [
   {
     name: `${SITE_NAME} - Unidade Chácara Santo Antônio`,
@@ -63,6 +71,15 @@ export function pharmacyJsonLd() {
     },
     telephone: "+5511988296867",
     url: SITE_URL,
+    // Só a unidade Chácara Santo Antônio (index 0) tem o Google Business
+    // conferido — ver GOOGLE_RATING_VALUE acima.
+    ...(index === 0 && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: GOOGLE_RATING_VALUE,
+        reviewCount: GOOGLE_REVIEWS_COUNT,
+      },
+    }),
   }));
 }
 
