@@ -28,9 +28,18 @@ function StarRow({ tone }: { tone: "light" | "dark" }) {
   );
 }
 
-function TestimonialCard({ t, highlight }: { t: TestimonialItem; highlight: boolean }) {
+function TestimonialCard({
+  t,
+  highlight,
+  hidden,
+}: {
+  t: TestimonialItem;
+  highlight: boolean;
+  hidden?: boolean;
+}) {
   return (
     <div
+      aria-hidden={hidden}
       className={
         (highlight
           ? "bg-gradient-to-br from-df-primary-600 to-df-primary-900 text-white shadow-df-lg"
@@ -199,9 +208,12 @@ export function Testimonials() {
           >
             <div ref={trackRef} className="flex gap-5 will-change-transform">
               {loopItems.map((t, i) => (
-                <div key={i} aria-hidden={i >= items.length}>
-                  <TestimonialCard t={t} highlight={i % 3 === 0} />
-                </div>
+                <TestimonialCard
+                  key={i}
+                  t={t}
+                  highlight={i % 3 === 0}
+                  hidden={i >= items.length}
+                />
               ))}
             </div>
           </div>
