@@ -1,11 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
+import { useReducedMotion } from "motion/react";
 import { CaretLeft, CaretRight, Quotes, Star } from "@phosphor-icons/react";
 import { LabTexture } from "./LabTexture";
 import { Reveal } from "./Reveal";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { GOOGLE_RATING_VALUE, GOOGLE_REVIEWS_COUNT, GOOGLE_REVIEWS_URL } from "@/lib/seo";
+
+// Velocidade da rolagem contínua, em pixels por segundo.
+const SPEED = 30;
+
+type TestimonialItem = { quote: string; name: string; context: string };
 
 function StarRow({ tone }: { tone: "light" | "dark" }) {
   return (
@@ -22,30 +28,109 @@ function StarRow({ tone }: { tone: "light" | "dark" }) {
   );
 }
 
+function TestimonialCard({ t, highlight }: { t: TestimonialItem; highlight: boolean }) {
+  return (
+    <div
+      className={
+        (highlight
+          ? "bg-gradient-to-br from-df-primary-600 to-df-primary-900 text-white shadow-df-lg"
+          : "glass") +
+        " flex w-[85vw] shrink-0 flex-col justify-between rounded-df-lg p-7 sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
+      }
+    >
+      <Quotes size={28} weight="fill" className={highlight ? "text-white/40" : "text-df-primary-300"} />
+      <p
+        className={
+          highlight
+            ? "mt-4 text-lg font-medium leading-snug"
+            : "mt-4 text-lg font-medium leading-snug text-df-ink-900"
+        }
+      >
+        {t.quote}
+      </p>
+      <div className="mt-6">
+        <StarRow tone={highlight ? "dark" : "light"} />
+        <p className={highlight ? "mt-2 font-semibold" : "mt-2 font-semibold text-df-ink-900"}>
+          {t.name}
+        </p>
+        <p className={highlight ? "text-sm text-white/70" : "text-sm text-df-ink-400"}>
+          {t.context}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export function Testimonials() {
   const { dict } = useLanguage();
   const trackRef = useRef<HTMLDivElement>(null);
-  const [canPrev, setCanPrev] = useState(false);
-  const [canNext, setCanNext] = useState(true);
+  const setWidthRef = useRef(0);
+  const offsetRef = useRef(0);
+  const jumpTargetRef = useRef<number | null>(null);
+  const pausedRef = useRef(false);
+  const reduceMotion = useReducedMotion();
 
-  const updateArrows = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    setCanPrev(el.scrollLeft > 4);
-    setCanNext(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
-  }, []);
+  const items = dict.testimonials.items;
+  // Duplicado uma vez: com a largura de um conjunto (setWidthRef) sabemos
+  // quando "dar a volta" de forma imperceptível, criando o loop contínuo.
+  const loopItems = [...items, ...items];
 
   useEffect(() => {
-    updateArrows();
-    window.addEventListener("resize", updateArrows);
-    return () => window.removeEventListener("resize", updateArrows);
-  }, [updateArrows]);
-
-  function scrollByPage(direction: 1 | -1) {
     const el = trackRef.current;
     if (!el) return;
-    el.scrollBy({ left: direction * el.clientWidth, behavior: "smooth" });
-  }
+    const measure = () => {
+      setWidthRef.current = el.scrollWidth / 2;
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [items.length]);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el || reduceMotion) return;
+
+    let raf = 0;
+    let last = performance.now();
+
+    function tick(now: number) {
+      const dt = (now - last) / 1000;
+      last = now;
+      const setWidth = setWidthRef.current;
+
+      if (setWidth > 0) {
+        if (jumpTargetRef.current !== null) {
+          const diff = jumpTargetRef.current - offsetRef.current;
+          if (Math.abs(diff) < 0.5) {
+            offsetRef.current = jumpTargetRef.current;
+            jumpTargetRef.current = null;
+          } else {
+            offsetRef.current += diff * Math.min(1, dt * 6);
+          }
+        } else if (!pausedRef.current) {
+          offsetRef.current += SPEED * dt;
+        }
+        offsetRef.current = ((offsetRef.current % setWidth) + setWidth) % setWidth;
+        el!.style.transform = `translateX(-${offsetRef.current}px)`;
+      }
+
+      raf = requestAnimationFrame(tick);
+    }
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [reduceMotion]);
+
+  const step = useCallback((direction: 1 | -1) => {
+    const el = trackRef.current;
+    const first = el?.children[0] as HTMLElement | undefined;
+    if (!el || !first) return;
+    const gap = parseFloat(getComputedStyle(el).columnGap || "20") || 20;
+    const cardStep = first.offsetWidth + gap;
+    const base = jumpTargetRef.current ?? offsetRef.current;
+    jumpTargetRef.current = base + direction * cardStep;
+  }, []);
 
   return (
     <section id="depoimentos" className="relative overflow-hidden bg-df-primary-200 py-20 md:py-28">
@@ -84,19 +169,17 @@ export function Testimonials() {
             <div className="hidden items-center gap-2 sm:flex">
               <button
                 type="button"
-                onClick={() => scrollByPage(-1)}
-                disabled={!canPrev}
+                onClick={() => step(-1)}
                 aria-label={dict.testimonials.prevAria}
-                className="glass grid h-11 w-11 place-items-center rounded-df-full text-df-ink-900 transition-all duration-200 hover:-translate-y-0.5 hover:text-df-primary-700 disabled:pointer-events-none disabled:opacity-40"
+                className="glass grid h-11 w-11 place-items-center rounded-df-full text-df-ink-900 transition-all duration-200 hover:-translate-y-0.5 hover:text-df-primary-700"
               >
                 <CaretLeft size={18} weight="bold" />
               </button>
               <button
                 type="button"
-                onClick={() => scrollByPage(1)}
-                disabled={!canNext}
+                onClick={() => step(1)}
                 aria-label={dict.testimonials.nextAria}
-                className="glass grid h-11 w-11 place-items-center rounded-df-full text-df-ink-900 transition-all duration-200 hover:-translate-y-0.5 hover:text-df-primary-700 disabled:pointer-events-none disabled:opacity-40"
+                className="glass grid h-11 w-11 place-items-center rounded-df-full text-df-ink-900 transition-all duration-200 hover:-translate-y-0.5 hover:text-df-primary-700"
               >
                 <CaretRight size={18} weight="bold" />
               </button>
@@ -106,52 +189,21 @@ export function Testimonials() {
 
         <Reveal delay={0.1}>
           <div
-            ref={trackRef}
-            onScroll={updateArrows}
-            className="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            className="relative mt-10 overflow-hidden"
+            onMouseEnter={() => {
+              pausedRef.current = true;
+            }}
+            onMouseLeave={() => {
+              pausedRef.current = false;
+            }}
           >
-            {dict.testimonials.items.map((t, i) => {
-              const highlight = i % 3 === 0;
-              return (
-                <div
-                  key={t.name}
-                  className={
-                    (highlight
-                      ? "bg-gradient-to-br from-df-primary-600 to-df-primary-900 text-white shadow-df-lg"
-                      : "glass") +
-                    " flex w-[85%] shrink-0 snap-start flex-col justify-between rounded-df-lg p-7 sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
-                  }
-                >
-                  <Quotes
-                    size={28}
-                    weight="fill"
-                    className={highlight ? "text-white/40" : "text-df-primary-300"}
-                  />
-                  <p
-                    className={
-                      highlight
-                        ? "mt-4 text-lg font-medium leading-snug"
-                        : "mt-4 text-lg font-medium leading-snug text-df-ink-900"
-                    }
-                  >
-                    {t.quote}
-                  </p>
-                  <div className="mt-6">
-                    <StarRow tone={highlight ? "dark" : "light"} />
-                    <p
-                      className={
-                        highlight ? "mt-2 font-semibold" : "mt-2 font-semibold text-df-ink-900"
-                      }
-                    >
-                      {t.name}
-                    </p>
-                    <p className={highlight ? "text-sm text-white/70" : "text-sm text-df-ink-400"}>
-                      {t.context}
-                    </p>
-                  </div>
+            <div ref={trackRef} className="flex gap-5 will-change-transform">
+              {loopItems.map((t, i) => (
+                <div key={i} aria-hidden={i >= items.length}>
+                  <TestimonialCard t={t} highlight={i % 3 === 0} />
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>

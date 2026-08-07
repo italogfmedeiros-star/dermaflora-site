@@ -182,9 +182,10 @@ export const pt = {
         context: "Google Local Guide",
       },
       {
-        quote: "Atendimento rápido e eficiente. Produtos de qualidade!",
-        name: "Laura Hissatomi",
-        context: "Avaliação no Google",
+        quote:
+          "Meus parabéns, dessa vez superou minhas expectativas! Dos outros anos só foi ladeira abaixo, mas esse ano estou vendo que vocês estão mudando, principalmente nos valores que antes estavam muito altos. Agora estou gostando, até a embalagem está top.",
+        name: "regiskaka Gonçalves",
+        context: "Google Local Guide",
       },
       {
         quote: "Atendida hoje por Eliane. Atendimento ágil e eficiente.",
@@ -478,9 +479,10 @@ export const en: typeof pt = {
         context: "Google Local Guide",
       },
       {
-        quote: "Fast, efficient service. Quality products!",
-        name: "Laura Hissatomi",
-        context: "Google review",
+        quote:
+          "Congratulations, this time you exceeded my expectations! Other years were all downhill, but this year I can see you're changing, especially the prices, which used to be very high. Now I'm liking it — even the packaging looks great.",
+        name: "regiskaka Gonçalves",
+        context: "Google Local Guide",
       },
       {
         quote: "Helped today by Eliane. Quick, efficient service.",
