@@ -63,7 +63,7 @@ export const pt = {
     ],
   },
   about: {
-    title: "São anos de história, escritos fórmula a fórmula.",
+    title: "Anos de história, escritos fórmula a fórmula.",
     subtitle:
       "Da fundação até hoje, o que nunca mudou foi o compromisso de olhar para cada pessoa como um caso único.",
     milestones: [
