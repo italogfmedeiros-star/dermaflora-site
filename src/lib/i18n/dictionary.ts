@@ -44,6 +44,12 @@ export const pt = {
           "Suplementação personalizada, feita a partir da sua necessidade.",
         cta: "Conhecer os serviços",
       },
+      {
+        title: "A ciência da regeneração chegou a um novo nível.",
+        subtitle:
+          "Uma tecnologia inovadora que estimula o rejuvenescimento celular e potencializa o reparo da pele.",
+        cta: "Conhecer os serviços",
+      },
     ],
     prevAria: "Slide anterior",
     nextAria: "Próximo slide",
@@ -345,6 +351,12 @@ export const en: typeof pt = {
         title: "Science and care in every capsule.",
         subtitle:
           "Personalized supplementation, built around your case — not a generic formula off the shelf.",
+        cta: "Explore our services",
+      },
+      {
+        title: "The science of regeneration just reached a new level.",
+        subtitle:
+          "An innovative technology that stimulates cell renewal and boosts your skin's natural repair.",
         cta: "Explore our services",
       },
     ],

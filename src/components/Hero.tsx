@@ -38,16 +38,32 @@ const SLIDE_VIDEOS = [
     label: "Cápsulas manipuladas Dermaflora derramando de um frasco branco",
     objectClassName: "object-[65%_center] md:object-[72%_center]",
   },
+  {
+    src: "/videos/hero-video-5.mp4",
+    poster: "/images/hero-banner-5.png",
+    label:
+      "Cinco potes de creme Dermaflora Caps Active Cream flutuando suavemente em um laboratório claro",
+    objectClassName: "object-[45%_center] md:object-[40%_center]",
+  },
 ];
 
+// textOnRight controla três coisas em conjunto pra cada slide: o lado do
+// texto/botão, o sentido do gradiente de legibilidade (fica escuro do lado
+// do texto) e o alinhamento do subtítulo/CTA — ver usos abaixo.
 const SLIDE_LAYOUTS = [
-  { wrapClass: "absolute inset-0 flex items-center justify-start", textAlign: "" },
+  { wrapClass: "absolute inset-0 flex items-center justify-start", textAlign: "", textOnRight: false },
   {
     wrapClass: "absolute inset-0 flex items-center justify-start md:justify-end",
     textAlign: "md:mr-12 md:text-right",
+    textOnRight: true,
   },
-  { wrapClass: "absolute inset-0 flex items-center justify-start", textAlign: "" },
-  { wrapClass: "absolute inset-0 flex items-center justify-start", textAlign: "" },
+  { wrapClass: "absolute inset-0 flex items-center justify-start", textAlign: "", textOnRight: false },
+  { wrapClass: "absolute inset-0 flex items-center justify-start", textAlign: "", textOnRight: false },
+  {
+    wrapClass: "absolute inset-0 flex items-center justify-start md:justify-end",
+    textAlign: "md:mr-12 md:text-right",
+    textOnRight: true,
+  },
 ];
 
 const SLIDE_COUNT = SLIDE_VIDEOS.length;
@@ -104,7 +120,7 @@ export function Hero() {
             <div
               key={video.src}
               className={`hero-slide absolute inset-0 bg-gradient-to-r from-df-warm-100 via-df-warm-100/80 to-transparent ${
-                i === 1 ? "md:bg-gradient-to-l" : ""
+                SLIDE_LAYOUTS[i].textOnRight ? "md:bg-gradient-to-l" : ""
               } ${i === current ? "is-active" : ""}`}
             />
           ))}
@@ -128,14 +144,14 @@ export function Hero() {
                 </h1>
                 <p
                   className={`mt-4 max-w-md text-lg leading-relaxed text-df-ink-700 ${
-                    i === 1 ? "md:ml-auto" : ""
+                    SLIDE_LAYOUTS[i].textOnRight ? "md:ml-auto" : ""
                   }`}
                 >
                   {slide.subtitle}
                 </p>
                 <div
                   className={`mt-6 flex flex-wrap items-center gap-4 ${
-                    i === 1 ? "md:justify-end" : ""
+                    SLIDE_LAYOUTS[i].textOnRight ? "md:justify-end" : ""
                   }`}
                 >
                   <a
