@@ -61,7 +61,14 @@ export function Footer() {
             <p>{dict.footer.copyright.replace("{year}", String(new Date().getFullYear()))}</p>
             <p>
               {dict.footer.developedBy}{" "}
-              <span className="font-medium text-white/70">Devopsia</span>
+              <a
+                href="https://devopsia.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-white/70 transition-colors hover:text-white"
+              >
+                Devopsia
+              </a>
             </p>
           </div>
         </div>
