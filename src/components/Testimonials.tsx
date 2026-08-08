@@ -110,7 +110,14 @@ export function Testimonials() {
 
       if (setWidth > 0) {
         if (jumpTargetRef.current !== null) {
-          const diff = jumpTargetRef.current - offsetRef.current;
+          // Distância circular mais curta até o alvo: sem isso, um alvo que
+          // "estoura" para fora de [0, setWidth) (ex.: prev a partir do
+          // primeiro item) nunca converge — o offset é normalizado de volta
+          // pro intervalo a cada frame e o laço abaixo roda pra sempre.
+          let diff = (jumpTargetRef.current - offsetRef.current) % setWidth;
+          if (diff > setWidth / 2) diff -= setWidth;
+          else if (diff < -setWidth / 2) diff += setWidth;
+
           if (Math.abs(diff) < 0.5) {
             offsetRef.current = jumpTargetRef.current;
             jumpTargetRef.current = null;
@@ -134,11 +141,14 @@ export function Testimonials() {
   const step = useCallback((direction: 1 | -1) => {
     const el = trackRef.current;
     const first = el?.children[0] as HTMLElement | undefined;
-    if (!el || !first) return;
+    const setWidth = setWidthRef.current;
+    if (!el || !first || !setWidth) return;
     const gap = parseFloat(getComputedStyle(el).columnGap || "20") || 20;
     const cardStep = first.offsetWidth + gap;
     const base = jumpTargetRef.current ?? offsetRef.current;
-    jumpTargetRef.current = base + direction * cardStep;
+    // Normalizado pro intervalo [0, setWidth): evita que cliques rápidos e
+    // repetidos acumulem um alvo cada vez mais distante em ponto flutuante.
+    jumpTargetRef.current = ((base + direction * cardStep) % setWidth + setWidth) % setWidth;
   }, []);
 
   return (
