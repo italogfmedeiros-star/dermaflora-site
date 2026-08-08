@@ -29,7 +29,7 @@ export const pt = {
       {
         title: "Beleza que respeita o tempo da sua pele.",
         subtitle:
-          "Fórmulas dermocosméticas exclusivas, pensadas para cada fase e necessidade.",
+          "Fórmulas dermocosméticas exclusivas, pensadas para cada fase.",
         cta: "Conhecer os serviços",
       },
       {
@@ -45,7 +45,7 @@ export const pt = {
         cta: "Conhecer os serviços",
       },
       {
-        title: "Na Dermaflora a ciência da regeneração chegou a um novo nível.",
+        title: "Na Dermaflora a ciência da regeneração chegou a outro nível.",
         subtitle:
           "Uma tecnologia inovadora que estimula o rejuvenescimento celular e potencializa o reparo da pele.",
         cta: "Conhecer os serviços",
