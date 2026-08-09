@@ -6,6 +6,7 @@ import { CaretLeft, CaretRight, Quotes, Star } from "@phosphor-icons/react";
 import { LabTexture } from "./LabTexture";
 import { Reveal } from "./Reveal";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useLoadingFlash } from "@/components/loading/LoadingOverlayProvider";
 import { GOOGLE_RATING_VALUE, GOOGLE_REVIEWS_COUNT, GOOGLE_REVIEWS_URL } from "@/lib/seo";
 
 // Velocidade da rolagem contínua, em pixels por segundo.
@@ -72,6 +73,7 @@ function TestimonialCard({
 
 export function Testimonials() {
   const { dict } = useLanguage();
+  const triggerFlash = useLoadingFlash();
   const trackRef = useRef<HTMLDivElement>(null);
   const setWidthRef = useRef(0);
   const offsetRef = useRef(0);
@@ -174,6 +176,7 @@ export function Testimonials() {
               href={GOOGLE_REVIEWS_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={triggerFlash}
               className="glass flex items-center gap-3 rounded-df-lg px-4 py-3 transition-transform hover:-translate-y-0.5"
             >
               <StarRow tone="light" />

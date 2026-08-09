@@ -2,6 +2,7 @@
 
 import { WHATSAPP_URL } from "@/lib/seo";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useLoadingFlash } from "@/components/loading/LoadingOverlayProvider";
 
 export function WhatsAppCta({
   variant = "default",
@@ -9,6 +10,7 @@ export function WhatsAppCta({
   variant?: "default" | "blog" | "cursos";
 }) {
   const { dict } = useLanguage();
+  const triggerFlash = useLoadingFlash();
 
   const title =
     variant === "blog"
@@ -33,6 +35,7 @@ export function WhatsAppCta({
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={triggerFlash}
         className="inline-flex shrink-0 items-center justify-center rounded-df-full bg-df-whatsapp px-5 py-2.5 text-sm font-semibold text-white shadow-df-sm transition-[transform,filter] hover:-translate-y-0.5 hover:brightness-95"
       >
         {dict.whatsAppCta.cta}

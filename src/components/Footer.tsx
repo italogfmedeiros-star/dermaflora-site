@@ -4,9 +4,11 @@ import Link from "next/link";
 import { FacebookLogo, InstagramLogo } from "@phosphor-icons/react";
 import { LogoMark } from "./Logo";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useLoadingFlash } from "@/components/loading/LoadingOverlayProvider";
 
 export function Footer() {
   const { dict } = useLanguage();
+  const triggerFlash = useLoadingFlash();
 
   const links = [
     { href: "/#sobre", label: dict.nav.sobre },
@@ -38,6 +40,7 @@ export function Footer() {
               href="https://www.instagram.com/dermaflora"
               target="_blank"
               rel="noreferrer"
+              onClick={triggerFlash}
               aria-label={dict.header.instagramAria}
               className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-white/50 hover:text-white"
             >
@@ -47,6 +50,7 @@ export function Footer() {
               href="https://www.facebook.com/dermaflora"
               target="_blank"
               rel="noreferrer"
+              onClick={triggerFlash}
               aria-label={dict.header.facebookAria}
               className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-white/50 hover:text-white"
             >

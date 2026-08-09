@@ -18,6 +18,9 @@ export const pt = {
     langToggleAria: "Mudar idioma para inglês",
     whatsAppCta: "Envie sua receita",
   },
+  loading: {
+    label: "Carregando",
+  },
   hero: {
     slides: [
       {
@@ -326,6 +329,9 @@ export const en: typeof pt = {
     closeMenuAria: "Close menu",
     langToggleAria: "Switch language to Portuguese",
     whatsAppCta: "Send your prescription",
+  },
+  loading: {
+    label: "Loading",
   },
   hero: {
     slides: [

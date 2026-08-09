@@ -4,9 +4,11 @@ import { WhatsappLogo, MapPin, Clock, Phone, EnvelopeSimple } from "@phosphor-ic
 import { Reveal } from "./Reveal";
 import { ContactForm } from "./ContactForm";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useLoadingFlash } from "@/components/loading/LoadingOverlayProvider";
 
 export function FinalCta() {
   const { dict } = useLanguage();
+  const triggerFlash = useLoadingFlash();
 
   return (
     <section id="contato" className="relative overflow-hidden bg-df-primary-900 py-20 md:py-28">
@@ -82,6 +84,7 @@ export function FinalCta() {
                       href="https://wa.me/5511988296867"
                       target="_blank"
                       rel="noreferrer"
+                      onClick={triggerFlash}
                       className="inline-flex items-center gap-1.5 text-lg font-bold tracking-tight text-white transition-colors hover:text-df-whatsapp"
                     >
                       <WhatsappLogo size={18} weight="fill" className="shrink-0 text-df-whatsapp" />
@@ -91,6 +94,7 @@ export function FinalCta() {
                       href="https://wa.me/5511965731266"
                       target="_blank"
                       rel="noreferrer"
+                      onClick={triggerFlash}
                       className="inline-flex items-center gap-1.5 text-lg font-bold tracking-tight text-white transition-colors hover:text-df-whatsapp"
                     >
                       <WhatsappLogo size={18} weight="fill" className="shrink-0 text-df-whatsapp" />

@@ -204,6 +204,53 @@ body {
   }
 }
 
+/* Loading screen — cápsula girando no eixo vertical (rotateY), sombra
+   pulsando no mesmo ritmo pra vender a profundidade, hélice de DNA ao fundo
+   só "respirando" em opacidade. Referência: o antigo pill_loader.gif do
+   site em WordPress. */
+@keyframes df-capsule-spin {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes df-capsule-shadow {
+  0%,
+  50%,
+  100% {
+    transform: scaleX(1);
+    opacity: 0.3;
+  }
+  25%,
+  75% {
+    transform: scaleX(0.35);
+    opacity: 0.15;
+  }
+}
+
+@keyframes df-dna-breathe {
+  0%,
+  100% {
+    opacity: 0.32;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.df-loading-capsule {
+  animation: df-capsule-spin 1.3s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.df-loading-shadow {
+  animation: df-capsule-shadow 1.3s linear infinite;
+}
+
+.df-loading-dna {
+  animation: df-dna-breathe 3.2s ease-in-out infinite;
+}
+
 /* Conteúdo de post (blog): usado tanto no editor Tiptap quanto na
    renderização pública em /blog/[slug], pra garantir que fica igual. */
 .post-content {

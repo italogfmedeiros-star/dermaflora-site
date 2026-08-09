@@ -7,9 +7,11 @@ import { LabTexture } from "./LabTexture";
 import { Reveal } from "./Reveal";
 import { INSTAGRAM_POSTS } from "@/data/instagram-posts";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+import { useLoadingFlash } from "@/components/loading/LoadingOverlayProvider";
 
 export function News() {
   const { dict, lang } = useLanguage();
+  const triggerFlash = useLoadingFlash();
   const dateFormatter = useMemo(
     () =>
       new Intl.DateTimeFormat(lang === "pt" ? "pt-BR" : "en-US", {
@@ -66,6 +68,7 @@ export function News() {
                 href="https://www.instagram.com/dermaflora"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={triggerFlash}
                 className="font-semibold text-df-primary-700 transition-colors hover:text-df-primary-500"
               >
                 @dermaflora
@@ -108,6 +111,7 @@ export function News() {
                 href={post.permalink}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={triggerFlash}
                 className="glass group flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-df-lg transition-transform duration-200 hover:-translate-y-1 sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-3.75rem)/4)]"
               >
                 <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-df-primary-100 to-df-secondary-300/50">

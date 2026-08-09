@@ -14,6 +14,7 @@ import { LogoMark } from "./Logo";
 import { WHATSAPP_URL } from "@/lib/seo";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { LanguageToggle } from "@/lib/i18n/LanguageToggle";
+import { useLoadingFlash } from "@/components/loading/LoadingOverlayProvider";
 
 type NavLink =
   | { id: string; href: string; label: string }
@@ -21,6 +22,7 @@ type NavLink =
 
 export function Header() {
   const { dict } = useLanguage();
+  const triggerFlash = useLoadingFlash();
   const [open, setOpen] = useState(false);
   const [institucionalOpen, setInstitucionalOpen] = useState(false);
 
@@ -93,6 +95,7 @@ export function Header() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
+            onClick={triggerFlash}
             className="inline-flex items-center gap-2 rounded-df-full bg-df-whatsapp px-5 py-2.5 text-sm font-semibold text-white shadow-df-sm transition-[transform,filter] hover:-translate-y-0.5 hover:brightness-95 active:scale-[0.98]"
           >
             <WhatsappLogo size={18} weight="fill" />
@@ -102,6 +105,7 @@ export function Header() {
             href="https://www.instagram.com/dermaflora"
             target="_blank"
             rel="noreferrer"
+            onClick={triggerFlash}
             aria-label={dict.header.instagramAria}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-df-line text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
           >
@@ -111,6 +115,7 @@ export function Header() {
             href="https://www.facebook.com/dermaflora"
             target="_blank"
             rel="noreferrer"
+            onClick={triggerFlash}
             aria-label={dict.header.facebookAria}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-df-line text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
           >
@@ -180,7 +185,10 @@ export function Header() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  triggerFlash();
+                  setOpen(false);
+                }}
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-df-full bg-df-whatsapp px-5 py-3 text-base font-semibold text-white active:brightness-95"
               >
                 <WhatsappLogo size={20} weight="fill" />
@@ -190,6 +198,7 @@ export function Header() {
                 href="https://www.instagram.com/dermaflora"
                 target="_blank"
                 rel="noreferrer"
+                onClick={triggerFlash}
                 aria-label={dict.header.instagramAria}
                 className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-df-line text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
               >
@@ -199,6 +208,7 @@ export function Header() {
                 href="https://www.facebook.com/dermaflora"
                 target="_blank"
                 rel="noreferrer"
+                onClick={triggerFlash}
                 aria-label={dict.header.facebookAria}
                 className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-df-line text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
               >
