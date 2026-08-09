@@ -21,6 +21,14 @@ export const pt = {
   loading: {
     label: "Carregando",
   },
+  eventGallery: {
+    title: "Fotos do evento",
+    openAria: "Ampliar foto",
+    closeAria: "Fechar",
+    prevAria: "Foto anterior",
+    nextAria: "Próxima foto",
+    counter: "{current} de {total}",
+  },
   hero: {
     slides: [
       {
@@ -61,8 +69,8 @@ export const pt = {
     items: [
       { value: "45 anos", label: "de história e experiência farmacêutica" },
       { value: "100%", label: "fórmulas personalizadas para cada pessoa" },
-      { value: "Gutfiber®", label: "linha própria de produtos exclusivos" },
       { value: "4 frentes", label: "magistral, dermocosmética, nutrição e cabelos" },
+      { value: "Gutfiber®", label: "linha própria de produtos exclusivos" },
     ],
   },
   about: {
@@ -332,6 +340,14 @@ export const en: typeof pt = {
   },
   loading: {
     label: "Loading",
+  },
+  eventGallery: {
+    title: "Event photos",
+    openAria: "Enlarge photo",
+    closeAria: "Close",
+    prevAria: "Previous photo",
+    nextAria: "Next photo",
+    counter: "{current} of {total}",
   },
   hero: {
     slides: [

@@ -7,9 +7,11 @@ import { Footer } from "@/components/Footer";
 import { LabTexture } from "@/components/LabTexture";
 import { WhatsAppCta } from "@/components/blog/WhatsAppCta";
 import { CursoDate } from "@/components/cursos/CursoDate";
+import { EventGallery } from "@/components/cursos/EventGallery";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { createClient } from "@/lib/supabase/server";
 import { getCursoBySlug } from "@/lib/cursos-data";
+import { getEventGallery } from "@/data/event-galleries";
 import { SITE_URL, breadcrumbJsonLd } from "@/lib/seo";
 import { T } from "@/lib/i18n/T";
 
@@ -55,6 +57,7 @@ export default async function CursoEventoPage({
   const curso = await getCursoBySlug(supabase, slug);
   if (!curso) notFound();
 
+  const gallery = getEventGallery(curso.slug);
   const url = `${SITE_URL}/cursos-e-eventos/${curso.slug}`;
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -113,6 +116,8 @@ export default async function CursoEventoPage({
             className="post-content mt-10"
             dangerouslySetInnerHTML={{ __html: curso.content }}
           />
+
+          {gallery && <EventGallery photos={gallery.photos} />}
 
           <div className="mt-12">
             <WhatsAppCta variant="cursos" />
