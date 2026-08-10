@@ -136,7 +136,9 @@ export default async function BlogPostPage({
           />
 
           {post.cover_image_url && (
-            <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-df-lg">
+            // 756/354: proporção real das capas migradas do WordPress — 16/9
+            // ainda cortava as laterais e comia parte do logo Dermaflora.
+            <div className="relative mt-8 aspect-[756/354] overflow-hidden rounded-df-lg">
               <Image
                 src={post.cover_image_url}
                 alt={post.title}

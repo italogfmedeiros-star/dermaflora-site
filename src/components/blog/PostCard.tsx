@@ -24,7 +24,10 @@ export function PostCard({ post }: { post: Post }) {
       href={`/blog/${post.slug}`}
       className="glass group flex flex-col overflow-hidden rounded-df-lg transition-transform duration-200 hover:-translate-y-1"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-df-primary-100 to-df-secondary-300/50">
+      {/* 756/354: proporção real das capas migradas do WordPress (banner bem
+          largo, com a marca Dermaflora no canto) — usar 16/10 aqui cortava as
+          laterais e comia parte do logo. */}
+      <div className="relative aspect-[756/354] overflow-hidden bg-gradient-to-br from-df-primary-100 to-df-secondary-300/50">
         {post.cover_image_url && (
           <Image
             src={post.cover_image_url}
