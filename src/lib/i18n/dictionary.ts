@@ -157,7 +157,7 @@ export const pt = {
     ],
   },
   testimonials: {
-    title: "Quem confia em nós, conta como foi.",
+    title: "Quem confia na Dermaflora, compartilha sua experiência.",
     ratingPrefix: "com base em",
     ratingSuffix: "avaliações no Google",
     reviewsLinkLabel: "Ver todas as avaliações",
