@@ -38,9 +38,9 @@ export const pt = {
         cta: "Conhecer os serviços",
       },
       {
-        title: "Beleza que respeita o tempo da sua pele.",
+        title: "Beleza que respeita o seu tempo.",
         subtitle:
-          "Fórmulas dermocosméticas exclusivas, pensadas para cada fase.",
+          "Fórmulas dermocosméticas exclusivas, desenvolvidas para cada fase da sua pele.",
         cta: "Conhecer os serviços",
       },
       {
