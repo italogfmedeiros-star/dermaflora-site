@@ -107,6 +107,11 @@ export function Hero() {
             poster={video.poster}
             label={video.label}
             active={i === current}
+            // Só o slide atual e o próximo baixam o vídeo inteiro; os demais
+            // ficam só com metadata. Os 5 vídeos (~22MB juntos) disputando
+            // banda ao mesmo tempo no load inicial era o que deixava o
+            // carrossel travado no poster em conexões mais lentas.
+            preload={i === current || i === (current + 1) % SLIDE_COUNT ? "auto" : "metadata"}
             onEnded={handleVideoEnded}
             className={`hero-slide absolute inset-0 h-full w-full object-cover ${video.objectClassName} ${
               i === current ? "is-active" : ""
