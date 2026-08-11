@@ -166,8 +166,8 @@ export function Testimonials() {
       />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <Reveal className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
-          <div className="max-w-2xl">
-            <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
+          <div className="max-w-2xl md:max-w-none">
+            <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl md:whitespace-nowrap">
               {dict.testimonials.title}
             </h2>
           </div>
