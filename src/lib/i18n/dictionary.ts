@@ -69,7 +69,7 @@ export const pt = {
     items: [
       { value: "45 anos", label: "de história e experiência farmacêutica" },
       { value: "100%", label: "fórmulas personalizadas para cada pessoa" },
-      { value: "4 frentes", label: "magistral, dermocosmética, nutrição e cabelos" },
+      { value: "4 frentes", label: "magistral, dermocosmética, nutrição e tricologia" },
       { value: "Gutfiber®", label: "linha própria de produtos exclusivos" },
     ],
   },
@@ -109,7 +109,7 @@ export const pt = {
         text: "Suplementos como o Gutfiber®, para o bem-estar de dentro para fora.",
       },
       {
-        title: "Linha de Cabelos",
+        title: "Terapia capilar",
         text: "Produtos dedicados à saúde e estética dos seus cabelos.",
       },
     ],
