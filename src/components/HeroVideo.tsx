@@ -46,20 +46,25 @@ export function HeroVideo({
       video.play().catch(() => {});
     };
 
-    // Só chama play() quando já há buffer suficiente pra tocar sem travar
-    // (readyState >= 3 = HAVE_FUTURE_DATA). Chamar play() num vídeo ainda
-    // "vazio" é o que fazia o pedido ser abortado pelo navegador e o slide
-    // nunca sair do frame estático — essa era a causa do carrossel parecer
-    // só uma troca de imagens.
-    if (video.readyState >= 3) {
+    // Só chama play() quando já há pelo menos os metadados carregados
+    // (readyState >= 1 = HAVE_METADATA), pra não disparar play() num vídeo
+    // totalmente vazio. Usamos o evento "loadedmetadata" como gatilho, não
+    // "canplay": o WebKit/Safari tem um bug documentado (relatos no próprio
+    // fórum de desenvolvedores da Apple) em que "canplay"/"canplaythrough"
+    // às vezes nunca disparam, mesmo com o vídeo carregando normalmente por
+    // trás — isso deixava o slide congelado no poster só no Safari, porque
+    // o listener ficava esperando um evento que nunca vinha. loadedmetadata
+    // é o workaround confirmado: dispara de forma consistente tanto no
+    // Chrome quanto no Safari.
+    if (video.readyState >= 1) {
       play();
     } else {
-      video.addEventListener("canplay", play, { once: true });
+      video.addEventListener("loadedmetadata", play, { once: true });
     }
 
     return () => {
       cancelled = true;
-      video.removeEventListener("canplay", play);
+      video.removeEventListener("loadedmetadata", play);
     };
   }, [active]);
 
