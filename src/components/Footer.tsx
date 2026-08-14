@@ -62,7 +62,16 @@ export function Footer() {
         <div className="mt-5 border-t border-white/10 pt-4 text-[11px] leading-relaxed text-white/50">
           <p>{dict.footer.legal}</p>
           <div className="mt-2 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-            <p>{dict.footer.copyright.replace("{year}", String(new Date().getFullYear()))}</p>
+            <p>
+              {dict.footer.copyright.replace("{year}", String(new Date().getFullYear()))}{" "}
+              ·{" "}
+              <Link
+                href="/politica-de-privacidade"
+                className="underline decoration-white/30 underline-offset-2 transition-colors hover:text-white"
+              >
+                Política de Privacidade
+              </Link>
+            </p>
             <p>
               {dict.footer.developedBy}{" "}
               <a
