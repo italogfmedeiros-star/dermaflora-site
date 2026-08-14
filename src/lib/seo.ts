@@ -13,6 +13,8 @@ export const GOOGLE_REVIEWS_URL =
 export const GOOGLE_RATING_VALUE = "4.9";
 export const GOOGLE_REVIEWS_COUNT = 970;
 
+// Unidade Moema encerrou as atividades em 2026 — removida daqui de propósito,
+// não listar de novo sem confirmar que a loja reabriu.
 export const LOCATIONS = [
   {
     name: `${SITE_NAME} - Unidade Chácara Santo Antônio`,
@@ -20,13 +22,6 @@ export const LOCATIONS = [
     addressLocality: "São Paulo",
     addressRegion: "SP",
     postalCode: "04715-002",
-  },
-  {
-    name: `${SITE_NAME} - Unidade Moema`,
-    streetAddress: "Alameda dos Nhambiquaras, 911",
-    addressLocality: "São Paulo",
-    addressRegion: "SP",
-    postalCode: undefined,
   },
 ] as const;
 
