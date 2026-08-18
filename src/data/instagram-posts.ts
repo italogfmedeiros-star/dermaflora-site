@@ -23,6 +23,38 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "DcMMFvCxBkH",
+    permalink: "https://www.instagram.com/dermaflora/reel/DcMMFvCxBkH/",
+    image: "/instagram/DcMMFvCxBkH.jpg",
+    date: "2026-08-18",
+    category: "Produtos",
+    excerpt: "Tem novidade brilhando por aqui! Fórmulas clareadoras com regeneradora, vitamina C, needle e efeito lifting.",
+  },
+  {
+    shortcode: "Db9JOtQp2Wu",
+    permalink: "https://www.instagram.com/dermaflora/p/Db9JOtQp2Wu/",
+    image: "/instagram/Db9JOtQp2Wu.jpg",
+    date: "2026-08-12",
+    category: "Produtos",
+    excerpt: "O segredo da pele radiante! Caps Active Cream: clareadora, regeneradora, com vitamina C, needle e efeito lifting.",
+  },
+  {
+    shortcode: "Db5pCL_RWlN",
+    permalink: "https://www.instagram.com/dermaflora/reel/Db5pCL_RWlN/",
+    image: "/instagram/Db5pCL_RWlN.jpg",
+    date: "2026-08-11",
+    category: "Produtos",
+    excerpt: "Uma nova experiência em skincare chegou à Dermaflora! Fórmulas clareadoras, regeneradoras, com vitamina C e efeito lifting.",
+  },
+  {
+    shortcode: "Db0d1TPxszN",
+    permalink: "https://www.instagram.com/dermaflora/p/Db0d1TPxszN/",
+    image: "/instagram/Db0d1TPxszN.jpg",
+    date: "2026-08-09",
+    category: "Institucional",
+    excerpt: "Hoje celebramos a essência da proteção, da dedicação e do cuidado. Feliz Dia dos Pais!",
+  },
+  {
     shortcode: "DbauwEhxYqN",
     permalink: "https://www.instagram.com/dermaflora/reel/DbauwEhxYqN/",
     image: "/instagram/DbauwEhxYqN.jpg",
