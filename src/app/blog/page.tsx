@@ -51,7 +51,7 @@ export default async function BlogPage({
               <Link
                 key={category}
                 href={`/blog/categoria/${slugifyCategory(category)}`}
-                className="rounded-df-full border border-df-line bg-white px-3.5 py-1.5 text-xs font-semibold text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
+                className="glass rounded-df-full px-3.5 py-1.5 text-xs font-semibold text-df-ink-700 transition-colors hover:text-df-primary-700"
               >
                 {category}
               </Link>

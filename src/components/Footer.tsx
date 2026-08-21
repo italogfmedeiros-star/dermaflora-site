@@ -42,7 +42,7 @@ export function Footer() {
               rel="noreferrer"
               onClick={triggerFlash}
               aria-label={dict.header.instagramAria}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-white/50 hover:text-white"
+              className="glass-dark inline-flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:text-white"
             >
               <InstagramLogo size={16} weight="regular" />
             </a>
@@ -52,7 +52,7 @@ export function Footer() {
               rel="noreferrer"
               onClick={triggerFlash}
               aria-label={dict.header.facebookAria}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/20 transition-colors hover:border-white/50 hover:text-white"
+              className="glass-dark inline-flex h-8 w-8 items-center justify-center rounded-full transition-colors hover:text-white"
             >
               <FacebookLogo size={16} weight="regular" />
             </a>

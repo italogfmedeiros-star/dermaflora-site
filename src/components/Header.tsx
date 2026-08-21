@@ -43,7 +43,7 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-df-line bg-df-bg">
+    <header className="glass glass-header sticky top-0 z-40">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20 md:px-8">
         <Link href="/#topo" aria-label={dict.header.homeAria}>
           <LogoMark />
@@ -65,7 +65,7 @@ export function Header() {
                   />
                 </button>
                 <div className="invisible absolute left-0 top-full z-50 pt-3 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <div className="w-48 rounded-df-sm border border-df-line bg-df-bg py-2 shadow-df-sm">
+                  <div className="glass-strong w-48 rounded-df-sm py-2">
                     {link.children.map((child) => (
                       <Link
                         key={child.href}
@@ -107,7 +107,7 @@ export function Header() {
             rel="noreferrer"
             onClick={triggerFlash}
             aria-label={dict.header.instagramAria}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-df-line text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
+            className="glass inline-flex h-10 w-10 items-center justify-center rounded-full text-df-ink-700 transition-colors hover:text-df-primary-700"
           >
             <InstagramLogo size={18} weight="regular" />
           </a>
@@ -117,7 +117,7 @@ export function Header() {
             rel="noreferrer"
             onClick={triggerFlash}
             aria-label={dict.header.facebookAria}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-df-line text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
+            className="glass inline-flex h-10 w-10 items-center justify-center rounded-full text-df-ink-700 transition-colors hover:text-df-primary-700"
           >
             <FacebookLogo size={18} weight="regular" />
           </a>
@@ -127,7 +127,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-df-sm text-df-ink-900 transition-colors hover:bg-white/40 lg:hidden"
+          className="glass grid h-10 w-10 place-items-center rounded-df-sm text-df-ink-900 lg:hidden"
           aria-label={open ? dict.header.closeMenuAria : dict.header.openMenuAria}
           aria-expanded={open}
         >
@@ -136,7 +136,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-df-line bg-df-bg px-5 pb-6 pt-2 lg:hidden">
+        <div className="glass px-5 pb-6 pt-2 lg:hidden">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) =>
               "children" in link ? (
@@ -200,7 +200,7 @@ export function Header() {
                 rel="noreferrer"
                 onClick={triggerFlash}
                 aria-label={dict.header.instagramAria}
-                className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-df-line text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
+                className="glass inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-df-ink-700 transition-colors hover:text-df-primary-700"
               >
                 <InstagramLogo size={20} weight="regular" />
               </a>
@@ -210,7 +210,7 @@ export function Header() {
                 rel="noreferrer"
                 onClick={triggerFlash}
                 aria-label={dict.header.facebookAria}
-                className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-df-line text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700"
+                className="glass inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-df-ink-700 transition-colors hover:text-df-primary-700"
               >
                 <FacebookLogo size={20} weight="regular" />
               </a>

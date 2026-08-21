@@ -14,7 +14,7 @@ export function TrustBar() {
         {dict.trustBar.items.map((item) => (
           <div
             key={item.label}
-            className="rounded-df-lg border border-df-line bg-white px-4 py-8 text-center shadow-df-md lg:px-6"
+            className="glass rounded-df-lg px-4 py-8 text-center lg:px-6"
           >
             <p className="font-display text-2xl font-extrabold text-df-primary-700 md:text-3xl">
               {item.value}

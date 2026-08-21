@@ -45,16 +45,28 @@
   --df-shadow-md: 0 8px 24px rgba(49, 63, 50, 0.08);
   --df-shadow-lg: 0 20px 48px rgba(49, 63, 50, 0.12);
 
-  /* Glass — vidro claro para superfícies sobre fundo warm/mint */
+  /* Glass — vidro claro para superfícies sobre fundo warm/mint. A sombra
+     carrega dois insets: um claro no topo (luz entrando) e um escuro sutil
+     na base (espessura do vidro), o par que vende profundidade física. */
   --df-glass-bg: rgba(255, 255, 255, 0.55);
   --df-glass-bg-strong: rgba(255, 255, 255, 0.72);
+  --df-glass-bg-hover: rgba(255, 255, 255, 0.8);
   --df-glass-border: rgba(255, 255, 255, 0.65);
-  --df-glass-shadow: 0 8px 32px rgba(49, 63, 50, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  --df-glass-border-hover: rgba(255, 255, 255, 0.9);
+  --df-glass-shadow: 0 8px 32px rgba(49, 63, 50, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -1px 0 rgba(49, 63, 50, 0.06);
+  --df-glass-specular: radial-gradient(120% 140% at 12% -20%, rgba(255, 255, 255, 0.75), transparent 45%),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.2) 0%, transparent 38%, rgba(255, 255, 255, 0.12) 100%);
 
   /* Glass — vidro escuro para superfícies sobre fundo primary-900/ink-900 */
   --df-glass-dark-bg: rgba(255, 255, 255, 0.09);
+  --df-glass-dark-bg-hover: rgba(255, 255, 255, 0.14);
   --df-glass-dark-border: rgba(255, 255, 255, 0.16);
-  --df-glass-dark-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --df-glass-dark-border-hover: rgba(255, 255, 255, 0.26);
+  --df-glass-dark-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  --df-glass-dark-specular: radial-gradient(120% 140% at 12% -20%, rgba(255, 255, 255, 0.16), transparent 45%),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.08) 0%, transparent 38%, rgba(255, 255, 255, 0.05) 100%);
 
   --df-blur-sm: 12px;
   --df-blur-md: 20px;
@@ -131,31 +143,141 @@ body {
   }
 }
 
-/* Glass — superfície clara translúcida (header, cards, dropdowns) */
+/* Liquid glass — vidro líquido, aproximação web do material da Apple (não
+   existe um "liquid-glass.css" oficial; isto é backdrop-filter + camadas de
+   destaque/borda montadas à mão). Usado em qualquer superfície translúcida
+   do site: header, dropdowns, botões, listas e cards.
+
+   Cada variante tem duas camadas:
+   1. A classe em si — fundo translúcido, blur, borda e a sombra com os
+      dois insets (claro no topo, escuro na base) que dão espessura de vidro.
+   2. Um ::before com highlight especular (gradiente radial no canto
+      superior esquerdo, como luz batendo no vidro) — sempre atrás do
+      conteúdo (z-index: -1) e recortado pelo border-radius do elemento.
+
+   position/isolation/overflow ficam num seletor combinado pra evitar
+   repetir as mesmas 3 linhas em cada variante. */
+.glass,
+.glass-strong,
+.glass-dark {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: background-color 250ms ease, border-color 250ms ease;
+}
+
+.glass::before,
+.glass-strong::before,
+.glass-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Glass — superfície clara translúcida (header, cards, dropdowns, botões) */
 .glass {
   background: var(--df-glass-bg);
-  backdrop-filter: blur(var(--df-blur-md));
-  -webkit-backdrop-filter: blur(var(--df-blur-md));
+  backdrop-filter: blur(var(--df-blur-md)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--df-blur-md)) saturate(160%);
   border: 1px solid var(--df-glass-border);
   box-shadow: var(--df-glass-shadow);
 }
 
-/* Glass mais opaco — modais, painéis de destaque */
+.glass::before {
+  background: var(--df-glass-specular);
+}
+
+.glass:hover,
+.glass:focus-visible {
+  background: var(--df-glass-bg-hover);
+  border-color: var(--df-glass-border-hover);
+}
+
+/* Glass mais opaco — modais, painéis de destaque, dropdowns sobre conteúdo denso */
 .glass-strong {
   background: var(--df-glass-bg-strong);
-  backdrop-filter: blur(var(--df-blur-lg));
-  -webkit-backdrop-filter: blur(var(--df-blur-lg));
+  backdrop-filter: blur(var(--df-blur-lg)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--df-blur-lg)) saturate(160%);
   border: 1px solid var(--df-glass-border);
   box-shadow: var(--df-glass-shadow);
+}
+
+.glass-strong::before {
+  background: var(--df-glass-specular);
+}
+
+.glass-strong:hover,
+.glass-strong:focus-visible {
+  background: var(--df-glass-bg-hover);
+  border-color: var(--df-glass-border-hover);
 }
 
 /* Glass — superfície escura translúcida (seções sobre fundo escuro) */
 .glass-dark {
   background: var(--df-glass-dark-bg);
-  backdrop-filter: blur(var(--df-blur-md));
-  -webkit-backdrop-filter: blur(var(--df-blur-md));
+  backdrop-filter: blur(var(--df-blur-md)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--df-blur-md)) saturate(160%);
   border: 1px solid var(--df-glass-dark-border);
   box-shadow: var(--df-glass-dark-shadow);
+}
+
+.glass-dark::before {
+  background: var(--df-glass-dark-specular);
+}
+
+.glass-dark:hover,
+.glass-dark:focus-visible {
+  background: var(--df-glass-dark-bg-hover);
+  border-color: var(--df-glass-dark-border-hover);
+}
+
+/* Fallback de acessibilidade: quando o usuário pede menos transparência no
+   SO, trocamos o vidro por uma superfície sólida com boa opacidade, sem
+   blur nem destaque especular — mantém a legibilidade sem custo de GPU. */
+@media (prefers-reduced-transparency: reduce) {
+  .glass,
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .glass-dark {
+    background: rgba(28, 30, 28, 0.92);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .glass::before,
+  .glass-strong::before,
+  .glass-dark::before {
+    display: none;
+  }
+}
+
+/* Modificador pro header: o dropdown "Institucional" é um filho posicionado
+   absoluto que precisa transbordar abaixo da barra — sem isto, o
+   overflow:hidden do .glass corta o painel do dropdown fora da tela.
+   position: sticky também precisa ser reafirmado aqui: classes soltas (não
+   dentro de @layer) do globals.css sempre vencem utilities do Tailwind na
+   cascata, então o "position: relative" do .glass ganharia do "sticky"
+   vindo da classe utilitária do header, por mais que sticky venha depois
+   no HTML. */
+.glass-header {
+  position: sticky;
+  overflow: visible;
+}
+
+/* O header está sob o cursor o tempo todo — sem isto ele "acenderia" a
+   cada passada do mouse. O hover intensificado fica só pros botões/cards
+   de dentro dele, que têm sua própria classe .glass. */
+.glass-header:hover,
+.glass-header:focus-visible {
+  background: var(--df-glass-bg);
+  border-color: var(--df-glass-border);
 }
 
 /* Brilho ambiente suave atrás de painéis de vidro, para dar profundidade a fundos planos */
