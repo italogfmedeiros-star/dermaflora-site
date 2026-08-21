@@ -122,8 +122,13 @@ export function News() {
                     height={640}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                   />
-                  <span className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-df-full bg-white/80 text-df-ink-900 backdrop-blur">
-                    <InstagramLogo size={16} weight="regular" />
+                  {/* Wrapper só pro posicionamento absoluto: .glass já define
+                      position: relative (pro highlight especular), então não
+                      pode carregar a classe "absolute" no mesmo elemento. */}
+                  <span className="absolute right-3 top-3">
+                    <span className="glass grid h-8 w-8 place-items-center rounded-df-full text-df-ink-900">
+                      <InstagramLogo size={16} weight="regular" />
+                    </span>
                   </span>
                 </div>
                 <div className="flex flex-1 flex-col p-5">

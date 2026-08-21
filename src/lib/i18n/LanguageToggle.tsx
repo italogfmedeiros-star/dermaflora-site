@@ -11,7 +11,7 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
       type="button"
       onClick={toggleLang}
       aria-label={dict.header.langToggleAria}
-      className={`inline-flex items-center gap-1.5 rounded-df-full border border-df-line px-3.5 text-xs font-bold text-df-ink-700 transition-colors hover:border-df-primary-700 hover:text-df-primary-700 ${className}`}
+      className={`glass inline-flex items-center gap-1.5 rounded-df-full px-3.5 text-xs font-bold text-df-ink-700 transition-colors hover:text-df-primary-700 ${className}`}
     >
       <Translate size={16} weight="regular" />
       <span className={lang === "pt" ? "text-df-primary-700" : "text-df-ink-400"}>PT</span>

@@ -24,7 +24,7 @@ export function Faq() {
           </h2>
         </Reveal>
 
-        <div className="mt-10 divide-y divide-df-line border-t border-df-line">
+        <div className="glass-strong mt-10 divide-y divide-white/40 rounded-df-lg px-5 md:px-7">
           {dict.faq.items.map((item, i) => {
             const isOpen = openIndex === i;
             return (
