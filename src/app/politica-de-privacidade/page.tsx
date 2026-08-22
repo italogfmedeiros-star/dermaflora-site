@@ -62,27 +62,26 @@ export default function PoliticaDePrivacidadePage() {
                 1 – Quais são as informações que compartilho com a Dermaflora?
               </h2>
               <p className="mt-3">
-                Ao navegar no sítio eletrônico da Dermaflora Farmácia
-                Dermatológica sem desabilitar cookies ou sem optar pela
-                navegação anônima, você compartilha conosco o seu histórico
-                de acessos, sua localização geográfica, o sistema operacional
-                que utiliza, o seu tempo de navegação, o seu endereço de IP,
-                dentre outras informações, sendo este armazenamento realizado
-                por meio de tecnologias de coleta de informações, tais como
-                cookies e identificadores anônimos. A ferramenta utilizada
-                para a análise dos dados é o Google Analytics.
+                Ao navegar no site da Dermaflora, seu navegador troca com
+                nosso servidor informações técnicas padrão de qualquer acesso
+                à internet, como o seu endereço de IP, o sistema operacional
+                e o navegador utilizados. Essas informações ficam registradas
+                nos logs de acesso do nosso provedor de hospedagem, mas não
+                utilizamos ferramentas de análise de comportamento como
+                Google Analytics, nem cookies de rastreamento ou de
+                publicidade.
+              </p>
+              <p className="mt-3">
+                A única preferência de navegação que guardamos no seu
+                dispositivo é o idioma do site (Português ou Inglês), salvo
+                localmente no seu navegador para que a página abra sempre no
+                idioma que você escolheu da última vez.
               </p>
               <p className="mt-3">
                 Os seus dados financeiros informados quando da aquisição de
                 algum de nossos produtos são compartilhados com nossos
                 provedores de serviços de pagamento, que mantêm rígidos
                 controles para que suas informações sejam protegidas.
-              </p>
-              <p className="mt-3">
-                Por conseguinte, ao acessar as páginas da Dermaflora sem
-                desabilitar tais tecnologias, você expressamente autoriza o
-                armazenamento de informações através de referidas
-                tecnologias.
               </p>
             </div>
 
@@ -106,35 +105,20 @@ export default function PoliticaDePrivacidadePage() {
 
             <div>
               <h2 className="font-display text-xl font-bold text-df-ink-900">
-                3 – Publicidade e cookies
+                3 – Cookies e armazenamento local
               </h2>
               <p className="mt-3">
-                Para sua ciência, podemos definir o termo &ldquo;cookie&rdquo;
-                como sendo um arquivo que contêm um identificador (sequência
-                de letras e números) proveniente de um servidor da web e
-                enviado a um navegador da web, sendo por este armazenado.
+                Hoje o site da Dermaflora não utiliza cookies de
+                rastreamento, publicidade ou análise de comportamento de
+                navegação.
               </p>
               <p className="mt-3">
-                Eles são responsáveis por coletar e armazenar informações
-                sobre a navegação dentro desse ambiente, permitindo que elas
-                sejam usadas posteriormente.
-              </p>
-              <p className="mt-3">
-                Podemos usar &ldquo;cookies&rdquo; para conhecer seus
-                interesses, as páginas que você navegou, seus padrões de
-                tráfego e seu comportamento. Assim, podemos oferecer um
-                serviço melhor e também conteúdo e publicidade que sejam do
-                seu interesse.
-              </p>
-              <p className="mt-3">
-                Você pode desativar cookies a qualquer momento ou cancelar a
-                inscrição para receber nossos e-mails promocionais. Porém, ao
-                desativar essas tecnologias, talvez você não consiga usar e
-                aproveitar todos os recursos que oferecemos. O procedimento
-                para desativar é diferente para cada navegador; você
-                precisará fazer isso em cada um dos que usa (Google Chrome,
-                Mozilla Firefox, Safari, Internet Explorer, Microsoft Edge,
-                Opera).
+                A única informação salva no seu navegador é a sua preferência
+                de idioma (Português ou Inglês), guardada localmente no seu
+                dispositivo para lembrar sua escolha nas próximas visitas.
+                Essa informação fica só no seu navegador, não é compartilhada
+                com terceiros, e você pode apagá-la a qualquer momento
+                limpando os dados de navegação do seu navegador.
               </p>
             </div>
 
