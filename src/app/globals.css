@@ -180,8 +180,8 @@ body {
 /* Glass — superfície clara translúcida (header, cards, dropdowns, botões) */
 .glass {
   background: var(--df-glass-bg);
-  backdrop-filter: blur(var(--df-blur-md)) saturate(160%);
   -webkit-backdrop-filter: blur(var(--df-blur-md)) saturate(160%);
+  backdrop-filter: blur(var(--df-blur-md)) saturate(160%);
   border: 1px solid var(--df-glass-border);
   box-shadow: var(--df-glass-shadow);
 }
@@ -199,8 +199,8 @@ body {
 /* Glass mais opaco — modais, painéis de destaque, dropdowns sobre conteúdo denso */
 .glass-strong {
   background: var(--df-glass-bg-strong);
-  backdrop-filter: blur(var(--df-blur-lg)) saturate(160%);
   -webkit-backdrop-filter: blur(var(--df-blur-lg)) saturate(160%);
+  backdrop-filter: blur(var(--df-blur-lg)) saturate(160%);
   border: 1px solid var(--df-glass-border);
   box-shadow: var(--df-glass-shadow);
 }
@@ -218,8 +218,8 @@ body {
 /* Glass — superfície escura translúcida (seções sobre fundo escuro) */
 .glass-dark {
   background: var(--df-glass-dark-bg);
-  backdrop-filter: blur(var(--df-blur-md)) saturate(160%);
   -webkit-backdrop-filter: blur(var(--df-blur-md)) saturate(160%);
+  backdrop-filter: blur(var(--df-blur-md)) saturate(160%);
   border: 1px solid var(--df-glass-dark-border);
   box-shadow: var(--df-glass-dark-shadow);
 }
