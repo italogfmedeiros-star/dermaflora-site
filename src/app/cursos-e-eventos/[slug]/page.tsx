@@ -13,6 +13,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getCursoBySlug } from "@/lib/cursos-data";
 import { getEventGallery } from "@/data/event-galleries";
 import { SITE_URL, breadcrumbJsonLd } from "@/lib/seo";
+import { splitContentInHalf } from "@/lib/split-content";
 import { T } from "@/lib/i18n/T";
 
 export async function generateMetadata({
@@ -58,6 +59,7 @@ export default async function CursoEventoPage({
   if (!curso) notFound();
 
   const gallery = getEventGallery(curso.slug);
+  const { before, after } = splitContentInHalf(curso.content);
   const url = `${SITE_URL}/cursos-e-eventos/${curso.slug}`;
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -114,8 +116,20 @@ export default async function CursoEventoPage({
 
           <div
             className="post-content mt-10"
-            dangerouslySetInnerHTML={{ __html: curso.content }}
+            dangerouslySetInnerHTML={{ __html: before }}
           />
+
+          {after && (
+            <>
+              <div className="my-10">
+                <WhatsAppCta variant="cursos" />
+              </div>
+              <div
+                className="post-content"
+                dangerouslySetInnerHTML={{ __html: after }}
+              />
+            </>
+          )}
 
           {gallery && <EventGallery photos={gallery.photos} />}
 

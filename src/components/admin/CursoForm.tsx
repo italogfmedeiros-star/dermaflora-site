@@ -168,7 +168,11 @@ export function CursoForm({ curso }: { curso?: CursoEvento }) {
       <div>
         <span className="text-sm font-medium text-df-ink-700">Conteúdo</span>
         <div className="mt-1.5">
-          <Editor initialContent={curso?.content ?? ""} onChange={setContent} />
+          <Editor
+            initialContent={curso?.content ?? ""}
+            onChange={setContent}
+            showCtaMarker
+          />
         </div>
       </div>
 
