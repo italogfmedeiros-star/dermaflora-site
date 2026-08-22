@@ -77,8 +77,8 @@ export const pt = {
     items: [
       { strong: "Parcelamento", text: "em até 3x sem juros no cartão" },
       { strong: "Entrega", text: "para todo o Brasil" },
-      { strong: "Compra", text: "com 100% de segurança" },
-      { strong: "Envie sua receita", text: "e receba o orçamento em até 1 hora" },
+      { strong: "Compra", text: "100% segura" },
+      { strong: "Envie sua receita", text: "e seja atendido com agilidade" },
     ],
   },
   about: {

@@ -70,73 +70,77 @@ export function PerksBar() {
           utilitários com colchetes de forma confiável (mesmo problema
           visto antes com animate-[...]), então pra essa transição — que é
           o próprio comportamento pedido — ficar garantida em produção, o
-          valor vai direto no atributo style. */}
+          valor vai direto no atributo style.
+
+          As duas propriedades ficam no MESMO elemento, com a MESMA duração
+          e easing: abrir é literalmente o caminho inverso de fechar, sem
+          nenhuma assimetria de tempo entre esconder e voltar (antes o
+          max-height durava 450ms e a opacity 300ms num wrapper separado —
+          na volta, a opacity já tinha "chegado" 150ms antes da caixa
+          terminar de crescer, e essa cauda sem nada acontecendo é o que
+          lia como atraso). */}
       <div
+        className="border-b border-df-line bg-df-primary-50/80"
         style={{
           overflow: "hidden",
           maxHeight: atTop ? MAX_HEIGHT_PX : 0,
-          transition: reduceMotion ? "none" : "max-height 450ms cubic-bezier(0.65,0,0.35,1)",
+          opacity: atTop ? 1 : 0,
+          transition: reduceMotion
+            ? "none"
+            : "max-height 420ms cubic-bezier(0.65,0,0.35,1), opacity 420ms cubic-bezier(0.65,0,0.35,1)",
         }}
       >
+        {/* lg e acima: até esse ponto o texto mais longo ("Envie sua
+            receita e receba o orçamento em até 1 hora") não cabe numa
+            linha só nos 4 itens sem estourar a largura — por isso o corte
+            é em lg, não sm, e cada texto quebra em até 2 linhas dentro de
+            um max-width em vez de forçar nowrap. */}
         <div
-          className="border-b border-df-line bg-df-primary-50/80"
-          style={{
-            opacity: atTop ? 1 : 0,
-            transition: reduceMotion ? "none" : "opacity 300ms ease",
-          }}
+          aria-hidden="true"
+          className="mx-auto hidden max-w-7xl items-start justify-center gap-x-6 px-8 py-[18px] lg:flex xl:gap-x-10"
         >
-          {/* lg e acima: até esse ponto o texto mais longo ("Envie sua
-              receita e receba o orçamento em até 1 hora") não cabe numa
-              linha só nos 4 itens sem estourar a largura — por isso o corte
-              é em lg, não sm, e cada texto quebra em até 2 linhas dentro de
-              um max-width em vez de forçar nowrap. */}
-          <div
-            aria-hidden="true"
-            className="mx-auto hidden max-w-7xl items-start justify-center gap-x-6 px-8 py-[18px] lg:flex xl:gap-x-10"
-          >
-            {items.map((item, i) => {
-              const Icon = PERK_ICONS[i];
+          {items.map((item, i) => {
+            const Icon = PERK_ICONS[i];
+            return (
+              <div key={item.strong} className="flex items-start gap-x-6 xl:gap-x-10">
+                <Reveal delay={i * 0.06} className="group flex items-start gap-2.5">
+                  <span
+                    className="glass grid h-8 w-8 shrink-0 place-items-center rounded-full text-df-primary-700 transition-transform duration-300 [animation:df-icon-float_4.5s_ease-in-out_infinite] group-hover:-translate-y-1"
+                    style={{ animationDelay: `${i * 0.35}s` }}
+                  >
+                    <Icon size={14} weight="bold" />
+                  </span>
+                  <p className="max-w-[184px] text-[13px] leading-snug text-df-ink-700">
+                    <span className="font-semibold text-df-ink-900">{item.strong}</span>{" "}
+                    {item.text}
+                  </p>
+                </Reveal>
+                {i < items.length - 1 && (
+                  <span aria-hidden="true" className="mt-1 h-7 w-px shrink-0 bg-df-line" />
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* abaixo de lg: trilho em marquee */}
+        <div className="overflow-hidden py-[11px] lg:hidden" aria-hidden="true">
+          <div className="flex w-max gap-8 [animation:df-marquee_24s_linear_infinite]">
+            {marqueeItems.map((item, i) => {
+              const Icon = PERK_ICONS[i % items.length];
               return (
-                <div key={item.strong} className="flex items-start gap-x-6 xl:gap-x-10">
-                  <Reveal delay={i * 0.06} className="group flex items-start gap-2.5">
-                    <span
-                      className="glass grid h-8 w-8 shrink-0 place-items-center rounded-full text-df-primary-700 transition-transform duration-300 [animation:df-icon-float_4.5s_ease-in-out_infinite] group-hover:-translate-y-1"
-                      style={{ animationDelay: `${i * 0.35}s` }}
-                    >
-                      <Icon size={14} weight="bold" />
-                    </span>
-                    <p className="max-w-[184px] text-[13px] leading-snug text-df-ink-700">
-                      <span className="font-semibold text-df-ink-900">{item.strong}</span>{" "}
-                      {item.text}
-                    </p>
-                  </Reveal>
-                  {i < items.length - 1 && (
-                    <span aria-hidden="true" className="mt-1 h-7 w-px shrink-0 bg-df-line" />
-                  )}
+                <div key={i} className="flex shrink-0 items-center gap-3 pl-5 first:pl-5">
+                  <span className="glass grid h-8 w-8 shrink-0 place-items-center rounded-full text-df-primary-700">
+                    <Icon size={14} weight="bold" />
+                  </span>
+                  <p className="whitespace-nowrap text-sm text-df-ink-700">
+                    <span className="font-semibold text-df-ink-900">{item.strong}</span>{" "}
+                    {item.text}
+                  </p>
+                  <span aria-hidden="true" className="ml-3 h-5 w-px shrink-0 bg-df-line" />
                 </div>
               );
             })}
-          </div>
-
-          {/* abaixo de lg: trilho em marquee */}
-          <div className="overflow-hidden py-[11px] lg:hidden" aria-hidden="true">
-            <div className="flex w-max gap-8 [animation:df-marquee_24s_linear_infinite]">
-              {marqueeItems.map((item, i) => {
-                const Icon = PERK_ICONS[i % items.length];
-                return (
-                  <div key={i} className="flex shrink-0 items-center gap-3 pl-5 first:pl-5">
-                    <span className="glass grid h-8 w-8 shrink-0 place-items-center rounded-full text-df-primary-700">
-                      <Icon size={14} weight="bold" />
-                    </span>
-                    <p className="whitespace-nowrap text-sm text-df-ink-700">
-                      <span className="font-semibold text-df-ink-900">{item.strong}</span>{" "}
-                      {item.text}
-                    </p>
-                    <span aria-hidden="true" className="ml-3 h-5 w-px shrink-0 bg-df-line" />
-                  </div>
-                );
-              })}
-            </div>
           </div>
         </div>
       </div>
