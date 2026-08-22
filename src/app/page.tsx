@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { PerksBar } from "@/components/PerksBar";
 import { Hero } from "@/components/Hero";
 import { TrustBar } from "@/components/TrustBar";
 import { About } from "@/components/About";
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <>
       <Header />
+      <PerksBar />
       <main>
         <Hero />
         <TrustBar />

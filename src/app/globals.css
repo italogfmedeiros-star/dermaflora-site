@@ -373,6 +373,30 @@ body {
   animation: df-dna-breathe 3.2s ease-in-out infinite;
 }
 
+/* Faixa de benefícios (PerksBar): badge do ícone "respira" bem sutil pra
+   faixa não ficar 100% estática mesmo parada, e o trilho do marquee mobile
+   roda em loop contínuo — ver PerksBar.tsx. */
+@keyframes df-icon-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes df-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* -50% porque o trilho duplica a lista de itens uma vez, então meia
+       volta já corresponde a um ciclo completo — visualmente contínuo. */
+    transform: translateX(-50%);
+  }
+}
+
 /* Conteúdo de post (blog): usado tanto no editor Tiptap quanto na
    renderização pública em /blog/[slug], pra garantir que fica igual. */
 .post-content {
