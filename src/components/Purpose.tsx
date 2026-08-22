@@ -21,11 +21,7 @@ export function Purpose() {
       />
       <div className="relative mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
-          <span className="inline-flex items-center rounded-df-full bg-df-warm-300 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wide text-df-ink-700">
-            {dict.purpose.badge}
-          </span>
-
-          <h2 className="mt-4 font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight text-df-ink-900 md:text-4xl">
             {dict.purpose.title}
           </h2>
         </Reveal>

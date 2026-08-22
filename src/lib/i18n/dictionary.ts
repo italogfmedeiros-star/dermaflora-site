@@ -115,7 +115,6 @@ export const pt = {
     ],
   },
   purpose: {
-    badge: "Institucional",
     title: "Propósito, missão e visão.",
     pillars: [
       {
@@ -435,7 +434,6 @@ export const en: typeof pt = {
     ],
   },
   purpose: {
-    badge: "About us",
     title: "Purpose, mission and vision.",
     pillars: [
       {
