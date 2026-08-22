@@ -73,6 +73,14 @@ export const pt = {
       { value: "Gutfiber®", label: "linha própria de produtos exclusivos" },
     ],
   },
+  perks: {
+    items: [
+      { strong: "Parcelamento", text: "em até 3x sem juros no cartão" },
+      { strong: "Entrega", text: "para todo o Brasil" },
+      { strong: "Compra", text: "com 100% de segurança" },
+      { strong: "Envie sua receita", text: "e receba o orçamento em até 1 hora" },
+    ],
+  },
   about: {
     title: "São anos de história, escritos fórmula a fórmula.",
     subtitle:
@@ -390,6 +398,14 @@ export const en: typeof pt = {
       { value: "100%", label: "personalized formulas for every person" },
       { value: "Gutfiber®", label: "our own exclusive product line" },
       { value: "4 areas", label: "compounding, dermocosmetics, nutrition and hair care" },
+    ],
+  },
+  perks: {
+    items: [
+      { strong: "Installments", text: "in up to 3x interest-free" },
+      { strong: "Delivery", text: "all over Brazil" },
+      { strong: "Shop", text: "with 100% security" },
+      { strong: "Send your prescription", text: "and get a quote within 1 hour" },
     ],
   },
   about: {
