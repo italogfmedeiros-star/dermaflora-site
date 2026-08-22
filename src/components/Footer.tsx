@@ -23,7 +23,7 @@ export function Footer() {
   return (
     <footer className="bg-df-ink-900 py-7 text-white/70">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
           <LogoMark variant="white" />
 
           <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
