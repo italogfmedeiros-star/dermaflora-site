@@ -23,6 +23,14 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "DcO5xiIJ-_B",
+    permalink: "https://www.instagram.com/dermaflora/p/DcO5xiIJ-_B/",
+    image: "/instagram/DcO5xiIJ-_B.jpg",
+    date: "2026-08-19",
+    category: "Produtos",
+    excerpt: "Efeito Botox Floral: cuidado inteligente, sem agulhas. Conheça o GlowBoost®, ativo vegetal que relaxa, preenche e hidrata a pele.",
+  },
+  {
     shortcode: "DcMMFvCxBkH",
     permalink: "https://www.instagram.com/dermaflora/reel/DcMMFvCxBkH/",
     image: "/instagram/DcMMFvCxBkH.jpg",
