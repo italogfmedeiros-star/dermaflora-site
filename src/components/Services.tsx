@@ -1,10 +1,33 @@
 "use client";
 
+import Link from "next/link";
 import { Flask, Drop, Leaf, HairDryer } from "@phosphor-icons/react";
 import { LabTexture } from "./LabTexture";
 import { Reveal } from "./Reveal";
 import { ImageCrossfade, type CrossfadeSlide } from "./ImageCrossfade";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
+
+// O card de Nutrição menciona o Gutfiber®, produto próprio com matéria
+// dedicada no blog — troca só essa palavra por um link, sem precisar de um
+// campo novo no dicionário pros outros 3 cards que não têm link nenhum.
+const GUTFIBER_POST_HREF = "/blog/gutfiber-fibras-naturais-para-o-intestino";
+
+function withGutfiberLink(text: string) {
+  const parts = text.split(/(Gutfiber®)/);
+  return parts.map((part, i) =>
+    part === "Gutfiber®" ? (
+      <Link
+        key={i}
+        href={GUTFIBER_POST_HREF}
+        className="font-semibold text-df-primary-700 underline decoration-df-primary-300 underline-offset-2 transition-colors hover:text-df-primary-900"
+      >
+        {part}
+      </Link>
+    ) : (
+      part
+    )
+  );
+}
 
 const FORMULAS_CARD_SLIDES: CrossfadeSlide[] = [
   {
@@ -89,7 +112,9 @@ export function Services() {
               <h3 className="mt-2 font-display text-base font-bold text-df-ink-900">
                 {card2.title}
               </h3>
-              <p className="mt-1 text-sm leading-relaxed text-df-ink-700">{card2.text}</p>
+              <p className="mt-1 text-sm leading-relaxed text-df-ink-700">
+                {withGutfiberLink(card2.text)}
+              </p>
             </div>
           </Reveal>
 
