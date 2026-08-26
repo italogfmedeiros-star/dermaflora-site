@@ -8,6 +8,7 @@ const TO = "contato@dermaflora.com.br";
 
 type ContactEmailInput = {
   name: string;
+  phone: string;
   email: string;
   message: string;
   attachment?: { filename: string; content: Buffer; contentType: string };
@@ -15,6 +16,7 @@ type ContactEmailInput = {
 
 export async function sendContactEmail({
   name,
+  phone,
   email,
   message,
   attachment,
@@ -24,7 +26,7 @@ export async function sendContactEmail({
     to: TO,
     replyTo: email,
     subject: `Nova mensagem de contato — ${name}`,
-    html: contactEmailHtml({ name, email, message, hasAttachment: Boolean(attachment) }),
+    html: contactEmailHtml({ name, phone, email, message, hasAttachment: Boolean(attachment) }),
     attachments: attachment
       ? [
           {
@@ -43,18 +45,23 @@ export async function sendContactEmail({
 
 function contactEmailHtml({
   name,
+  phone,
   email,
   message,
   hasAttachment,
 }: {
   name: string;
+  phone: string;
   email: string;
   message: string;
   hasAttachment: boolean;
 }) {
   const safeName = escapeHtml(name);
+  const safePhone = escapeHtml(phone);
   const safeEmail = escapeHtml(email);
   const safeMessage = escapeHtml(message).replace(/\n/g, "<br />");
+  const phoneDigits = phone.replace(/\D/g, "");
+  const whatsappHref = `https://wa.me/${phoneDigits.startsWith("55") ? phoneDigits : `55${phoneDigits}`}`;
 
   return `<!doctype html>
 <html lang="pt-BR">
@@ -91,6 +98,12 @@ function contactEmailHtml({
                   <tr>
                     <td style="padding:4px 0; font-size:13px; color:#6f746e; width:90px;">Nome</td>
                     <td style="padding:4px 0; font-size:14px; color:#1c1e1c; font-weight:600;">${safeName}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:4px 0; font-size:13px; color:#6f746e;">Telefone</td>
+                    <td style="padding:4px 0; font-size:14px;">
+                      <a href="${whatsappHref}" style="color:#687a6a; text-decoration:underline;">${safePhone}</a>
+                    </td>
                   </tr>
                   <tr>
                     <td style="padding:4px 0; font-size:13px; color:#6f746e;">Email</td>

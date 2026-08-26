@@ -124,6 +124,21 @@ export function ContactForm() {
       </div>
 
       <div>
+        <label htmlFor="contact-phone" className="mb-1.5 block text-sm font-semibold text-white">
+          {dict.contactForm.phoneLabel}
+        </label>
+        <input
+          id="contact-phone"
+          name="phone"
+          type="tel"
+          required
+          autoComplete="tel"
+          placeholder={dict.contactForm.phonePlaceholder}
+          className={inputClasses}
+        />
+      </div>
+
+      <div>
         <label htmlFor="contact-email" className="mb-1.5 block text-sm font-semibold text-white">
           {dict.contactForm.emailLabel}
         </label>

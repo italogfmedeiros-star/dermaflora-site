@@ -8,6 +8,13 @@ const ACCEPTED_FILE_TYPES = ["image/jpeg", "image/png", "image/webp", "applicati
 
 const ContactInputSchema = z.object({
   name: z.string().trim().min(1, "Informe seu nome."),
+  phone: z
+    .string()
+    .trim()
+    .min(1, "Informe seu telefone/WhatsApp.")
+    .refine((value) => value.replace(/\D/g, "").length >= 10, {
+      message: "Informe um telefone/WhatsApp válido, com DDD.",
+    }),
   email: z.string().trim().email("Informe um email válido."),
   message: z.string().trim().min(1, "Escreva sua mensagem."),
 });
@@ -23,6 +30,7 @@ export async function sendContactMessage(
 ): Promise<ContactFormState> {
   const parsed = ContactInputSchema.safeParse({
     name: formData.get("name"),
+    phone: formData.get("phone"),
     email: formData.get("email"),
     message: formData.get("message"),
   });

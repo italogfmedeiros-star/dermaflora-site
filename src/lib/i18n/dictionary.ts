@@ -270,6 +270,8 @@ export const pt = {
   contactForm: {
     nameLabel: "Nome",
     namePlaceholder: "Como podemos te chamar?",
+    phoneLabel: "Telefone/WhatsApp",
+    phonePlaceholder: "(11) 91234-5678",
     emailLabel: "Email de contato",
     emailPlaceholder: "seu@email.com",
     messageLabel: "Mensagem",
@@ -597,6 +599,8 @@ export const en: typeof pt = {
   contactForm: {
     nameLabel: "Name",
     namePlaceholder: "What should we call you?",
+    phoneLabel: "Phone/WhatsApp",
+    phonePlaceholder: "(11) 91234-5678",
     emailLabel: "Contact email",
     emailPlaceholder: "you@email.com",
     messageLabel: "Message",
