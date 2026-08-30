@@ -23,6 +23,14 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "Dcg9xTDJ2-m",
+    permalink: "https://www.instagram.com/dermaflora/reel/Dcg9xTDJ2-m/",
+    image: "/instagram/Dcg9xTDJ2-m.jpg",
+    date: "2026-08-26",
+    category: "Institucional",
+    excerpt: "Hoje foi dia de abrir as portas de nossos laboratórios para uma experiência incrível!",
+  },
+  {
     shortcode: "DcO5xiIJ-_B",
     permalink: "https://www.instagram.com/dermaflora/p/DcO5xiIJ-_B/",
     image: "/instagram/DcO5xiIJ-_B.jpg",
