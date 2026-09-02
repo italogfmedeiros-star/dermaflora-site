@@ -23,6 +23,22 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "Dcv23f9EeeI",
+    permalink: "https://www.instagram.com/dermaflora/p/Dcv23f9EeeI/",
+    image: "/instagram/Dcv23f9EeeI.jpg",
+    date: "2026-09-01",
+    category: "Você sabia?",
+    excerpt: "A pele muda com o tempo, isso é natural. O que não deveria ser normal é perder vitalidade, firmeza e luminosidade cedo demais.",
+  },
+  {
+    shortcode: "DcuB_wRpwMK",
+    permalink: "https://www.instagram.com/dermaflora/p/DcuB_wRpwMK/",
+    image: "/instagram/DcuB_wRpwMK.jpg",
+    date: "2026-08-31",
+    category: "Institucional",
+    excerpt: "Neste Dia do Nutricionista, celebramos quem transforma conhecimento em cuidado, escolhas em saúde e ciência em bem-estar.",
+  },
+  {
     shortcode: "Dcg9xTDJ2-m",
     permalink: "https://www.instagram.com/dermaflora/reel/Dcg9xTDJ2-m/",
     image: "/instagram/Dcg9xTDJ2-m.jpg",
