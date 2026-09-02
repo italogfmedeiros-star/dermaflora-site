@@ -81,7 +81,7 @@ export function FinalCta() {
                       (11) 5051-1220
                     </a>
                     <a
-                      href="https://wa.me/5511988296867"
+                      href={`https://wa.me/5511988296867?text=${encodeURIComponent("Olá, eu vim pelo site")}`}
                       target="_blank"
                       rel="noreferrer"
                       onClick={triggerFlash}
@@ -91,7 +91,7 @@ export function FinalCta() {
                       (11) 98829-6867
                     </a>
                     <a
-                      href="https://wa.me/5511965731266"
+                      href={`https://wa.me/5511965731266?text=${encodeURIComponent("Olá, eu vim pelo site")}`}
                       target="_blank"
                       rel="noreferrer"
                       onClick={triggerFlash}
