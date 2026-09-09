@@ -23,6 +23,14 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "DdCCRizRFuW",
+    permalink: "https://www.instagram.com/dermaflora/reel/DdCCRizRFuW/",
+    image: "/instagram/DdCCRizRFuW.jpg",
+    date: "2026-09-08",
+    category: "Produtos",
+    excerpt: "E se o cuidado com a pele também pudesse começar de dentro para fora? Conheça o PeptPure Proaging, peptídeos bioativos de colágeno orgânico.",
+  },
+  {
     shortcode: "Dcv23f9EeeI",
     permalink: "https://www.instagram.com/dermaflora/p/Dcv23f9EeeI/",
     image: "/instagram/Dcv23f9EeeI.jpg",
