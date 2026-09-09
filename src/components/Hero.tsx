@@ -39,10 +39,10 @@ const SLIDE_VIDEOS = [
     objectClassName: "object-[65%_center] md:object-[72%_center]",
   },
   {
-    src: "/videos/hero-video-5.mp4",
-    poster: "/images/hero-banner-5.png",
+    src: "/videos/hero-video-5-caps.mp4",
+    poster: "/images/hero-banner-5-caps.png",
     label:
-      "Cinco potes de creme Dermaflora Caps Active Cream flutuando suavemente em um laboratório claro",
+      "Cinco potes de creme Dermaflora Caps Active Cream, com cápsulas suspensas em gel, flutuando suavemente em um laboratório claro",
     objectClassName: "object-[45%_center] md:object-[40%_center]",
   },
 ];
