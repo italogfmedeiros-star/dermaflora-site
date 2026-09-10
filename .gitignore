@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# editor
+.vscode/
+
 # raw/working image drafts, not used by the app
 /_img/
 
