@@ -3,6 +3,7 @@
 import { WhatsappLogo, Headset, Flask, Package } from "@phosphor-icons/react";
 import { LabTexture } from "./LabTexture";
 import { Reveal } from "./Reveal";
+import { ScrollRevealItem } from "./ScrollRevealGrid";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const STEP_ICONS = [WhatsappLogo, Headset, Flask, Package];
@@ -39,7 +40,7 @@ export function HowItWorks() {
           {dict.howItWorks.steps.map((step, i) => {
             const Icon = STEP_ICONS[i];
             return (
-              <Reveal key={step.title} delay={i * 0.08} className="relative">
+              <ScrollRevealItem key={step.title} index={i} className="relative">
                 <div className="glass relative z-10 grid h-14 w-14 place-items-center rounded-full text-df-primary-700">
                   <Icon size={24} weight="regular" />
                 </div>
@@ -47,7 +48,7 @@ export function HowItWorks() {
                   {step.title}
                 </h3>
                 <p className="mt-1.5 text-[15px] leading-relaxed text-df-ink-700">{step.text}</p>
-              </Reveal>
+              </ScrollRevealItem>
             );
           })}
         </div>
