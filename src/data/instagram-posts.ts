@@ -23,6 +23,38 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "DdTveA3R4q_",
+    permalink: "https://www.instagram.com/dermaflora/reel/DdTveA3R4q_/",
+    image: "/instagram/DdTveA3R4q_.jpg",
+    date: "2026-09-15",
+    category: "Produtos",
+    excerpt: "O tempo passa, a forma como cuidamos da pele evolui. PeptPure ProAging nasce desse conceito: ciência e inovação conectadas a uma nova visão sobre a longevidade da pele.",
+  },
+  {
+    shortcode: "DdRGSZLxk3z",
+    permalink: "https://www.instagram.com/dermaflora/p/DdRGSZLxk3z/",
+    image: "/instagram/DdRGSZLxk3z.jpg",
+    date: "2026-09-14",
+    category: "Institucional",
+    excerpt: "A confiança de quem escolhe a Dermaflora também faz parte da nossa história. Cada avaliação representa uma experiência e o compromisso em cada detalhe do atendimento.",
+  },
+  {
+    shortcode: "DdJiqUSRb7I",
+    permalink: "https://www.instagram.com/dermaflora/p/DdJiqUSRb7I/",
+    image: "/instagram/DdJiqUSRb7I.jpg",
+    date: "2026-09-11",
+    category: "Produtos",
+    excerpt: "Praticidade e cuidado em um só passo. Os Pads combinam tecnologia e ativos para limpar, renovar, hidratar e tratar a pele todos os dias.",
+  },
+  {
+    shortcode: "DdG35dBROOv",
+    permalink: "https://www.instagram.com/rwellnessclub/reel/DdG35dBROOv/",
+    image: "/instagram/DdG35dBROOv.jpg",
+    date: "2026-09-10",
+    category: "Produtos",
+    excerpt: "PeptiPump: um peptídeo voltado à melhora da performance, e uma creatina fosfatada desenvolvida para maior absorção e biodisponibilidade.",
+  },
+  {
     shortcode: "DdCCRizRFuW",
     permalink: "https://www.instagram.com/dermaflora/reel/DdCCRizRFuW/",
     image: "/instagram/DdCCRizRFuW.jpg",
