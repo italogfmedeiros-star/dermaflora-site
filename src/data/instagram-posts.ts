@@ -23,6 +23,14 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "Dd2Hc1TJ3x9",
+    permalink: "https://www.instagram.com/dermaflora/reel/Dd2Hc1TJ3x9/",
+    image: "/instagram/Dd2Hc1TJ3x9.jpg",
+    date: "2026-09-29",
+    category: "Eventos",
+    excerpt: "Tivemos a honra de estar presentes em mais uma edição do curso de Modulação Intestinal, fortalecendo uma parceria que cresce a cada ano.",
+  },
+  {
     shortcode: "DdTveA3R4q_",
     permalink: "https://www.instagram.com/dermaflora/reel/DdTveA3R4q_/",
     image: "/instagram/DdTveA3R4q_.jpg",
