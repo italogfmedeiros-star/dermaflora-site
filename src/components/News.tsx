@@ -2,7 +2,12 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import { CaretLeft, CaretRight, InstagramLogo } from "@phosphor-icons/react";
+import {
+  CaretLeft,
+  CaretRight,
+  InstagramLogo,
+  Play,
+} from "@phosphor-icons/react";
 import { LabTexture } from "./LabTexture";
 import { Reveal } from "./Reveal";
 import { INSTAGRAM_POSTS } from "@/data/instagram-posts";
@@ -20,7 +25,7 @@ export function News() {
         year: "numeric",
         timeZone: "UTC",
       }),
-    [lang]
+    [lang],
   );
   const trackRef = useRef<HTMLDivElement>(null);
   const [canPrev, setCanPrev] = useState(false);
@@ -46,7 +51,10 @@ export function News() {
   }
 
   return (
-    <section id="noticias" className="relative overflow-hidden bg-df-primary-50 py-20 md:py-28">
+    <section
+      id="noticias"
+      className="relative overflow-hidden bg-df-primary-50 py-20 md:py-28"
+    >
       <div
         aria-hidden="true"
         className="bg-grain pointer-events-none absolute inset-0 opacity-[0.05] mix-blend-multiply"
@@ -130,6 +138,14 @@ export function News() {
                       <InstagramLogo size={16} weight="regular" />
                     </span>
                   </span>
+                  {post.permalink.includes("/reel/") && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-3 top-3 grid h-8 w-8 place-items-center rounded-lg bg-white text-black shadow-md"
+                    >
+                      <Play size={16} weight="fill" />
+                    </span>
+                  )}
                 </div>
                 <div className="flex flex-1 flex-col p-5">
                   <div className="flex items-center gap-2 text-xs font-semibold">
