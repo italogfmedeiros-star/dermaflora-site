@@ -23,10 +23,18 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "Dd9PKEvESh7",
+    permalink: "https://www.instagram.com/dermaflora/p/Dd9PKEvESh7/",
+    image: "/instagram/Dd9PKEvESh7.jpg",
+    date: "2026-10-01",
+    category: "Produtos",
+    excerpt: "Sua jornada muda. Seu cuidado acompanha. Cada fase da vida da mulher traz novas necessidades e o cuidado também pode evoluir com elas.",
+  },
+  {
     shortcode: "Dd2Hc1TJ3x9",
     permalink: "https://www.instagram.com/dermaflora/reel/Dd2Hc1TJ3x9/",
     image: "/instagram/Dd2Hc1TJ3x9.jpg",
-    date: "2026-09-29",
+    date: "2026-09-28",
     category: "Eventos",
     excerpt: "Tivemos a honra de estar presentes em mais uma edição do curso de Modulação Intestinal, fortalecendo uma parceria que cresce a cada ano.",
   },
