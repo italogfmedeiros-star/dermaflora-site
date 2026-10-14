@@ -71,6 +71,14 @@ export const INSTAGRAM_POSTS: InstagramPost[] = [
     excerpt: "Tivemos a honra de estar presentes em mais uma edição do curso de Modulação Intestinal, fortalecendo uma parceria que cresce a cada ano.",
   },
   {
+    shortcode: "Ddr_rw0gaOZ",
+    permalink: "https://www.instagram.com/luanamoury/reel/Ddr_rw0gaOZ/",
+    image: "/instagram/Ddr_rw0gaOZ.jpg",
+    date: "2026-09-24",
+    category: "Você sabia?",
+    excerpt: "4 lugares pra passar minoxidil. Só cuidado ao abraçar o pet depois, lembrando que é tóxico!",
+  },
+  {
     shortcode: "DdTveA3R4q_",
     permalink: "https://www.instagram.com/dermaflora/reel/DdTveA3R4q_/",
     image: "/instagram/DdTveA3R4q_.jpg",
