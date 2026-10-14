@@ -23,6 +23,38 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "DefWTWwSlpS",
+    permalink: "https://www.instagram.com/dermaflora/reel/DefWTWwSlpS/",
+    image: "/instagram/DefWTWwSlpS.jpg",
+    date: "2026-10-14",
+    category: "Eventos",
+    excerpt: "Nossa primeira visita técnica foi na Hallstar, marcada por muita inovação! Mergulhamos no universo da ciência cosmética, explorando novas tecnologias e ativos de alta performance.",
+  },
+  {
+    shortcode: "DefSAQJEmeW",
+    permalink: "https://www.instagram.com/dralaisleme/reel/DefSAQJEmeW/",
+    image: "/instagram/DefSAQJEmeW.jpg",
+    date: "2026-10-14",
+    category: "Produtos",
+    excerpt: "Quer fazer um cronograma capilar mas não sabe por onde começar? A Máscara 360º da Dermaflora resolve tudo isso com um só produto.",
+  },
+  {
+    shortcode: "DeWwjM3xKSx",
+    permalink: "https://www.instagram.com/dermaflora/reel/DeWwjM3xKSx/",
+    image: "/instagram/DeWwjM3xKSx.jpg",
+    date: "2026-10-11",
+    category: "Eventos",
+    excerpt: "Próxima parada: Europa! Embarcamos para mais uma expedição internacional, com destino à Itália e à Grécia, em uma jornada de conhecimento e inovação.",
+  },
+  {
+    shortcode: "DePubiWCmBN",
+    permalink: "https://www.instagram.com/paulamgoes/reel/DePubiWCmBN/",
+    image: "/instagram/DePubiWCmBN.jpg",
+    date: "2026-10-08",
+    category: "Institucional",
+    excerpt: "Visitei a Dermaflora e acompanhei de perto algumas etapas que fazem parte da rotina de uma farmácia de manipulação.",
+  },
+  {
     shortcode: "Dd9PKEvESh7",
     permalink: "https://www.instagram.com/dermaflora/p/Dd9PKEvESh7/",
     image: "/instagram/Dd9PKEvESh7.jpg",
