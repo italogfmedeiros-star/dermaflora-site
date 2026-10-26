@@ -23,6 +23,46 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "De1ifAZxdxd",
+    permalink: "https://www.instagram.com/dermaflora/reel/De1ifAZxdxd/",
+    image: "/instagram/De1ifAZxdxd.jpg",
+    date: "2026-10-23",
+    category: "Eventos",
+    excerpt: "Dessa vez, nossa visita técnica foi à Biorama, em Creta, ampliando nosso olhar sobre inovação, ciência e novas possibilidades no universo farmacêutico e cosmético.",
+  },
+  {
+    shortcode: "DexVF3VufUX",
+    permalink: "https://www.instagram.com/dermaflora/reel/DexVF3VufUX/",
+    image: "/instagram/DexVF3VufUX.jpg",
+    date: "2026-10-21",
+    category: "Institucional",
+    excerpt: "Abrimos as portas dos nossos laboratórios para receber médicos e prescritores que desejam conhecer de perto nossos processos, tecnologias e o cuidado em cada formulação.",
+  },
+  {
+    shortcode: "DeoyBaMRxY-",
+    permalink: "https://www.instagram.com/dermaflora/p/DeoyBaMRxY-/",
+    image: "/instagram/DeoyBaMRxY-.jpg",
+    date: "2026-10-18",
+    category: "Institucional",
+    excerpt: "Hoje homenageamos aqueles que unem conhecimento e dedicação para cuidar de pessoas e transformar vidas. Feliz Dia do Médico!",
+  },
+  {
+    shortcode: "DekCxavprFH",
+    permalink: "https://www.instagram.com/dermaflora/reel/DekCxavprFH/",
+    image: "/instagram/DekCxavprFH.jpg",
+    date: "2026-10-16",
+    category: "Eventos",
+    excerpt: "A Expedição Dermaflora Europa 2026 continua! Nossa segunda visita técnica foi na Davines Village, em Parma, onde inovação, ciência e sustentabilidade caminham juntas.",
+  },
+  {
+    shortcode: "DehrF32udi2",
+    permalink: "https://www.instagram.com/dermaflora/reel/DehrF32udi2/",
+    image: "/instagram/DehrF32udi2.jpg",
+    date: "2026-10-15",
+    category: "Institucional",
+    excerpt: "Por aqui, estamos a todo vapor! Nossa diretora convida para um passeio pelo novo espaço da Dermaflora, pensado para conectar profissionais da saúde e promover eventos.",
+  },
+  {
     shortcode: "DefWTWwSlpS",
     permalink: "https://www.instagram.com/dermaflora/reel/DefWTWwSlpS/",
     image: "/instagram/DefWTWwSlpS.jpg",
