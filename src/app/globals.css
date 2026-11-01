@@ -498,3 +498,25 @@ body {
   letter-spacing: 0.04em;
   user-select: none;
 }
+
+/* Pulso do widget da filial Américo — anel que nasce na borda da pílula e
+   expande para fora, sumindo. O box-shadow externo não é pintado por baixo
+   do próprio elemento, então o anel só aparece fora da pílula (não vaza por
+   dentro do vidro). Dois anéis defasados no JSX dão o efeito contínuo. */
+.df-pill-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--df-radius-full);
+  pointer-events: none;
+  animation: df-pill-pulse 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+
+@keyframes df-pill-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(104, 122, 106, 0.55);
+  }
+  80%,
+  100% {
+    box-shadow: 0 0 0 16px rgba(104, 122, 106, 0);
+  }
+}

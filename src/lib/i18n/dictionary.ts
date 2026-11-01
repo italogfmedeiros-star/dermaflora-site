@@ -258,6 +258,20 @@ export const pt = {
       },
     ],
   },
+  branchWidget: {
+    pill: "Nova filial Américo",
+    title: "Conheça a filial Américo",
+    caption:
+      "Depois de muitos anos, encerramos nossa operação na filial Moema, mas convidamos você a conhecer nossa filial Américo, localizada na Rua Américo Brasiliense, 1290 – Chácara Santo Antônio.",
+    moema: "Moema",
+    moemaClosed: "encerrada",
+    americo: "Américo",
+    mapNote: "Ilustração sem escala",
+    directions: "Como chegar",
+    open: "Abrir aviso sobre a filial Américo",
+    close: "Fechar aviso",
+    dismiss: "Ocultar aviso",
+  },
   finalCta: {
     title: "Vamos cuidar da sua saúde, beleza e bem-estar juntos?",
     subtitle: "Escolha um de nossos canais de atendimento e envie sua receita.",
@@ -586,6 +600,20 @@ export const en: typeof pt = {
         a: "Yes. Besides pickup at the pharmacy, we offer delivery for your convenience, within our service area.",
       },
     ],
+  },
+  branchWidget: {
+    pill: "New Américo branch",
+    title: "Meet our Américo branch",
+    caption:
+      "After many years, we have closed our Moema branch, but we invite you to visit our Américo branch, located at Rua Américo Brasiliense, 1290 – Chácara Santo Antônio.",
+    moema: "Moema",
+    moemaClosed: "closed",
+    americo: "Américo",
+    mapNote: "Illustration, not to scale",
+    directions: "Get directions",
+    open: "Open notice about the Américo branch",
+    close: "Close notice",
+    dismiss: "Hide notice",
   },
   finalCta: {
     title: "Let's take care of your health, beauty and well-being together?",

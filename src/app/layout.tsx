@@ -5,6 +5,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationJsonLd, websiteJsonLd, pharmacyJsonLd, SITE_URL } from "@/lib/seo";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { LoadingOverlayProvider } from "@/components/loading/LoadingOverlayProvider";
+import { BranchWidget } from "@/components/BranchWidget";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -38,7 +39,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-df-bg text-df-ink-900">
         <JsonLd data={[organizationJsonLd(), websiteJsonLd(), ...pharmacyJsonLd()]} />
         <LanguageProvider>
-          <LoadingOverlayProvider>{children}</LoadingOverlayProvider>
+          <LoadingOverlayProvider>
+            {children}
+            <BranchWidget />
+          </LoadingOverlayProvider>
         </LanguageProvider>
       </body>
     </html>
