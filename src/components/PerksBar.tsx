@@ -52,7 +52,7 @@ export function PerksBar() {
   }, []);
 
   return (
-    <section className="relative z-10">
+    <section data-perks-bar className="relative z-10">
       {/* Conteúdo real pra leitor de tela: os dois blocos abaixo são só a
           representação visual (marquee/ícone flutuante são decorativos) e
           ficam aria-hidden, então essa lista garante que a informação
