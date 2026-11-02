@@ -2,8 +2,8 @@
 
 import { useActionState, useEffect, useMemo, useRef, useState } from "react";
 import { UploadSimple, Eye, ArrowCounterClockwise } from "@phosphor-icons/react";
-import { savePost, deletePost, uploadPostImage } from "@/lib/actions/posts";
-import { prepareImageForUpload } from "@/lib/prepare-image";
+import { savePost, deletePost } from "@/lib/actions/posts";
+import { uploadImage } from "@/lib/upload-image";
 import {
   SeoPreview,
   CharacterCount,
@@ -75,6 +75,7 @@ export function PostForm({ post }: { post?: Post }) {
   const [coverImageUrl, setCoverImageUrl] = useState(initial.coverImageUrl);
   const [uploadingCover, setUploadingCover] = useState(false);
   const [coverUploadError, setCoverUploadError] = useState("");
+  const [coverUploadDone, setCoverUploadDone] = useState(false);
   const [status, setStatus] = useState<"draft" | "published">(
     post?.status ?? "draft"
   );
@@ -215,17 +216,16 @@ export function PostForm({ post }: { post?: Post }) {
 
     setUploadingCover(true);
     setCoverUploadError("");
+    setCoverUploadDone(false);
 
-    const prepared = await prepareImageForUpload(file);
-    const formData = new FormData();
-    formData.append("file", prepared.file);
-    const result = await uploadPostImage(formData);
+    const result = await uploadImage(file);
 
     setUploadingCover(false);
-    if (result.url) {
+    if ("url" in result) {
       setCoverImageUrl(result.url);
+      setCoverUploadDone(true);
     } else {
-      setCoverUploadError(result.error ?? "Falha no upload.");
+      setCoverUploadError(result.error);
     }
   }
 
@@ -360,8 +360,13 @@ export function PostForm({ post }: { post?: Post }) {
           />
         </div>
         {coverUploadError && (
-          <p className="mt-1.5 text-xs font-medium text-df-error">
+          <p role="alert" className="mt-1.5 text-xs font-medium text-df-error">
             {coverUploadError}
+          </p>
+        )}
+        {coverUploadDone && (
+          <p role="status" className="mt-1.5 text-xs font-medium text-df-primary-700">
+            Imagem enviada. Salve o post para aplicar a nova capa.
           </p>
         )}
         {coverImageUrl && (
