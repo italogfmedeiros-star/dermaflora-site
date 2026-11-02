@@ -20,11 +20,10 @@ export function Destaques() {
   const triggerFlash = useLoadingFlash();
   const reduceMotion = useReducedMotion();
   const [open, setOpen] = useState<number | null>(null);
-  // Última pílula sob o cursor/foco: mantém a arte em exibição quando o mouse
-  // sai, em vez de voltar sempre pro primeiro produto.
-  const [preview, setPreview] = useState(0);
+  // `open` é o produto com a legenda visível (null = legenda oculta); `current`
+  // é o produto cuja arte está no palco, que segue em exibição ao fechar a legenda.
+  const [current, setCurrent] = useState(0);
 
-  const shown = open ?? preview;
   const isOpen = open !== null;
   const count = DESTAQUES.length;
 
@@ -39,11 +38,11 @@ export function Destaques() {
 
   function select(index: number) {
     setOpen(index);
-    setPreview(index);
+    setCurrent(index);
   }
 
   function step(direction: 1 | -1) {
-    select((((open ?? preview) + direction) % count + count) % count);
+    select(((current + direction) % count + count) % count);
   }
 
   const layoutTransition = reduceMotion
@@ -79,21 +78,18 @@ export function Destaques() {
         </Reveal>
 
         <Reveal delay={0.1} className="mt-12">
-          <div
-            data-open={isOpen}
-            className="group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-df-line bg-df-primary-50 shadow-[var(--df-shadow-lg)] lg:block lg:h-[42rem]"
-          >
-            {/* Arte do produto: no desktop fica como cartão à direita e, ao abrir
-                um produto, cresce até ocupar o palco todo. No mobile é um bloco
-                no topo, com o menu embaixo. */}
-            <div className="relative h-80 w-full overflow-hidden sm:h-96 lg:absolute lg:bottom-[8%] lg:right-[5%] lg:top-[8%] lg:h-auto lg:w-[54%] lg:rounded-[1.5rem] lg:transition-[top,right,bottom,width,border-radius] lg:duration-700 lg:ease-[cubic-bezier(0.16,1,0.3,1)] lg:group-data-[open=true]:bottom-0 lg:group-data-[open=true]:right-0 lg:group-data-[open=true]:top-0 lg:group-data-[open=true]:w-full lg:group-data-[open=true]:rounded-none motion-reduce:transition-none">
+          <div className="relative flex flex-col overflow-hidden rounded-[1.75rem] border border-df-line bg-df-primary-50 shadow-[var(--df-shadow-lg)] lg:block lg:h-[42rem]">
+            {/* Arte do produto: no desktop já ocupa o palco todo; a legenda só
+                aparece ao clicar numa pílula. No mobile é um bloco no topo, com
+                o menu embaixo. */}
+            <div className="relative h-80 w-full overflow-hidden sm:h-96 lg:absolute lg:inset-0 lg:h-auto">
               {DESTAQUES.map((item, i) => {
                 const contain = item.fit === "contain";
                 return (
                   <div
                     key={item.id}
                     className={`absolute inset-0 transition-[opacity,scale] duration-700 ease-out motion-reduce:transition-none ${
-                      i === shown ? "scale-100 opacity-100" : "scale-105 opacity-0"
+                      i === current ? "scale-100 opacity-100" : "scale-105 opacity-0"
                     }`}
                   >
                     {contain && (
@@ -114,17 +110,17 @@ export function Destaques() {
                       style={contain ? undefined : { objectPosition: item.objectPosition }}
                       className={
                         contain
-                          ? "object-contain transition-[object-position] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] lg:group-data-[open=true]:object-[85%_50%]"
+                          ? "object-contain lg:object-[85%_50%]"
                           : "object-cover"
                       }
                     />
                   </div>
                 );
               })}
-              {/* Véu à esquerda: garante leitura das pílulas sobre a arte aberta */}
+              {/* Véu à esquerda: garante leitura das pílulas sobre a arte */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-gradient-to-r from-df-primary-50/90 via-df-primary-50/35 to-transparent opacity-0 transition-opacity duration-700 lg:group-data-[open=true]:opacity-100"
+                className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-df-primary-50/90 via-df-primary-50/35 to-transparent lg:block"
               />
             </div>
 
@@ -156,7 +152,7 @@ export function Destaques() {
                 {DESTAQUES.map((item, i) => {
                   const copy = item[lang];
                   const selected = open === i;
-                  const current = !isOpen && preview === i;
+                  const isCurrent = !isOpen && current === i;
 
                   return (
                     <motion.li
@@ -205,14 +201,10 @@ export function Destaques() {
                         <button
                           type="button"
                           onClick={() => select(i)}
-                          onPointerEnter={(event) => {
-                            if (event.pointerType === "mouse") setPreview(i);
-                          }}
-                          onFocus={() => setPreview(i)}
                           aria-expanded={false}
                           className="glass inline-flex min-h-12 max-w-full items-center gap-3 rounded-df-full py-2 pl-3 pr-6 text-left text-base font-semibold text-df-ink-900"
                         >
-                          {current ? (
+                          {isCurrent ? (
                             <span
                               aria-hidden="true"
                               className="h-7 w-7 shrink-0 rounded-df-full bg-df-primary-700"
@@ -262,7 +254,7 @@ export function Destaques() {
                       aria-hidden="true"
                       className="ml-1 text-sm font-semibold tabular-nums text-df-ink-700"
                     >
-                      {(open ?? 0) + 1} / {count}
+                      {current + 1} / {count}
                     </span>
                   </motion.div>
                 )}
