@@ -3,7 +3,9 @@ import type { Post } from "@/lib/supabase/types";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const SITE_NAME = "Dermaflora Farmácia de Manipulação";
-export const WHATSAPP_URL = `https://wa.me/5511988296867?text=${encodeURIComponent("Olá, eu vim pelo site")}`;
+export const whatsappUrl = (message: string) =>
+  `https://wa.me/5511988296867?text=${encodeURIComponent(message)}`;
+export const WHATSAPP_URL = whatsappUrl("Olá, eu vim pelo site");
 
 // Avaliações do Google (unidade Chácara Santo Antônio). Conferido manualmente
 // em ago/2026 — atualizar esses três valores de tempos em tempos, não há
