@@ -84,9 +84,9 @@ export function Editor({
   initialContent: string;
   onChange: (html: string) => void;
   /**
-   * Só os posts do blog passam por `splitContentInHalf` e recebem o CTA no meio
-   * do texto. Em Cursos e Eventos o conteúdo é renderizado inteiro, com um CTA
-   * apenas no fim — mostrar o marcador lá apontaria algo que não acontece.
+   * Só Cursos e Eventos passam por `splitContentInHalf` e recebem um CTA no
+   * meio do texto. Os posts do blog têm uma única CTA, no fim — mostrar o
+   * marcador lá apontaria algo que não acontece.
    */
   showCtaMarker?: boolean;
 }) {
