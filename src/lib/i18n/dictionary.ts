@@ -122,6 +122,16 @@ export const pt = {
       },
     ],
   },
+  destaques: {
+    title: "Destaques",
+    subtitle: "Produtos que queremos apresentar a você com carinho.",
+    cta: "Quero saber mais",
+    readMore: "Ler no blog",
+    closeAria: "Fechar detalhes do produto",
+    prevAria: "Produto anterior",
+    nextAria: "Próximo produto",
+    whatsAppMessage: "Olá, vim pelo site e quero saber mais sobre: {product}",
+  },
   purpose: {
     title: "Propósito, missão e visão.",
     pillars: [
@@ -464,6 +474,16 @@ export const en: typeof pt = {
         text: "Products dedicated to the health and beauty of your hair.",
       },
     ],
+  },
+  destaques: {
+    title: "Highlights",
+    subtitle: "Products we'd love to introduce to you.",
+    cta: "I want to know more",
+    readMore: "Read on the blog",
+    closeAria: "Close product details",
+    prevAria: "Previous product",
+    nextAria: "Next product",
+    whatsAppMessage: "Hi, I came from the website and I'd like to know more about: {product}",
   },
   purpose: {
     title: "Purpose, mission and vision.",
