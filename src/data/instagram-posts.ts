@@ -23,6 +23,22 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "DfDLlqOuCVs",
+    permalink: "https://www.instagram.com/dermaflora/reel/DfDLlqOuCVs/",
+    image: "/instagram/DfDLlqOuCVs.jpg",
+    date: "2026-10-28",
+    category: "Produtos",
+    excerpt: "Olha essa novidade que chegou na Dermaflora! O PeptPure ProAging é uma combinação de ativos que auxilia na firmeza, elasticidade e hidratação da pele, de dentro para fora.",
+  },
+  {
+    shortcode: "DfA6ux0Glqh",
+    permalink: "https://www.instagram.com/dermaflora/p/DfA6ux0Glqh/",
+    image: "/instagram/DfA6ux0Glqh.jpg",
+    date: "2026-10-27",
+    category: "Institucional",
+    excerpt: "Atenção, médicos e prescritores: a partir de 30/10/2026, as receitas eletrônicas de controle especial deverão ser emitidas por plataformas integradas ao SNCR.",
+  },
+  {
     shortcode: "De1ifAZxdxd",
     permalink: "https://www.instagram.com/dermaflora/reel/De1ifAZxdxd/",
     image: "/instagram/De1ifAZxdxd.jpg",
