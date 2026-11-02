@@ -19,8 +19,14 @@ export type Destaque = {
   image: string;
   /** Texto alternativo da imagem */
   alt: string;
-  /** Como a arte preenche o palco: "cover" recorta, "contain" mostra inteira sobre um fundo desfocado (use em artes em retrato) */
-  fit?: "cover" | "contain";
+  /**
+   * Como a arte preenche o palco:
+   * - "cover" (padrão): recorta e ocupa o palco todo;
+   * - "contain": mostra inteira sobre um fundo desfocado (artes em retrato);
+   * - "card": no desktop vira um cartão 16:9 à direita, sobre fundo desfocado, pra
+   *   não ficar atrás das pílulas (use em artes com texto no lado esquerdo).
+   */
+  fit?: "cover" | "contain" | "card";
   /** Ponto focal do recorte (CSS object-position), só vale com fit "cover" */
   objectPosition?: string;
   /** Link secundário (ex.: matéria no blog) mostrado ao lado do botão de WhatsApp */
@@ -93,6 +99,22 @@ export const DESTAQUES: Destaque[] = [
       name: "Glow Boost",
       description:
         "A floral botox effect, no needles. A plant-based active that relaxes, fills and hydrates, softening the look of dynamic wrinkles.",
+    },
+  },
+  {
+    id: "estrog-100",
+    image: "/images/destaques/estrog-100.webp",
+    alt: "Frasco do EstroG-100 sobre uma bandeja de pedra, ao lado de uma mulher que segura uma cápsula",
+    fit: "card",
+    pt: {
+      name: "EstroG-100",
+      description:
+        "Equilíbrio em cada fase. Auxilia no alívio dos sintomas da menopausa e contribui para o equilíbrio do humor e do sono, com ação antioxidante e anti-inflamatória. Extrato fitoterápico patenteado, sem hormônios e sem fitoestrógenos.",
+    },
+    en: {
+      name: "EstroG-100",
+      description:
+        "Balance at every stage. Helps relieve menopause symptoms and supports mood and sleep balance, with antioxidant and anti-inflammatory action. A patented herbal extract, free of hormones and phytoestrogens.",
     },
   },
 ];

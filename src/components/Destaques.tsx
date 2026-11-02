@@ -85,6 +85,7 @@ export function Destaques() {
             <div className="relative h-80 w-full overflow-hidden sm:h-96 lg:absolute lg:inset-0 lg:h-auto">
               {DESTAQUES.map((item, i) => {
                 const contain = item.fit === "contain";
+                const card = item.fit === "card";
                 return (
                   <div
                     key={item.id}
@@ -92,7 +93,7 @@ export function Destaques() {
                       i === current ? "scale-100 opacity-100" : "scale-105 opacity-0"
                     }`}
                   >
-                    {contain && (
+                    {(contain || card) && (
                       <Image
                         src={item.image}
                         alt=""
@@ -102,25 +103,40 @@ export function Destaques() {
                         className="scale-125 object-cover opacity-60 blur-3xl"
                       />
                     )}
-                    <Image
-                      src={item.image}
-                      alt={item.alt}
-                      fill
-                      sizes="(min-width: 1024px) 70vw, 100vw"
-                      style={contain ? undefined : { objectPosition: item.objectPosition }}
+                    {/* "card": no desktop a arte vira um cartão 16:9 à direita, fora da
+                        área das pílulas; no mobile aparece inteira (contain). */}
+                    <div
                       className={
-                        contain
-                          ? "object-contain lg:object-[85%_50%]"
-                          : "object-cover"
+                        card
+                          ? "absolute inset-0 lg:inset-auto lg:right-[3%] lg:top-1/2 lg:aspect-video lg:w-[62%] lg:-translate-y-1/2 lg:overflow-hidden lg:rounded-[1.5rem] lg:shadow-[var(--df-shadow-lg)]"
+                          : "absolute inset-0"
                       }
-                    />
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.alt}
+                        fill
+                        sizes="(min-width: 1024px) 70vw, 100vw"
+                        style={contain || card ? undefined : { objectPosition: item.objectPosition }}
+                        className={
+                          card
+                            ? "object-contain lg:object-cover"
+                            : contain
+                              ? "object-contain lg:object-[85%_50%]"
+                              : "object-cover"
+                        }
+                      />
+                    </div>
                   </div>
                 );
               })}
-              {/* Véu à esquerda: garante leitura das pílulas sobre a arte */}
+              {/* Véu à esquerda: garante leitura das pílulas sobre a arte (some nas
+                  artes em cartão, que já ficam longe das pílulas) */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-df-primary-50/90 via-df-primary-50/35 to-transparent lg:block"
+                className={`pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-df-primary-50/90 via-df-primary-50/35 to-transparent transition-opacity duration-700 lg:block ${
+                  DESTAQUES[current].fit === "card" ? "opacity-0" : "opacity-100"
+                }`}
               />
             </div>
 
