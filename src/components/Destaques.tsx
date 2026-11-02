@@ -123,7 +123,9 @@ export function Destaques() {
                             ? "object-contain lg:object-cover"
                             : contain
                               ? "object-contain lg:object-[85%_50%]"
-                              : "object-cover"
+                              : item.shiftRight
+                                ? "object-cover lg:origin-[0%_45%] lg:scale-[1.2]"
+                                : "object-cover"
                         }
                       />
                     </div>
@@ -135,7 +137,9 @@ export function Destaques() {
               <div
                 aria-hidden="true"
                 className={`pointer-events-none absolute inset-0 hidden bg-gradient-to-r from-df-primary-50/90 via-df-primary-50/35 to-transparent transition-opacity duration-700 lg:block ${
-                  DESTAQUES[current].fit === "card" ? "opacity-0" : "opacity-100"
+                  DESTAQUES[current].fit === "card" || DESTAQUES[current].shiftRight
+                    ? "opacity-0"
+                    : "opacity-100"
                 }`}
               />
             </div>
@@ -268,7 +272,7 @@ export function Destaques() {
                     </button>
                     <span
                       aria-hidden="true"
-                      className="ml-1 text-sm font-semibold tabular-nums text-df-ink-700"
+                      className="ml-1 rounded-df-full bg-white/60 px-3 py-1 text-sm font-semibold tabular-nums text-df-ink-900"
                     >
                       {current + 1} / {count}
                     </span>

@@ -29,6 +29,13 @@ export type Destaque = {
   fit?: "cover" | "contain" | "card";
   /** Ponto focal do recorte (CSS object-position), só vale com fit "cover" */
   objectPosition?: string;
+  /**
+   * Só desktop, só com fit "cover": amplia a arte ancorada à esquerda pra empurrar o
+   * texto que ela tem no lado esquerdo pra fora da área das pílulas, e tira o véu
+   * claro que desbotaria esse texto. Alternativa ao "card" quando a arte deve
+   * preencher o palco inteiro.
+   */
+  shiftRight?: boolean;
   /** Link secundário (ex.: matéria no blog) mostrado ao lado do botão de WhatsApp */
   moreHref?: string;
   pt: DestaqueCopy;
@@ -56,7 +63,7 @@ export const DESTAQUES: Destaque[] = [
     id: "gutfiber",
     image: "/images/destaques/gutfiber-digestao.jpg",
     alt: "Arte do Gutfiber®: mulher com a mão na barriga, \"Seu aliado na digestão e na perda de peso!\"",
-    fit: "card",
+    shiftRight: true,
     moreHref: "/blog/gutfiber-fibras-naturais-para-o-intestino",
     pt: {
       name: "Gutfiber®",
