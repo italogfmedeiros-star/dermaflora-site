@@ -96,14 +96,26 @@ export async function getRelatedPosts(
   return (data ?? []) as Post[];
 }
 
-export async function getAllPostsForAdmin(supabase: Client) {
-  const { data, error } = await supabase
+export const ADMIN_PAGE_SIZE = 15;
+
+export async function getAdminPostsPage(supabase: Client, page = 1) {
+  const from = (page - 1) * ADMIN_PAGE_SIZE;
+  const to = from + ADMIN_PAGE_SIZE - 1;
+
+  const { data, count, error } = await supabase
     .from("posts")
-    .select("*")
-    .order("updated_at", { ascending: false });
+    .select("*", { count: "exact" })
+    .order("updated_at", { ascending: false })
+    .range(from, to);
 
   if (error) throw error;
-  return (data ?? []) as Post[];
+
+  const total = count ?? 0;
+  return {
+    posts: (data ?? []) as Post[],
+    total,
+    pageCount: Math.max(1, Math.ceil(total / ADMIN_PAGE_SIZE)),
+  };
 }
 
 export async function getPostById(supabase: Client, id: string) {

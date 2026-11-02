@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
-import { getAllPostsForAdmin } from "@/lib/posts-data";
+import { ADMIN_PAGE_SIZE, getAdminPostsPage } from "@/lib/posts-data";
+import { PostList } from "@/components/admin/PostList";
 
 export const metadata: Metadata = {
   title: "Posts | Painel Dermaflora",
@@ -14,9 +16,22 @@ const DATE_FORMATTER = new Intl.DateTimeFormat("pt-BR", {
   year: "numeric",
 });
 
-export default async function AdminDashboardPage() {
+export default async function AdminDashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ pagina?: string }>;
+}) {
+  const { pagina } = await searchParams;
+  const page = Math.max(1, Number(pagina) || 1);
+
   const supabase = await createClient();
-  const posts = await getAllPostsForAdmin(supabase);
+  const { posts, total, pageCount } = await getAdminPostsPage(supabase, page);
+
+  // Excluir os últimos posts de uma página deixa o endereço apontando para o
+  // vazio: volta para a última página que ainda existe.
+  if (page > pageCount) {
+    redirect(pageCount === 1 ? "/admin" : `/admin?pagina=${pageCount}`);
+  }
 
   return (
     <div>
@@ -30,40 +45,25 @@ export default async function AdminDashboardPage() {
         </Link>
       </div>
 
-      {posts.length === 0 ? (
+      {total === 0 ? (
         <p className="mt-10 text-sm text-df-ink-400">
           Nenhum post ainda. Clique em &quot;Novo post&quot; para começar.
         </p>
       ) : (
-        <ul className="mt-8 divide-y divide-df-line overflow-hidden rounded-df-md border border-df-line bg-white">
-          {posts.map((post) => (
-            <li key={post.id}>
-              <Link
-                href={`/admin/posts/${post.id}/editar`}
-                className="flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-df-primary-50"
-              >
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold text-df-ink-900">
-                    {post.title}
-                  </p>
-                  <p className="mt-1 text-xs text-df-ink-400">
-                    {post.categories.join(", ") || "Sem categoria"} ·{" "}
-                    {DATE_FORMATTER.format(new Date(post.updated_at))}
-                  </p>
-                </div>
-                <span
-                  className={`shrink-0 rounded-df-full px-3 py-1 text-xs font-semibold ${
-                    post.status === "published"
-                      ? "bg-df-primary-100 text-df-primary-700"
-                      : "bg-df-warm-300 text-df-ink-700"
-                  }`}
-                >
-                  {post.status === "published" ? "Publicado" : "Rascunho"}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <PostList
+          key={page}
+          posts={posts.map((post) => ({
+            id: post.id,
+            title: post.title,
+            categories: post.categories,
+            status: post.status,
+            dateLabel: DATE_FORMATTER.format(new Date(post.updated_at)),
+          }))}
+          page={page}
+          pageCount={pageCount}
+          total={total}
+          pageSize={ADMIN_PAGE_SIZE}
+        />
       )}
     </div>
   );
