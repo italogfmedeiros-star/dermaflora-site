@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { MAX_UPLOAD_BYTES, formatMegabytes } from "@/lib/upload-limits";
 
 const PostInputSchema = z.object({
   id: z.string().uuid().optional(),
@@ -163,11 +164,28 @@ export async function publishPosts(ids: string[]): Promise<BulkPostResult> {
 }
 
 export async function uploadPostImage(formData: FormData) {
-  const { supabase } = await requireUser();
+  // Sessão vencida volta como erro legível: lançar aqui faria a Server Action
+  // rejeitar no navegador, sem texto nenhum para o autor.
+  const auth = await requireUser().catch(() => null);
+  if (!auth) {
+    return { error: "Sua sessão expirou. Entre de novo no painel e tente outra vez." };
+  }
+  const { supabase } = auth;
+
   const file = formData.get("file");
 
   if (!(file instanceof File)) {
     return { error: "Nenhum arquivo enviado." };
+  }
+
+  if (!file.type.startsWith("image/")) {
+    return { error: "O arquivo precisa ser uma imagem." };
+  }
+
+  if (file.size > MAX_UPLOAD_BYTES) {
+    return {
+      error: `A imagem tem ${formatMegabytes(file.size)} e o limite é ${formatMegabytes(MAX_UPLOAD_BYTES)}.`,
+    };
   }
 
   const ext = file.name.split(".").pop() ?? "jpg";

@@ -21,8 +21,7 @@ import {
   ArrowUUpLeft,
   ArrowUUpRight,
 } from "@phosphor-icons/react";
-import { uploadPostImage } from "@/lib/actions/posts";
-import { prepareImageForUpload } from "@/lib/prepare-image";
+import { uploadImage } from "@/lib/upload-image";
 import { CtaMarker } from "./cta-marker";
 import { EditorDialog } from "./EditorDialog";
 
@@ -93,6 +92,7 @@ export function Editor({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [dialog, setDialog] = useState<DialogState>(null);
   const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
 
   const editor = useEditor({
     extensions: [
@@ -161,22 +161,23 @@ export function Editor({
     if (!file || !editor) return;
 
     setUploading(true);
-    const prepared = await prepareImageForUpload(file);
-    const formData = new FormData();
-    formData.append("file", prepared.file);
-    const result = await uploadPostImage(formData);
+    setUploadError("");
+    const result = await uploadImage(file);
     setUploading(false);
+
+    if ("error" in result) {
+      setUploadError(result.error);
+      return;
+    }
 
     // A descrição é pedida depois do upload: assim um cancelamento não joga
     // fora o arquivo que já subiu.
-    if (result.url) {
-      setDialog({
-        kind: "imageAlt",
-        url: result.url,
-        width: prepared.width,
-        height: prepared.height,
-      });
-    }
+    setDialog({
+      kind: "imageAlt",
+      url: result.url,
+      width: result.width,
+      height: result.height,
+    });
   }
 
   if (!editor) return null;
@@ -301,6 +302,15 @@ export function Editor({
           onChange={handleImageSelected}
         />
       </div>
+
+      {uploadError && (
+        <p
+          role="alert"
+          className="border-b border-df-line bg-df-warm-100 px-3 py-2 text-xs font-medium text-df-error"
+        >
+          {uploadError}
+        </p>
+      )}
 
       {/* Formatação inline aparece junto do texto selecionado, sem obrigar a
           subir até a barra de ferramentas. */}

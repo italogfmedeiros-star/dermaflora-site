@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // O upload de imagens do painel viaja numa Server Action, cujo corpo o Next
+  // limita a 1 MB por padrão. Mantenha em sincronia com MAX_UPLOAD_BYTES
+  // (src/lib/upload-limits.ts), que deve ficar abaixo deste valor.
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "4mb",
+    },
+  },
+
   images: {
     remotePatterns: [
       {
