@@ -103,9 +103,9 @@ export const DESTAQUES: Destaque[] = [
   },
   {
     id: "estrog-100",
-    image: "/images/destaques/estrog-100.webp",
+    image: "/images/destaques/estrog-100-mulher.webp",
     alt: "Frasco do EstroG-100 sobre uma bandeja de pedra, ao lado de uma mulher que segura uma cápsula",
-    fit: "card",
+    objectPosition: "70% 50%",
     pt: {
       name: "EstroG-100",
       description:
