@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
@@ -94,6 +95,71 @@ export async function deletePost(id: string) {
   const { error } = await supabase.from("posts").delete().eq("id", id);
   if (error) throw error;
   redirect("/admin");
+}
+
+const BulkIdsSchema = z
+  .array(z.string().uuid())
+  .min(1, "Selecione pelo menos um post.")
+  .max(100, "Selecione no máximo 100 posts por vez.");
+
+export type BulkPostResult = { error: string } | { count: number };
+
+export async function deletePosts(ids: string[]): Promise<BulkPostResult> {
+  const { supabase } = await requireUser();
+
+  const parsed = BulkIdsSchema.safeParse(ids);
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0]?.message ?? "Seleção inválida." };
+  }
+
+  const { data, error } = await supabase
+    .from("posts")
+    .delete()
+    .in("id", parsed.data)
+    .select("id");
+
+  if (error) return { error: "Não foi possível excluir os posts." };
+
+  revalidatePath("/admin");
+  revalidatePath("/blog");
+  return { count: data?.length ?? 0 };
+}
+
+// Publica só rascunhos. Mesma regra do savePost: mantém a data que o post já
+// tinha (inclusive agendada) e, na primeira publicação, assume agora.
+export async function publishPosts(ids: string[]): Promise<BulkPostResult> {
+  const { supabase } = await requireUser();
+
+  const parsed = BulkIdsSchema.safeParse(ids);
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0]?.message ?? "Seleção inválida." };
+  }
+
+  const { data, error } = await supabase
+    .from("posts")
+    .update({ status: "published" })
+    .in("id", parsed.data)
+    .eq("status", "draft")
+    .select("id");
+
+  if (error) return { error: "Não foi possível publicar os posts." };
+
+  const publishedIds = (data ?? []).map((post) => post.id);
+  if (publishedIds.length > 0) {
+    const { error: dateError } = await supabase
+      .from("posts")
+      .update({ published_at: new Date().toISOString() })
+      .in("id", publishedIds)
+      .is("published_at", null);
+
+    if (dateError) {
+      return { error: "Os posts foram publicados, mas sem data de publicação." };
+    }
+  }
+
+  revalidatePath("/admin");
+  revalidatePath("/blog");
+  return { count: publishedIds.length };
 }
 
 export async function uploadPostImage(formData: FormData) {
