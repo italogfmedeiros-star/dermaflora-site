@@ -4,20 +4,17 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { CaretDown, CaretUp, Plus, WhatsappLogo, X } from "@phosphor-icons/react";
+import { ArrowRight, CaretDown, CaretUp, Plus, X } from "@phosphor-icons/react";
 import { LabTexture } from "./LabTexture";
 import { Reveal } from "./Reveal";
 import { DESTAQUES } from "@/data/destaques";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
-import { useLoadingFlash } from "@/components/loading/LoadingOverlayProvider";
-import { whatsappUrl } from "@/lib/seo";
 
 // Menu de produtos inspirado no "Apple Feature Block" do Skiper UI (skiper76):
 // pílulas de vidro à esquerda, arte do produto à direita. Clicar numa pílula
 // abre o cartão com a descrição e a arte vira o fundo inteiro do palco.
 export function Destaques() {
   const { dict, lang } = useLanguage();
-  const triggerFlash = useLoadingFlash();
   const reduceMotion = useReducedMotion();
   const [open, setOpen] = useState<number | null>(null);
   // `open` é o produto com a legenda visível (null = legenda oculta); `current`
@@ -194,28 +191,15 @@ export function Destaques() {
                             <strong className="font-bold text-df-ink-900">{copy.name}.</strong>{" "}
                             {copy.description}
                           </p>
-                          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
-                            <a
-                              href={whatsappUrl(
-                                dict.destaques.whatsAppMessage.replace("{product}", copy.name),
-                              )}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={triggerFlash}
-                              className="inline-flex min-h-11 items-center gap-2 rounded-df-full bg-df-primary-900 px-5 text-sm font-semibold text-white transition-colors hover:bg-df-primary-700"
+                          {item.moreHref && (
+                            <Link
+                              href={item.moreHref}
+                              className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-df-full bg-df-primary-900 px-5 text-sm font-semibold text-white transition-colors hover:bg-df-primary-700"
                             >
-                              <WhatsappLogo size={16} weight="fill" />
-                              {dict.destaques.cta}
-                            </a>
-                            {item.moreHref && (
-                              <Link
-                                href={item.moreHref}
-                                className="text-sm font-semibold text-df-primary-700 underline decoration-df-primary-300 underline-offset-4 transition-colors hover:text-df-primary-900"
-                              >
-                                {dict.destaques.readMore}
-                              </Link>
-                            )}
-                          </div>
+                              {dict.destaques.readMore}
+                              <ArrowRight size={16} weight="bold" />
+                            </Link>
+                          )}
                         </div>
                       ) : (
                         <button

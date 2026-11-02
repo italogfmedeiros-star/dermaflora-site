@@ -36,7 +36,7 @@ export type Destaque = {
    * preencher o palco inteiro.
    */
   shiftRight?: boolean;
-  /** Link secundário (ex.: matéria no blog) mostrado ao lado do botão de WhatsApp */
+  /** Matéria do blog sobre o produto: vira o botão "Ler no blog" da legenda */
   moreHref?: string;
   pt: DestaqueCopy;
   en: DestaqueCopy;
@@ -48,6 +48,7 @@ export const DESTAQUES: Destaque[] = [
     image: "/images/destaques/caps-active-cream.png",
     alt: "Cinco potes de Caps Active Cream Regeneradora empilhados, com cápsulas coloridas",
     objectPosition: "50% 55%",
+    moreHref: "/blog/caps-active-cream-creme-em-capsulas-para-pele-radiante",
     pt: {
       name: "Caps Active Cream",
       description:
@@ -81,6 +82,7 @@ export const DESTAQUES: Destaque[] = [
     image: "/images/destaques/peptpure-orbita.png",
     alt: "Embalagem do PeptPure Proaging em órbita luminosa, com moléculas ao redor",
     objectPosition: "50% 50%",
+    moreHref: "/blog/peptpure-proaging-peptideos-de-colageno-longevidade-da-pele",
     pt: {
       name: "PeptPure Proaging",
       description:
@@ -97,6 +99,7 @@ export const DESTAQUES: Destaque[] = [
     image: "/images/destaques/glowboost-brilho.png",
     alt: "Mulher aplicando o creme Glow Boost no rosto, segurando o pote",
     objectPosition: "70% 50%",
+    moreHref: "/blog/glowboost-efeito-botox-floral-sem-agulhas",
     pt: {
       name: "Glow Boost",
       description:
@@ -113,6 +116,7 @@ export const DESTAQUES: Destaque[] = [
     image: "/images/destaques/estrog-100-mulher.webp",
     alt: "Frasco do EstroG-100 sobre uma bandeja de pedra, ao lado de uma mulher que segura uma cápsula",
     objectPosition: "70% 50%",
+    moreHref: "/blog/estrog-100-equilibrio-em-cada-fase-menopausa",
     pt: {
       name: "EstroG-100",
       description:
