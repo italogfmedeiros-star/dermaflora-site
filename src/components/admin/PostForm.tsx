@@ -402,7 +402,6 @@ export function PostForm({ post }: { post?: Post }) {
             key={editorKey}
             initialContent={content}
             onChange={setContent}
-            showCtaMarker
           />
         </div>
       </div>

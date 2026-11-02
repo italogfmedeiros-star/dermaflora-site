@@ -19,7 +19,6 @@ import {
   isPostLive,
 } from "@/lib/posts-data";
 import { articleJsonLd, breadcrumbJsonLd, SITE_URL } from "@/lib/seo";
-import { splitContentInHalf } from "@/lib/split-content";
 import { slugifyCategory } from "@/lib/categories";
 import { T } from "@/lib/i18n/T";
 
@@ -79,7 +78,6 @@ export default async function BlogPostPage({
 
   const related = await getRelatedPosts(supabase, post);
   const readingMinutes = estimateReadingMinutes(post.content);
-  const { before, after } = splitContentInHalf(post.content);
 
   return (
     <>
@@ -151,21 +149,11 @@ export default async function BlogPostPage({
 
           <div
             className="post-content mt-10"
-            dangerouslySetInnerHTML={{ __html: before }}
+            dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
-          {after && (
-            <>
-              <div className="my-10">
-                <WhatsAppCta />
-              </div>
-              <div
-                className="post-content"
-                dangerouslySetInnerHTML={{ __html: after }}
-              />
-            </>
-          )}
-
+          {/* Uma só CTA, no fim: os posts são curtos e um convite no meio
+              interrompia a leitura. */}
           <div className="mt-12">
             <WhatsAppCta variant="blog" />
           </div>
