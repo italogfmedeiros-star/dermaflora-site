@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowRight, CaretDown, CaretUp, Plus, X } from "@phosphor-icons/react";
+import { CaretDown, CaretUp, Plus, X } from "@phosphor-icons/react";
 import { LabTexture } from "./LabTexture";
 import { Reveal } from "./Reveal";
 import { DESTAQUES } from "@/data/destaques";
@@ -194,10 +194,9 @@ export function Destaques() {
                           {item.moreHref && (
                             <Link
                               href={item.moreHref}
-                              className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-df-full bg-df-primary-900 px-5 text-sm font-semibold text-white transition-colors hover:bg-df-primary-700"
+                              className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-df-primary-900 underline decoration-df-primary-900/40 underline-offset-4 transition-colors hover:text-df-primary-700 hover:decoration-df-primary-700"
                             >
                               {dict.destaques.readMore}
-                              <ArrowRight size={16} weight="bold" />
                             </Link>
                           )}
                         </div>
