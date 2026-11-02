@@ -54,9 +54,9 @@ export const DESTAQUES: Destaque[] = [
   },
   {
     id: "gutfiber",
-    image: "/images/destaques/gutfiber.jpg",
-    alt: "Arte do Gutfiber®: \"Você muito mais leve e com a flora intestinal equilibrada\"",
-    objectPosition: "60% 50%",
+    image: "/images/destaques/gutfiber-digestao.jpg",
+    alt: "Arte do Gutfiber®: mulher com a mão na barriga, \"Seu aliado na digestão e na perda de peso!\"",
+    fit: "card",
     moreHref: "/blog/gutfiber-fibras-naturais-para-o-intestino",
     pt: {
       name: "Gutfiber®",
