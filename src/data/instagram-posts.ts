@@ -23,6 +23,46 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "DfaWBjEOc9w",
+    permalink: "https://www.instagram.com/dermaflora/p/DfaWBjEOc9w/",
+    image: "/instagram/DfaWBjEOc9w.jpg",
+    date: "2026-11-06",
+    category: "Produtos",
+    excerpt: "A Máscara 360° oferece um tratamento completo de reconstrução, hidratação e nutrição capilar, com aminoácidos, lipídeos e ativos reparadores.",
+  },
+  {
+    shortcode: "DfXvmKPOyvN",
+    permalink: "https://www.instagram.com/dermaflora/reel/DfXvmKPOyvN/",
+    image: "/instagram/DfXvmKPOyvN.jpg",
+    date: "2026-11-05",
+    category: "Institucional",
+    excerpt: "Ainda sobre o nosso Outubro Rosa: um convite para olhar para si com mais carinho, acolhimento e atenção, com um momento especial para nossas colaboradoras.",
+  },
+  {
+    shortcode: "DfVeoo8u93J",
+    permalink: "https://www.instagram.com/dermaflora/reel/DfVeoo8u93J/",
+    image: "/instagram/DfVeoo8u93J.jpg",
+    date: "2026-11-04",
+    category: "Institucional",
+    excerpt: "Uma história construída por pessoas. A Dermaflora vive um novo capítulo, marcado por crescimento, transformação e expansão.",
+  },
+  {
+    shortcode: "DfSQpp8NafL",
+    permalink: "https://www.instagram.com/maglinkbr/reel/DfSQpp8NafL/",
+    image: "/instagram/DfSQpp8NafL.jpg",
+    date: "2026-11-03",
+    category: "Institucional",
+    excerpt: "Por trás de cada entrega, existe um processo que conecta etapas, pessoas e cuidado. Maglink e Dermaflora conectando cada etapa até você.",
+  },
+  {
+    shortcode: "DfR6rusxDsB",
+    permalink: "https://www.instagram.com/dermaflora/p/DfR6rusxDsB/",
+    image: "/instagram/DfR6rusxDsB.jpg",
+    date: "2026-11-03",
+    category: "Produtos",
+    excerpt: "Cabelos mais fortes e saudáveis começam pelo cuidado com o couro cabeludo. O Hair Growth Pen auxilia na prevenção da miniaturização capilar e estimula fios mais densos.",
+  },
+  {
     shortcode: "DfDLlqOuCVs",
     permalink: "https://www.instagram.com/dermaflora/reel/DfDLlqOuCVs/",
     image: "/instagram/DfDLlqOuCVs.jpg",
