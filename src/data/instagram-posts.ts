@@ -23,6 +23,30 @@ export type InstagramPost = {
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
   {
+    shortcode: "Df0NKcVuMOw",
+    permalink: "https://www.instagram.com/dermaflora/p/Df0NKcVuMOw/",
+    image: "/instagram/Df0NKcVuMOw.jpg",
+    date: "2026-11-16",
+    category: "Produtos",
+    excerpt: "Dois produtos que se complementam para um cuidado capilar 360°! Máscara 360° e Leave-in 360° juntos, do tratamento à finalização.",
+  },
+  {
+    shortcode: "Dfsej6JOPm4",
+    permalink: "https://www.instagram.com/dermaflora/p/Dfsej6JOPm4/",
+    image: "/instagram/Dfsej6JOPm4.jpg",
+    date: "2026-11-13",
+    category: "Produtos",
+    excerpt: "Seu cuidado capilar não termina no banho. O Leave-in 360° é o aliado perfeito para complementar sua rotina de cuidados com os fios.",
+  },
+  {
+    shortcode: "DfnJtCguoic",
+    permalink: "https://www.instagram.com/dermaflora/p/DfnJtCguoic/",
+    image: "/instagram/DfnJtCguoic.jpg",
+    date: "2026-11-11",
+    category: "Produtos",
+    excerpt: "Seus fios merecem um cuidado completo! A Máscara Capilar 360° reúne reconstrução, hidratação e nutrição em um único produto.",
+  },
+  {
     shortcode: "DfaWBjEOc9w",
     permalink: "https://www.instagram.com/dermaflora/p/DfaWBjEOc9w/",
     image: "/instagram/DfaWBjEOc9w.jpg",
