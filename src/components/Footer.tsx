@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FacebookLogo, InstagramLogo } from "@phosphor-icons/react";
 import { LogoMark } from "./Logo";
+import { CookiePreferencesButton } from "@/components/analytics/CookiePreferencesButton";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 import { useLoadingFlash } from "@/components/loading/LoadingOverlayProvider";
 
@@ -70,7 +71,11 @@ export function Footer() {
                 className="underline decoration-white/30 underline-offset-2 transition-colors hover:text-white"
               >
                 Política de Privacidade
-              </Link>
+              </Link>{" "}
+              ·{" "}
+              <CookiePreferencesButton className="underline decoration-white/30 underline-offset-2 transition-colors hover:text-white">
+                Preferências de cookies
+              </CookiePreferencesButton>
             </p>
             <p>
               {dict.footer.developedBy}{" "}

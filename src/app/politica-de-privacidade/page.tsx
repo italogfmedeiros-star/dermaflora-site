@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LabTexture } from "@/components/LabTexture";
+import { CookiePreferencesButton } from "@/components/analytics/CookiePreferencesButton";
 
 export const metadata: Metadata = {
   title: "Política de Privacidade | Dermaflora Farmácia de Manipulação",
@@ -66,16 +67,22 @@ export default function PoliticaDePrivacidadePage() {
                 nosso servidor informações técnicas padrão de qualquer acesso
                 à internet, como o seu endereço de IP, o sistema operacional
                 e o navegador utilizados. Essas informações ficam registradas
-                nos logs de acesso do nosso provedor de hospedagem, mas não
-                utilizamos ferramentas de análise de comportamento como
-                Google Analytics, nem cookies de rastreamento ou de
-                publicidade.
+                nos logs de acesso do nosso provedor de hospedagem. Não
+                utilizamos cookies de publicidade.
               </p>
               <p className="mt-3">
-                A única preferência de navegação que guardamos no seu
-                dispositivo é o idioma do site (Português ou Inglês), salvo
-                localmente no seu navegador para que a página abra sempre no
-                idioma que você escolheu da última vez.
+                Se você aceitar o aviso de cookies, usamos também o Google
+                Analytics para medir, de forma estatística, como o site é
+                usado: páginas visitadas, origem do acesso e cliques nos
+                botões de contato (WhatsApp, telefone, e-mail e mapa) e o
+                envio do formulário de contato. Essa medição não inclui o
+                conteúdo do que você escreve no formulário.
+              </p>
+              <p className="mt-3">
+                Guardamos no seu dispositivo apenas o idioma do site
+                (Português ou Inglês) e a sua escolha sobre os cookies de
+                análise, para que a página abra do jeito que você deixou da
+                última vez.
               </p>
               <p className="mt-3">
                 Os seus dados financeiros informados quando da aquisição de
@@ -108,17 +115,25 @@ export default function PoliticaDePrivacidadePage() {
                 3 – Cookies e armazenamento local
               </h2>
               <p className="mt-3">
-                Hoje o site da Dermaflora não utiliza cookies de
-                rastreamento, publicidade ou análise de comportamento de
-                navegação.
+                O site da Dermaflora não utiliza cookies de publicidade. Os
+                cookies de análise do Google Analytics (<code>_ga</code> e{" "}
+                <code>_ga_*</code>, com validade de até 2 anos) só são
+                gravados no seu navegador depois que você clica em
+                &ldquo;Aceitar&rdquo; no aviso de cookies. Se você recusar,
+                nenhum script do Google Analytics é carregado. Os dados desse
+                serviço são tratados pelo Google, que atua como operador, e
+                podem ser processados em servidores fora do Brasil.
               </p>
               <p className="mt-3">
-                A única informação salva no seu navegador é a sua preferência
-                de idioma (Português ou Inglês), guardada localmente no seu
-                dispositivo para lembrar sua escolha nas próximas visitas.
-                Essa informação fica só no seu navegador, não é compartilhada
-                com terceiros, e você pode apagá-la a qualquer momento
-                limpando os dados de navegação do seu navegador.
+                Também ficam salvas no seu navegador, sem envio a terceiros,
+                a sua preferência de idioma (Português ou Inglês) e a sua
+                escolha sobre os cookies. Você pode mudar essa escolha a
+                qualquer momento em{" "}
+                <CookiePreferencesButton className="text-df-primary-700 underline underline-offset-2">
+                  Preferências de cookies
+                </CookiePreferencesButton>
+                , ou apagar tudo limpando os dados de navegação do seu
+                navegador.
               </p>
             </div>
 
