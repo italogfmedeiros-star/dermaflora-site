@@ -17,6 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: SITE_URL, changeFrequency: "monthly", priority: 1 },
     { url: `${SITE_URL}/politica-de-privacidade`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${SITE_URL}/blog`, changeFrequency: "daily", priority: 0.8 },
+    { url: `${SITE_URL}/cursos-e-eventos`, changeFrequency: "weekly", priority: 0.6 },
     ...BLOG_CATEGORIES.map((category) => ({
       url: `${SITE_URL}/blog/categoria/${slugifyCategory(category)}`,
       changeFrequency: "weekly" as const,

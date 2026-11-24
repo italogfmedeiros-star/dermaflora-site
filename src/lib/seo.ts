@@ -68,6 +68,13 @@ export function pharmacyJsonLd() {
     },
     telephone: "+5511988296867",
     url: SITE_URL,
+    image: `${SITE_URL}/images/hero-banner.png`,
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "18:00",
+    },
     // Só a unidade Chácara Santo Antônio (index 0) tem o Google Business
     // conferido — ver GOOGLE_RATING_VALUE acima.
     ...(index === 0 && {

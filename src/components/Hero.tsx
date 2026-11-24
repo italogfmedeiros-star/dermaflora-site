@@ -135,6 +135,11 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto h-full max-w-7xl px-5 py-10 md:px-8">
+        {/* Único H1 da página (os títulos dos slides são H2, senão a home teria 5 H1). */}
+        <h1 className="sr-only">
+          Dermaflora Farmácia de Manipulação em São Paulo — fórmulas magistrais,
+          dermocosméticos e nutrição na Chácara Santo Antônio, zona sul
+        </h1>
         <Reveal className="relative h-full w-full">
           {dict.hero.slides.map((slide, i) => (
             <div
@@ -144,9 +149,9 @@ export function Hero() {
               }`}
             >
               <div className={`max-w-xl ${SLIDE_LAYOUTS[i].textAlign}`}>
-                <h1 className="font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-df-ink-900 md:text-5xl lg:text-[3.25rem]">
+                <h2 className="font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-df-ink-900 md:text-5xl lg:text-[3.25rem]">
                   {slide.title}
-                </h1>
+                </h2>
                 <p
                   className={`mt-4 max-w-md text-lg leading-relaxed text-df-ink-700 ${
                     SLIDE_LAYOUTS[i].textOnRight ? "md:ml-auto" : ""
