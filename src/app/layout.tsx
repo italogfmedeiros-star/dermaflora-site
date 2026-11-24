@@ -6,6 +6,7 @@ import { organizationJsonLd, websiteJsonLd, pharmacyJsonLd, SITE_URL } from "@/l
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { LoadingOverlayProvider } from "@/components/loading/LoadingOverlayProvider";
 import { BranchWidget } from "@/components/BranchWidget";
+import { AnalyticsConsent } from "@/components/analytics/AnalyticsConsent";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -43,6 +44,7 @@ export default function RootLayout({
             {children}
             <BranchWidget />
           </LoadingOverlayProvider>
+          <AnalyticsConsent />
         </LanguageProvider>
       </body>
     </html>

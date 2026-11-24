@@ -10,6 +10,7 @@ import {
   WarningCircle,
 } from "@phosphor-icons/react";
 import { sendContactMessage, type ContactFormState } from "@/lib/actions/contact";
+import { trackEvent } from "@/lib/analytics";
 import { useLanguage } from "@/lib/i18n/LanguageContext";
 
 const inputClasses =
@@ -39,6 +40,7 @@ export function ContactForm() {
 
   useEffect(() => {
     if (state.status === "success") {
+      trackEvent("generate_lead", { method: "formulario_contato" });
       formRef.current?.reset();
     }
   }, [state]);
